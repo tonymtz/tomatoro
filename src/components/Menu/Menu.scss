@@ -1,0 +1,47 @@
+/* _Menu.scss called from Menu.js */
+@import "../../styles/colors";
+
+nav {
+  background-color: $mainColor;
+  padding: 0.25em 0;
+
+  &.collapsed {
+    .nav-item {
+      display: none;
+    }
+  }
+
+  .nav-toggle {
+    .typcn:before {
+      color: white;
+      font-size: 2.5em;
+    }
+  }
+
+  .nav-items {
+    padding: 0;
+    margin: 0;
+
+    .nav-item {
+      color: white;
+      background-color: $mainColor;
+      border-top: 1px white solid;
+      padding: 1em;
+
+      .typcn:before {
+        font-size: 1.5em;
+        margin-right: 1em;
+      }
+
+      a {
+        color: inherit;
+        cursor: pointer;
+        text-decoration: none;
+
+        &.active {
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+/* _TimerSelector.scss called from TimerSelector.js */
+
+.button {
+  margin-right: 1px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .typcn:before {
+    font-size: 1.25em;
+  }
+}

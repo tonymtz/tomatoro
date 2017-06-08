@@ -1,0 +1,45 @@
+/* _RadialCounter.scss called from RadialCounter.js */
+@import "../../styles/colors";
+
+$radialCounterFillColor: lighten($mainColor, 20%);
+$radialCounterBackgroundColor: $transparentGray;
+
+.container {
+  display: block;
+  height: 240px;
+  width: 240px;
+  margin: 2em auto;
+  border-radius: 100%;
+  position: relative;
+  font-family: 'Open Sans Condensed', sans-serif;
+
+  .svg {
+
+    circle {
+      stroke-dasharray: 691.48;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.25s linear;
+      stroke: $radialCounterBackgroundColor;
+      stroke-width: 0.25em;
+    }
+
+    .bar {
+      stroke: $radialCounterFillColor;
+      transform: rotate(-90deg);
+    }
+
+  }
+
+  .time {
+    color: $radialCounterFillColor;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -80px;
+    margin-left: -70px;
+    line-height: 160px;
+    font-size: 5em;
+    font-weight: 300;
+  }
+
+}

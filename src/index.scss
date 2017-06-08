@@ -1,0 +1,37 @@
+@import "styles/colors";
+
+body {
+  color: $textColor;
+  background-color: $backgroundColor;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  background-color: $mainColor;
+  border: none;
+  color: $textInverseColor;
+  font-family: 'Open Sans', sans-serif;
+  padding: 1.25em;
+
+  &.rounded {
+    border-radius: 50%;
+    height: 6em;
+    padding: 0;
+    width: 6em;
+  }
+
+  &:disabled {
+    background-color: rgba($mainColor, 0.6);
+  }
+}
+
+$themes: (
+        default: #666,
+        banana: #f1c40f,
+        cherry: #c0392b,
+        blueberry: #8e44ad,
+        leaf: #27ae60,
+        nightsky: #2980b9
+);
