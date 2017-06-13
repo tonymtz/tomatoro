@@ -1,5 +1,7 @@
 # Tomatoro
 
+[![Build Status](https://travis-ci.org/tonymtz/tomatoro.svg?branch=master)](https://travis-ci.org/tonymtz/tomatoro)
+
 App to aux you with the pomodoro technique
 
 ## npm scripts
