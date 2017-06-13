@@ -38,7 +38,7 @@ let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlide
 let Info = infoFactory(React);
 
 ReactDOM.render(
-  <Router basename='/tomatoro'>
+  <Router>
     <div>
       <Menu/>
 
