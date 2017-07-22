@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="83px" height="82px" viewBox="0 0 83 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-play</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tomatoro---Master" transform="translate(-315.000000, -458.000000)">
+            <g id="icon-play" transform="translate(315.000000, 458.000000)">
+                <ellipse id="Oval-2" fill="#FFFFFF" cx="41.49374" cy="40.9938154" rx="41.49374" ry="40.9938154"></ellipse>
+                <path d="M46.5290043,31.3674999 L61.1150473,49.168468 L61.1150473,49.168468 C61.8151237,50.022849 61.6900351,51.2829856 60.8356542,51.983062 C60.4781564,52.2759943 60.0302376,52.4360684 59.5680537,52.4360684 L30.3959677,52.4360684 L30.3959677,52.4360684 C29.2913982,52.4360684 28.3959677,51.5406379 28.3959677,50.4360684 C28.3959677,49.9738846 28.5560419,49.5259657 28.8489741,49.168468 L43.4350171,31.3674999 L43.4350171,31.3674999 C44.1350935,30.5131189 45.3952302,30.3880303 46.2496112,31.0881067 C46.351736,31.1717874 46.4453236,31.265375 46.5290043,31.3674999 Z" id="Triangle" fill="#E54728" transform="translate(44.982044, 41.540432) rotate(90.000000) translate(-44.982044, -41.540432) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

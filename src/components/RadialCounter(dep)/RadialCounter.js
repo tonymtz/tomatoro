@@ -46,7 +46,7 @@ export default function (React, PropTypes) {
       let pct = {'strokeDashoffset': this.getPercentage(value)};
 
       return (
-        <div className="container" data-pct="100">
+        <div className="containerx" data-pct="100">
           <svg className="svg" width="240" height="240" viewBox="0 0 240 240" version="1.1">
             <circle r="110" cx="120" cy="120" fill="transparent"></circle>
             <circle className="bar" style={pct} r="110" cx="-120" cy="120" fill="transparent"></circle>

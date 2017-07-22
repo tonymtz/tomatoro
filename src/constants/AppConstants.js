@@ -25,13 +25,13 @@ let shortBreakDuration;
 let longBreakDuration;
 
 if (DEBUG) {
-  pomodoroDuration = MINUTE * .10;
-  shortBreakDuration = MINUTE * .05;
-  longBreakDuration = MINUTE * .05;
+    pomodoroDuration = MINUTE * .10;
+    shortBreakDuration = MINUTE * .05;
+    longBreakDuration = MINUTE * .05;
 } else {
-  pomodoroDuration = MINUTE * 25;
-  shortBreakDuration = MINUTE * 5;
-  longBreakDuration = MINUTE * 15;
+    pomodoroDuration = MINUTE * 25;
+    shortBreakDuration = MINUTE * 5;
+    longBreakDuration = MINUTE * 15;
 }
 
 export const POMODORO_DURATION = pomodoroDuration;
@@ -56,14 +56,14 @@ export const STEP_SHORT_BREAK = 2;
 export const STEP_LONG_BREAK = 3;
 
 export const POMODORO_STEPS = [
-  STEP_POMODORO,
-  STEP_SHORT_BREAK,
-  STEP_POMODORO,
-  STEP_SHORT_BREAK,
-  STEP_POMODORO,
-  STEP_SHORT_BREAK,
-  STEP_POMODORO,
-  STEP_LONG_BREAK
+    STEP_POMODORO,
+    STEP_SHORT_BREAK,
+    STEP_POMODORO,
+    STEP_SHORT_BREAK,
+    STEP_POMODORO,
+    STEP_SHORT_BREAK,
+    STEP_POMODORO,
+    STEP_LONG_BREAK
 ];
 
 export const POMODORO_COMPLETED_TITLE = 'Take a Break!';

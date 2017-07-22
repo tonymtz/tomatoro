@@ -1,37 +1,56 @@
+@import "styles/grid";
 @import "styles/colors";
+@import "styles/variables";
 
 body {
   color: $textColor;
-  background-color: $backgroundColor;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
 }
 
-.button {
-  background-color: $mainColor;
-  border: none;
-  color: $textInverseColor;
-  font-family: 'Open Sans', sans-serif;
-  padding: 1.25em;
+::selection {
+  background: lighten($tomato, 30%);
+}
 
-  &.rounded {
-    border-radius: 50%;
-    height: 6em;
-    padding: 0;
-    width: 6em;
-  }
+hr {
+  border: 1px solid $grayLight;
+  max-width: 960px;
+}
 
-  &:disabled {
-    background-color: rgba($mainColor, 0.6);
+h1 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 47px;
+  margin-top: 16px;
+}
+
+h2 {
+  font-family: 'Dosis', sans-serif;
+  font-size: 22px;
+}
+
+a {
+  color: $tomato;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 
-$themes: (
-        default: #666,
-        banana: #f1c40f,
-        cherry: #c0392b,
-        blueberry: #8e44ad,
-        leaf: #27ae60,
-        nightsky: #2980b9
-);
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.muted {
+  color: $textColorLight;
+}
+
+.long-spacing {
+  margin-top: $verticalSpacing * 4;
+}

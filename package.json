@@ -6,7 +6,6 @@
     "flux": "^3.1.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
     "typicons.font": "^2.0.9",
     "unsemantic": "^1.1.3"
   },

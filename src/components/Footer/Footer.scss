@@ -1,0 +1,50 @@
+/* Footer.scss called from Footer.js */
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+footer {
+  background-color: $footer-background-color;
+  border-top: 3px solid $contrastColor;
+  color: $footer-text-color;
+  padding: $sectionVerticalPadding 0;
+
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+  }
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style: none;
+      line-height: 30px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  .logo {
+    margin-top: $verticalSpacing;
+  }
+
+  a > img {
+    border: 2px solid transparent;
+    margin-right: $horizontalSpacing * 4;
+
+    &:hover {
+      border: 2px solid lighten($footer-background-color, 10%);
+    }
+  }
+
+  .copy {
+    font-size: 14px;
+
+    a {
+      color: $contrastColor;
+    }
+  }
+}

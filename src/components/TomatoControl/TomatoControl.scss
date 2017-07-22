@@ -1,0 +1,53 @@
+/* TomatoControl.scss called from TomatoControl.js */
+@import "../../styles/colors";
+
+$radialCounterFillColor: $white;
+$radialCounterBackgroundColor: $transparentGray;
+
+.tomato-control {
+  background: url('/svg/tomato.svg') no-repeat;
+  background-size: contain;
+  display: block;
+  height: 420px;
+  margin: 0 auto;
+  padding-top: 46px;
+  position: relative;
+  width: 420px;
+
+  .svg {
+    circle {
+      stroke-dasharray: 945;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.25s linear;
+      stroke: $radialCounterBackgroundColor;
+      stroke-width: 0.25em;
+    }
+
+    .bar {
+      stroke: $radialCounterFillColor;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .timer {
+    color: $radialCounterFillColor;
+    font-family: 'Dosis', sans-serif;
+    font-size: 100px;
+    font-weight: 800;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+  }
+
+  .control {
+    position: absolute;
+    top: 60%;
+    width: 100%;
+
+    button {
+      background: transparent;
+      border: none;
+      vertical-align: middle;
+    }
+  }
+}

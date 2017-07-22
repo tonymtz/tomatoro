@@ -8,47 +8,58 @@ import 'unsemantic/assets/stylesheets/unsemantic-grid-responsive-no-ie7.css';
 import 'typicons.font';
 import './index.css';
 
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
-// actions
+/****** ACTIONS ******/
 import pomodoroActions from './actions/PomodoroActions';
-// stores
-import pomodoroStoreFactory from './stores/PomodoroStore';
-// components
-import menuFactory from './components/Menu/Menu';
-import notificationsFactory from './components/Notifications/Notifications';
-import radialCounterFactory from './components/RadialCounter/RadialCounter';
-import timerControlFactory from './components/TimerControl/TimerControl';
-import timerSelectorFactory from './components/TimerSelector/TimerSelector';
-import appFactory from './routes/App/App';
-import settingsFactory from './routes/Settings/Settings';
-import infoFactory from './routes/Info/Info';
-import rangeSliderFactory from './components/RangeSlider/RangeSlider';
 
+/****** STORES ******/
+import pomodoroStoreFactory from './stores/PomodoroStore';
 let pomodoroStore = pomodoroStoreFactory();
-let Menu = menuFactory(React, PropTypes, NavLink);
+
+/****** COMPONENTS ******/
+import tomatoIconFactory from './components/TimerSelector/TomatoIcon';
+let TomatoIcon = tomatoIconFactory(React);
+
+import topNavFactory from './components/TopNav/TopNav';
+let TopNav = topNavFactory(React);
+import tomatoCounterFactory from './components/TomatoControl/TomatoControl';
+let TomatoControl = tomatoCounterFactory(React, PropTypes);
+import howItWorksFactory from './components/HowItWorks/HowItWorks';
+let HowItWorks = howItWorksFactory(React);
+import contactFactory from './components/Contact/Contact';
+let Contact = contactFactory(React);
+import footerFactory from './components/Footer/Footer';
+let Footer = footerFactory(React);
+
+import notificationsFactory from './components/Notifications/Notifications';
 let Notifications = notificationsFactory(React, pomodoroStore);
-let RadialCounter = radialCounterFactory(React, PropTypes);
-let TimerControl = timerControlFactory(React, PropTypes);
-let TimerSelector = timerSelectorFactory(React, PropTypes);
+import timerSelectorFactory from './components/TimerSelector/TimerSelector';
+let TimerSelector = timerSelectorFactory(React, PropTypes, TomatoIcon);
+import rangeSliderFactory from './components/RangeSlider/RangeSlider';
 let RangeSlider = rangeSliderFactory(React, PropTypes);
 
-// routes
-let App = appFactory(React, pomodoroStore, pomodoroActions, TimerSelector, RadialCounter, TimerControl);
-let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
+/****** ROUTES ******/
+import infoFactory from './routes/Info/Info';
 let Info = infoFactory(React);
+import appFactory from './routes/App/App';
+let App = appFactory(React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector);
+import settingsFactory from './routes/Settings/Settings';
+let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
 
 ReactDOM.render(
-  <Router>
     <div>
-      <Menu/>
+        <TopNav/>
+        <App/>
 
-      <Route exact path='/' component={App}/>
-      <Route path='/settings' component={Settings}/>
-      <Route path='/info' component={Info}/>
+        <hr/>
 
-      <Notifications/>
-    </div>
-  </Router>,
-  document.getElementById('root')
+        <HowItWorks/>
+
+        <hr/>
+
+        <Contact/>
+        <Footer/>
+        <Notifications/>
+    </div>,
+    document.getElementById('root')
 );
 //registerServiceWorker();

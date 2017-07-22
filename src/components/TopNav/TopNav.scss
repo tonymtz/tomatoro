@@ -1,0 +1,32 @@
+/* TopNav.scss called from TopNav.js */
+@import "../../styles/colors";
+
+nav.top-nav {
+  border-bottom: 3px solid $tomato;
+  line-height: 100px;
+
+  .logo {
+    display: inline-block;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+
+  ul {
+    padding: 0;
+    float: right;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      font-size: 20px;
+      list-style: none;
+      margin-right: 50px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

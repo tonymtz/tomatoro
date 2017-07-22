@@ -1,0 +1,21 @@
+/* Contact.scss called from Contact.js */
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+section.contact {
+  padding: $sectionVerticalPadding 0 $sectionVerticalPadding * 2;
+  font-size: 18px;
+
+  .container {
+    max-width: 800px;
+  }
+
+  p.muted {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  a {
+    font-size: 20px;
+  }
+}
