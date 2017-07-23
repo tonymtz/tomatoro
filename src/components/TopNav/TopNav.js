@@ -11,18 +11,20 @@ export default function (React) {
                 <nav className="top-nav">
                     <div className="container">
                         <div className="logo">
-                            <a href="#">
+                            <a href="/">
                                 <img src="svg/logo-tomatoro.svg" alt="tomatoro logo"/>
                             </a>
                         </div>
 
                         <ul>
                             <li>
-                                <a href="#" onClick={this.empty}>How It Works</a>
+                                {/* TODO scroll action */}
+                                <a href="#!" onClick={this.empty}>How It Works</a>
                             </li>
 
                             <li>
-                                <a href="#" onClick={this.empty}>Contact</a>
+                                {/* TODO scroll action */}
+                                <a href="#!" onClick={this.empty}>Contact</a>
                             </li>
 
                             <li>

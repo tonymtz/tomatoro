@@ -34,16 +34,14 @@ import notificationsFactory from './components/Notifications/Notifications';
 let Notifications = notificationsFactory(React, pomodoroStore);
 import timerSelectorFactory from './components/TimerSelector/TimerSelector';
 let TimerSelector = timerSelectorFactory(React, PropTypes, TomatoIcon);
-import rangeSliderFactory from './components/RangeSlider/RangeSlider';
-let RangeSlider = rangeSliderFactory(React, PropTypes);
+// import rangeSliderFactory from './components/RangeSlider/RangeSlider';
+// let RangeSlider = rangeSliderFactory(React, PropTypes);
 
 /****** ROUTES ******/
-import infoFactory from './routes/Info/Info';
-let Info = infoFactory(React);
 import appFactory from './routes/App/App';
 let App = appFactory(React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector);
-import settingsFactory from './routes/Settings/Settings';
-let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
+// import settingsFactory from './routes/Settings/Settings';
+// let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
 
 ReactDOM.render(
     <div>

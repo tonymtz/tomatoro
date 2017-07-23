@@ -1,12 +1,17 @@
 /* _TimerSelector.scss called from TimerSelector.js */
 @import "../../styles/colors";
+@import "../../styles/variables";
 
 .timer-selector {
   button {
-    color: $textColorLight;
     background: none;
     border: none;
+    color: $textColorLight;
     display: block;
+    font-size: 18px;
+    padding: $verticalSpacing;
+    text-align: left;
+    width: 280px;
     vertical-align: middle;
 
     &:disabled {
@@ -34,6 +39,7 @@
     }
 
     svg {
+      margin-right: $horizontalSpacing * 3;
       vertical-align: middle;
     }
 

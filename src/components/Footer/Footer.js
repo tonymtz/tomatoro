@@ -7,7 +7,7 @@ export default function (React) {
                 <footer>
                     <div className="container">
                         <div className="col-50">
-                            <a href="#" target="_blank" rel="noopener noreferrer">
+                            <a href="http://softwaredevtools.com/" target="_blank" rel="noopener noreferrer">
                                 <img src="svg/logo-softwaredevtools-white.svg" alt="logo-softwaredevtools"
                                      className="logo"/>
                             </a>
@@ -53,8 +53,7 @@ export default function (React) {
                         </div>
 
                         <div className="col-25">
-                            <a target="_blank" rel="noopener noreferrer"
-                               href="https://www.facebook.com/Tomatoro-1197842727027894/">
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/mytomatoro/">
                                 <img src="svg/icon-facebook.svg" alt="icon-facebook"/>
                             </a>
                             <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mytomatoro">

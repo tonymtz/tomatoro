@@ -1,6 +1,21 @@
 /* App.scss called from App.js */
+@import "../../styles/colors";
 @import "../../styles/variables";
 
 .app {
   padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    color: $textColorLight;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .highlight {
+    color: $tomato;
+  }
 }

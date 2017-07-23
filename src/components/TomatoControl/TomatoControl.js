@@ -55,7 +55,9 @@ export default function (React, PropTypes) {
 
             if (this.props.isRunning) {
                 centerButton = (
-                    <button onClick={this.props.onPause}>||</button>
+                    <button onClick={this.props.onPause} disabled={this.props.hasFinished}>
+                        <img src="svg/icon-pause.svg" alt="icon-pause"/>
+                    </button>
                 );
             } else {
                 centerButton = (
