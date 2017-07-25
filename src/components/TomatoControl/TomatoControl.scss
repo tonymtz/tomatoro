@@ -26,6 +26,7 @@ $radialCounterBackgroundColor: $transparentGray;
     .bar {
       stroke: $radialCounterFillColor;
       transform: rotate(-90deg);
+      stroke-width: 0.45em;
     }
   }
 

@@ -98,7 +98,7 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
                         </div>
 
                         <div className="col-40">
-                            <h1>Take your time.<br/>Get things done.</h1>
+                            <h1>Take your time. Get things done.</h1>
 
                             <h2>My Tomatoros: <span className="highlight">{this.state.pomodoros}</span></h2>
 

@@ -4,6 +4,9 @@
  * ===================================
  */
 
+$verticalSpacing: 8px;
+$horizontalSpacing: 4px;
+
 /** device sizes **/
 $mobile-width: 960px;
 
@@ -61,12 +64,19 @@ $mobile-width: 960px;
   }
 
   @include mobile {
+    padding-left: $horizontalSpacing * 8;
+    padding-right: $horizontalSpacing * 8;
+
     .col-sm-100 {
       width: 100%;
     }
 
     .col-sm-50 {
       width: 50%;
+    }
+
+    [class^="col-"] {
+      width: 100%;
     }
   }
 
