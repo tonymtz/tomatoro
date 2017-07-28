@@ -25,9 +25,8 @@ export default function (React) {
 
                         <div className="col-100">
                             <p className="muted">
-                                The Pomodoro Technique will help you power through distractions,
-                                hyper-focus, and get things done in short bursts, while taking frequent breaks to get
-                                some air and relax.
+                                The Pomodoro Technique will help you power through distractions, hyper-focus, and get
+                                things done in short bursts, while taking frequent breaks to get some air and relax.
                             </p>
 
                             <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank"

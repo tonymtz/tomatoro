@@ -10,7 +10,7 @@ export default function (React) {
                     <div className="container">
                         <div className="col-100">
                             <p className="muted">
-                                Tomatoro is an Open Source project. You may play around with the the code source and
+                                Tomatoro is an open source code project. You may play around with the code source and
                                 apply it for your own projects.
                             </p>
 
