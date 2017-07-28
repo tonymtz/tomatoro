@@ -1,8 +1,8 @@
 /* TomatoControl.scss called from TomatoControl.js */
 @import "../../styles/colors";
 
-$radialCounterFillColor: $white;
-$radialCounterBackgroundColor: $transparentGray;
+$radialCounterFillColor: $contrastColor;
+$radialCounterBackgroundColor: $white;
 
 .tomato-control {
   background: url('/svg/tomato.svg') no-repeat;
@@ -31,7 +31,7 @@ $radialCounterBackgroundColor: $transparentGray;
   }
 
   .timer {
-    color: $radialCounterFillColor;
+    color: $white;
     font-family: 'Dosis', sans-serif;
     font-size: 100px;
     font-weight: 800;

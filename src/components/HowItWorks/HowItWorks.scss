@@ -4,7 +4,6 @@
 
 section.how-it-works {
   padding: $sectionVerticalPadding 0 $sectionVerticalPadding * 2;
-  font-size: 18px;
 
   .container {
     max-width: 800px;
@@ -13,9 +12,5 @@ section.how-it-works {
   p.muted {
     margin: $sectionVerticalPadding auto;
     text-align: left;
-  }
-
-  a {
-    font-size: 20px;
   }
 }

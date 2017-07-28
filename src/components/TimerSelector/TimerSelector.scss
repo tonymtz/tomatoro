@@ -16,6 +16,7 @@
 
     &:disabled {
       color: $textColor;
+      background: $contrastColorLight;
 
       #tomato--cap-top,
       #tomato--cap-base {
@@ -30,11 +31,11 @@
     }
 
     &:hover:not(:disabled) {
-      background: $contrastColor;
+      background: $grayLighter;
 
       #tomato--cap-top,
       #tomato--cap-base {
-        fill: $contrastColor;
+        fill: $grayLighter;
       }
     }
 

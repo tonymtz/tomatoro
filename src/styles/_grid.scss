@@ -8,11 +8,11 @@ $verticalSpacing: 8px;
 $horizontalSpacing: 4px;
 
 /** device sizes **/
-$mobile-width: 960px;
+$mobileWidth: 960px;
 
 /** USEFUL MIXINS **/
 @mixin mobile {
-  @media (max-width: #{$mobile-width}) {
+  @media (max-width: #{$mobileWidth}) {
     @content
   }
 }
@@ -64,8 +64,8 @@ $mobile-width: 960px;
   }
 
   @include mobile {
-    padding-left: $horizontalSpacing * 8;
-    padding-right: $horizontalSpacing * 8;
+    padding-left: $horizontalSpacing * 4;
+    padding-right: $horizontalSpacing * 4;
 
     .col-sm-100 {
       width: 100%;

@@ -4,7 +4,6 @@
 
 section.contact {
   padding: $sectionVerticalPadding 0 $sectionVerticalPadding * 2;
-  font-size: 18px;
 
   .container {
     max-width: 800px;
@@ -13,9 +12,5 @@ section.contact {
   p.muted {
     margin: 0 auto;
     text-align: left;
-  }
-
-  a {
-    font-size: 20px;
   }
 }
