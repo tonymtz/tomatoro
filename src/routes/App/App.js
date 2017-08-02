@@ -66,6 +66,10 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
             pomodoroActions.restart();
         };
 
+        onResetTimer = () => {
+            pomodoroActions.reset();
+        };
+
         onPomodoroStepClick = () => {
             pomodoroActions.changeToPomodoro();
         };
@@ -94,6 +98,7 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
                                 onPause={this.onPauseTimer}
                                 onStart={this.onStartTimer}
                                 onStop={this.onStopTimer}
+                                onReset={this.onResetTimer}
                             />
                         </div>
 

@@ -8,6 +8,7 @@ export const ITEMS_UPDATED = 'ITEMS_UPDATED';
 export const TIMER_UPDATED = 'TIMER_UPDATED';
 export const TIMER_TICK = 'TIMER_TICK';
 export const TIMER_RESTART = 'TIMER_RESTART';
+export const TIMER_RESET = 'TIMER_RESET';
 export const TIMER_ENDED = 'TIMER_ENDED';
 export const POMODORO_UPDATED = 'POMODORO_UPDATED';
 export const POMODORO_ADD = 'POMODORO_ADD';

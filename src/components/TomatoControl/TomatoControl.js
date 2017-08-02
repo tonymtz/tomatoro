@@ -4,7 +4,7 @@ function formatTime(time) {
     return time < 10 ? '0' + time : time;
 }
 
-export default function (React, PropTypes) {
+export default function (React, PropTypes, PlayButton, StopButton, RepeatButton) {
     class TomatoControl extends React.Component {
 
         static defaultProps = {
@@ -22,6 +22,7 @@ export default function (React, PropTypes) {
             onStart: PropTypes.func.isRequired,
             onPause: PropTypes.func.isRequired,
             onStop: PropTypes.func.isRequired,
+            onReset: PropTypes.func.isRequired,
             isRunning: PropTypes.bool,
             hasFinished: PropTypes.bool
         };
@@ -79,15 +80,19 @@ export default function (React, PropTypes) {
                     </div>
 
                     <div className="control">
-                        <button onClick={this.props.onStop}>
-                            <img src="svg/icon-stop.svg" alt="icon-stop"/>
-                        </button>
+                        <StopButton
+                            onClick={this.props.onStop}
+                        />
 
-                        {centerButton}
+                        <PlayButton
+                            onStart={this.props.onStart}
+                            onPause={this.props.onPause}
+                            isRunning={this.props.isRunning}
+                        />
 
-                        <button>
-                            <img src="svg/icon-refresh.svg" alt="icon-refresh"/>
-                        </button>
+                        <RepeatButton
+                            onClick={this.props.onReset}
+                        />
                     </div>
                 </div>
             );

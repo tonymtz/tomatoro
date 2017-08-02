@@ -1,12 +1,11 @@
 /* TomatoControl.scss called from TomatoControl.js */
 @import "../../styles/colors";
-
-$radialCounterFillColor: $contrastColor;
-$radialCounterBackgroundColor: $white;
+@import "../../styles/mixins";
 
 .tomato-control {
-  background: url('/svg/tomato.svg') no-repeat;
+  background: url('/svg/tomato.svg') no-repeat top center;
   background-size: contain;
+  color: $white;
   display: block;
   height: 420px;
   margin: 0 auto;
@@ -19,19 +18,18 @@ $radialCounterBackgroundColor: $white;
       stroke-dasharray: 945;
       stroke-dashoffset: 0;
       transition: stroke-dashoffset 0.25s linear;
-      stroke: $radialCounterBackgroundColor;
+      stroke: $white;
       stroke-width: 0.25em;
     }
 
     .bar {
-      stroke: $radialCounterFillColor;
+      stroke: $contrastColor;
       transform: rotate(-90deg);
       stroke-width: 0.45em;
     }
   }
 
   .timer {
-    color: $white;
     font-family: 'Dosis', sans-serif;
     font-size: 100px;
     font-weight: 800;
@@ -49,6 +47,99 @@ $radialCounterBackgroundColor: $white;
       background: transparent;
       border: none;
       vertical-align: middle;
+    }
+  }
+
+  @include mobile {
+    background: none;
+    color: $tomato;
+    padding-top: 0;
+    width: 100%;
+
+    .svg {
+      width: 100%;
+
+      circle {
+        stroke-dasharray: 945;
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 0.25s linear;
+        stroke: $transparentGray;
+        stroke-width: 0.25em;
+      }
+
+      .bar {
+        stroke: $tomato;
+        transform: rotate(-90deg);
+        stroke-width: 0.45em;
+      }
+    }
+
+    .timer {
+      top: 20%;
+    }
+
+    .control {
+      top: 50%;
+    }
+  }
+
+  .play-button {
+    .play--state {
+      ellipse {
+        fill: $white;
+      }
+
+      path {
+        fill: $tomato;
+      }
+
+      @include mobile {
+        ellipse {
+          fill: $tomato;
+        }
+
+        path {
+          fill: $white;
+        }
+      }
+    }
+
+    .pause--state {
+      ellipse {
+        fill: $white;
+      }
+
+      rect {
+        fill: $tomato;
+      }
+
+      @include mobile {
+        ellipse {
+          fill: $tomato;
+        }
+
+        rect {
+          fill: $white;
+        }
+      }
+    }
+  }
+
+  .stop-button rect {
+    fill: $white;
+
+    @include mobile {
+      fill: $tomato;
+    }
+  }
+
+  .repeat-button {
+    fill: $white;
+
+    @include mobile {
+      path {
+        fill: $tomato;
+      }
     }
   }
 }

@@ -18,11 +18,17 @@ let pomodoroStore = pomodoroStoreFactory();
 /****** COMPONENTS ******/
 import tomatoIconFactory from './components/TimerSelector/TomatoIcon';
 let TomatoIcon = tomatoIconFactory(React);
+import playButtonFactory from './components/TomatoControl/PlayButton';
+let PlayButton = playButtonFactory(React, PropTypes);
+import stopButtonFactory from './components/TomatoControl/StopButton';
+let StopButton = stopButtonFactory(React, PropTypes);
+import repeatButtonFactory from './components/TomatoControl/RepeatButton';
+let RepeatButton = repeatButtonFactory(React, PropTypes);
 
 import topNavFactory from './components/TopNav/TopNav';
 let TopNav = topNavFactory(React);
 import tomatoCounterFactory from './components/TomatoControl/TomatoControl';
-let TomatoControl = tomatoCounterFactory(React, PropTypes);
+let TomatoControl = tomatoCounterFactory(React, PropTypes, PlayButton, StopButton, RepeatButton);
 import howItWorksFactory from './components/HowItWorks/HowItWorks';
 let HowItWorks = howItWorksFactory(React);
 import contactFactory from './components/Contact/Contact';
