@@ -10,7 +10,6 @@ import {
     SECOND,
     STEP_POMODORO,
     STEP_SHORT_BREAK,
-    TIMER_RESTART,
     TIMER_RESET,
     TIMER_START,
     TIMER_STOP,
@@ -34,17 +33,12 @@ class PomodoroStore extends EventEmitter {
         this.pomodoros = 0;
     }
 
-    restart() {
+    reset() {
         this.currentStep = STEP_POMODORO;
         this.timeLeft = this.totalTime;
         this.hasFinished = false;
         this.isRunning = false;
         // this.pomodoros = 0;
-        this.emitChange();
-    }
-
-    reset() {
-        this.timeLeft = this.totalTime;
         this.emitChange();
     }
 
@@ -187,10 +181,6 @@ export default function () {
         switch (action.actionType) {
             case TIMER_TICK:
                 store.tick();
-                break;
-
-            case TIMER_RESTART:
-                store.restart();
                 break;
 
             case TIMER_RESET:

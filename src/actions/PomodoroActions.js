@@ -5,7 +5,6 @@ import {
     STEP_LONG_BREAK,
     STEP_POMODORO,
     STEP_SHORT_BREAK,
-    TIMER_RESTART,
     TIMER_RESET,
     TIMER_START,
     TIMER_STOP,
@@ -58,12 +57,8 @@ export default {
         AppDispatcher.dispatch({actionType: TIMER_STOP});
     },
 
-    restart() {
-        this._clearInterval();
-        AppDispatcher.dispatch({actionType: TIMER_RESTART});
-    },
-
     reset() {
+        this._clearInterval();
         AppDispatcher.dispatch({actionType: TIMER_RESET});
     },
 

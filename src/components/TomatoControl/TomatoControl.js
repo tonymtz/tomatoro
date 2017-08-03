@@ -4,7 +4,7 @@ function formatTime(time) {
     return time < 10 ? '0' + time : time;
 }
 
-export default function (React, PropTypes, PlayButton, StopButton, RepeatButton) {
+export default function (React, PropTypes, PlayButton, RepeatButton) {
     class TomatoControl extends React.Component {
 
         static defaultProps = {
@@ -21,7 +21,6 @@ export default function (React, PropTypes, PlayButton, StopButton, RepeatButton)
             seconds: PropTypes.number.isRequired,
             onStart: PropTypes.func.isRequired,
             onPause: PropTypes.func.isRequired,
-            onStop: PropTypes.func.isRequired,
             onReset: PropTypes.func.isRequired,
             isRunning: PropTypes.bool,
             hasFinished: PropTypes.bool
@@ -52,22 +51,6 @@ export default function (React, PropTypes, PlayButton, StopButton, RepeatButton)
             let value = this.getValue();
             let pct = {'strokeDashoffset': this.getPercentage(value)};
 
-            let centerButton;
-
-            if (this.props.isRunning) {
-                centerButton = (
-                    <button onClick={this.props.onPause} disabled={this.props.hasFinished}>
-                        <img src="svg/icon-pause.svg" alt="icon-pause"/>
-                    </button>
-                );
-            } else {
-                centerButton = (
-                    <button onClick={this.props.onStart} disabled={this.props.hasFinished}>
-                        <img src="svg/icon-play.svg" alt="icon-play"/>
-                    </button>
-                );
-            }
-
             return (
                 <div className="tomato-control text-center" data-pct="100">
                     <svg className="svg" width="420" height="420" viewBox="0 0 420 420" version="1.1">
@@ -80,10 +63,6 @@ export default function (React, PropTypes, PlayButton, StopButton, RepeatButton)
                     </div>
 
                     <div className="control">
-                        <StopButton
-                            onClick={this.props.onStop}
-                        />
-
                         <PlayButton
                             onStart={this.props.onStart}
                             onPause={this.props.onPause}
