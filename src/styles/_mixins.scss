@@ -5,3 +5,9 @@
     @content
   }
 }
+
+@mixin big-screen {
+  @media (min-width: #{$bigScreenWidth}) {
+    @content
+  }
+}

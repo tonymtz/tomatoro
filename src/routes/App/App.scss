@@ -1,6 +1,7 @@
 /* App.scss called from App.js */
 @import "../../styles/colors";
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .app {
   padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
@@ -17,5 +18,13 @@
 
   .highlight {
     color: $tomato;
+  }
+
+  @include big-screen {
+    padding: $sectionVerticalPadding * 2.5 0 $sectionVerticalPadding;
+  }
+
+  @include mobile {
+    padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
   }
 }

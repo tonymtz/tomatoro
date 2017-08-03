@@ -26,7 +26,6 @@ nav.top-nav {
 
     li {
       display: inline-block;
-      font-size: 18px;
       list-style: none;
       margin-right: 50px;
 
@@ -37,13 +36,18 @@ nav.top-nav {
 
     @include mobile {
       display: flex;
-      font-size: 16px;
       justify-content: space-around;
       width: 100%;
 
       li {
         margin-right: 0;
       }
+    }
+  }
+
+  @include big-screen {
+    .container {
+      max-width: $bigScreenWidth;
     }
   }
 

@@ -1,6 +1,7 @@
 /* Footer.scss called from Footer.js */
 @import "../../styles/colors";
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 footer {
   background-color: $footer-background-color;
@@ -46,6 +47,12 @@ footer {
 
     a {
       color: $contrastColor;
+    }
+  }
+
+  @include big-screen {
+    .container {
+      max-width: $bigScreenWidth;
     }
   }
 }
