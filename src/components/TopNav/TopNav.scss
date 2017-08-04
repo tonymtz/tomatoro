@@ -16,6 +16,11 @@ nav.top-nav {
     @include mobile {
       display: block;
       line-height: 60px;
+
+      img {
+        width: 160px;
+        margin-top: 18px;
+      }
     }
   }
 
