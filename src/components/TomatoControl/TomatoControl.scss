@@ -6,14 +6,17 @@
   background: url('/svg/tomato.svg') no-repeat top center;
   background-size: contain;
   color: $white;
-  display: block;
-  height: 420px;
+  height: 400px;
   margin: 0 auto;
-  padding-top: 46px;
+  max-width: 400px;
+  padding-top: 59px;
   position: relative;
-  width: 420px;
+  width: 100%;
 
   .svg {
+    margin: 0 auto;
+    width: 320px;
+
     circle {
       stroke-dasharray: 945;
       stroke-dashoffset: 0;
@@ -34,13 +37,13 @@
     font-size: 100px;
     font-weight: 800;
     position: absolute;
-    top: 30%;
+    top: 130px;
     width: 100%;
   }
 
   .control {
     position: absolute;
-    top: 60%;
+    top: 260px;
     width: 100%;
 
     button {
@@ -53,33 +56,26 @@
   @include mobile {
     background: none;
     color: $tomato;
+    height: auto;
     padding-top: 0;
     width: 100%;
 
     .svg {
-      width: 100%;
-
       circle {
-        stroke-dasharray: 945;
-        stroke-dashoffset: 0;
-        transition: stroke-dashoffset 0.25s linear;
         stroke: $transparentGray;
-        stroke-width: 0.25em;
       }
 
       .bar {
         stroke: $tomato;
-        transform: rotate(-90deg);
-        stroke-width: 0.45em;
       }
     }
 
     .timer {
-      top: 20%;
+      top: 70px;
     }
 
     .control {
-      top: 50%;
+      top: 200px;
     }
   }
 
@@ -125,19 +121,17 @@
     }
   }
 
-  .stop-button rect {
-    fill: $white;
-
-    @include mobile {
-      fill: $tomato;
-    }
-  }
-
   .repeat-button {
-    fill: $white;
+    .circle {
+      fill: transparent;
+    }
+
+    .icon {
+      fill: $white;
+    }
 
     @include mobile {
-      path {
+      .icon {
         fill: $tomato;
       }
     }

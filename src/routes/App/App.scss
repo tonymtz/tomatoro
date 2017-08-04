@@ -26,5 +26,9 @@
 
   @include mobile {
     padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
+
+    h1, h2 {
+      text-align: center;
+    }
   }
 }

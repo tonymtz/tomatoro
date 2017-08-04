@@ -53,9 +53,9 @@ export default function (React, PropTypes, PlayButton, RepeatButton) {
 
             return (
                 <div className="tomato-control text-center" data-pct="100">
-                    <svg className="svg" width="420" height="420" viewBox="0 0 420 420" version="1.1">
-                        <circle r="150" cx="210" cy="185" fill="transparent"></circle>
-                        <circle className="bar" style={pct} r="150" cx="-185" cy="210" fill="transparent"></circle>
+                    <svg className="svg" viewBox="0 0 310 310" version="1.1">
+                        <circle r="150" cx="50%" cy="50%" fill="transparent"></circle>
+                        <circle className="bar" style={pct} r="150" cx="-50%" cy="50%" fill="transparent"></circle>
                     </svg>
 
                     <div className="timer">

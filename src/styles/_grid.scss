@@ -21,6 +21,7 @@ $mobileWidth: 960px;
 .container {
   margin: 0 auto;
   max-width: 960px;
+  min-width: 380px;
   width: 100%;
 
   &::after {
