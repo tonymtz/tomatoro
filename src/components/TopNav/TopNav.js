@@ -2,8 +2,14 @@ import './TopNav.css';
 
 export default function (React) {
     class Menu extends React.Component {
-        empty = () => {
-            console.log('empty!');
+        scrollTo = (evt) => {
+            let target = document.querySelector(evt.target.dataset.scrollTo);
+
+            if (!target) {
+                return console.log('"scroll-to" not specified');
+            }
+
+            window.scrollTo(0, target.offsetTop);
         };
 
         render() {
@@ -18,13 +24,11 @@ export default function (React) {
 
                         <ul>
                             <li>
-                                {/* TODO scroll action */}
-                                <a href="#!" onClick={this.empty}>How It Works</a>
+                                <a href="#!" onClick={this.scrollTo} data-scroll-to=".how-it-works">How It Works</a>
                             </li>
 
                             <li>
-                                {/* TODO scroll action */}
-                                <a href="#!" onClick={this.empty}>Contact</a>
+                                <a href="#!" onClick={this.scrollTo} data-scroll-to=".contact">Contact</a>
                             </li>
 
                             <li>
