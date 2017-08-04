@@ -20,8 +20,6 @@ import tomatoIconFactory from './components/TimerSelector/TomatoIcon';
 let TomatoIcon = tomatoIconFactory(React);
 import playButtonFactory from './components/TomatoControl/PlayButton';
 let PlayButton = playButtonFactory(React, PropTypes);
-// import stopButtonFactory from './components/TomatoControl/StopButton';
-// let StopButton = stopButtonFactory(React, PropTypes);
 import repeatButtonFactory from './components/TomatoControl/RepeatButton';
 let RepeatButton = repeatButtonFactory(React, PropTypes);
 

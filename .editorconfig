@@ -1,0 +1,15 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,scss}]
+charset = utf-8
+indent_style = space
+
+[*.{js,html}]
+indent_size = 4
+
+[*.scss]
+indent_size = 2
