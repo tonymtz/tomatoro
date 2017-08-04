@@ -1,3 +1,4 @@
+import gaActions from '../actions/GAActions';
 import {EventEmitter} from "events";
 import AppDispatcher from "../dispatcher/AppDispatcher";
 
@@ -66,8 +67,14 @@ class PomodoroStore extends EventEmitter {
         if (this.timeLeft <= 0) {
             this.hasFinished = true;
             this.isRunning = false;
+
             if (this.currentStep === STEP_POMODORO) {
                 this.pomodoros += 1;
+                gaActions.workCycleComplete();
+            } else if (this.currentStep === STEP_SHORT_BREAK) {
+                gaActions.shortBreakCycleComplete();
+            } else {
+                gaActions.longBreakCycleComplete();
             }
         }
 

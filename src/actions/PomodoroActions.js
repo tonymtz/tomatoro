@@ -1,4 +1,4 @@
-import AppDispatcher from "../dispatcher/AppDispatcher";
+import AppDispatcher from '../dispatcher/AppDispatcher';
 import {
     POMODORO_NEW_STEP_ACTION,
     SECOND,
@@ -12,7 +12,7 @@ import {
     POMODORO_CHANGE_DURATION,
     SHORT_BREAK_CHANGE_DURATION,
     LONG_BREAK_CHANGE_DURATION
-} from "../constants/AppConstants";
+} from '../constants/AppConstants';
 
 function tick() {
     AppDispatcher.dispatch({
