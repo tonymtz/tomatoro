@@ -36,7 +36,7 @@ export default function (React) {
 
                             <ul>
                                 <li>
-                                    <a href="https://docs.google.com/forms/d/1uPjLKnytNSsD0oZFl0FBaexsefdXK-tcy4aAR0U0wlA/viewform"
+                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScvGhHBkJE_3S05NtU10C7nt65rKNXU-UyBB393CYOAlR_gBQ/viewform"
                                        target="_blank" rel="noopener noreferrer">Support</a>
                                 </li>
                                 <li>
