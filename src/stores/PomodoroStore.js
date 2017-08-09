@@ -35,11 +35,17 @@ class PomodoroStore extends EventEmitter {
     }
 
     reset() {
-        this.currentStep = STEP_POMODORO;
-        this.timeLeft = this.totalTime;
         this.hasFinished = false;
         this.isRunning = false;
-        // this.pomodoros = 0;
+
+        if (this.currentStep === STEP_POMODORO) {
+            this.timeLeft = this.totalTime;
+        } else if (this.currentStep === STEP_SHORT_BREAK) {
+            this.timeLeft = this.breakShortDuration;
+        } else {
+            this.timeLeft = this.breakLongDuration;
+        }
+
         this.emitChange();
     }
 
