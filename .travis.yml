@@ -7,4 +7,3 @@ cache:
 script:
   - npm run build
   - npm run test-coverage
-  - CI=true npm test
