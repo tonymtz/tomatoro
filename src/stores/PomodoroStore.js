@@ -1,6 +1,6 @@
 import gaActions from '../actions/GAActions';
-import {EventEmitter} from "events";
-import AppDispatcher from "../dispatcher/AppDispatcher";
+import {EventEmitter} from 'events';
+import AppDispatcher from '../dispatcher/AppDispatcher';
 
 import {
     BREAK_LONG_DURATION,
@@ -18,13 +18,17 @@ import {
     POMODORO_CHANGE_DURATION,
     SHORT_BREAK_CHANGE_DURATION,
     LONG_BREAK_CHANGE_DURATION
-} from "../constants/AppConstants";
+} from '../constants/AppConstants';
 
 class PomodoroStore extends EventEmitter {
-    constructor(...args) {
+    constructor(localStorageImpl, ...args) {
         super(...args);
+        // dependencies
+        this.localStorage = localStorageImpl;
+
         // settings
         this._loadFromStorage();
+
         // app state
         this.currentStep = STEP_POMODORO;
         this.timeLeft = this.pomodoroDuration;
@@ -49,7 +53,7 @@ class PomodoroStore extends EventEmitter {
         this.emitChange();
     }
 
-    get() {
+    get () {
         return {
             timeLeft: this.timeLeft,
             totalTime: this.totalTime,
@@ -169,11 +173,11 @@ class PomodoroStore extends EventEmitter {
             breakShortDuration: this.breakShortDuration,
             breakLongDuration: this.breakLongDuration,
         };
-        localStorage.setItem('settings', JSON.stringify(newState));
+        this.localStorage.setItem('settings', JSON.stringify(newState));
     }
 
     _loadFromStorage() {
-        let settings = localStorage.getItem('settings');
+        let settings = this.localStorage.getItem('settings');
         if (settings) {
             settings = JSON.parse(settings);
             this.pomodoroDuration = settings.pomodoroDuration || POMODORO_DURATION;
@@ -187,8 +191,8 @@ class PomodoroStore extends EventEmitter {
     }
 }
 
-export default function () {
-    let store = new PomodoroStore();
+export default function (localStorageImpl) {
+    let store = new PomodoroStore(localStorageImpl);
 
     AppDispatcher.register((action) => {
         switch (action.actionType) {
