@@ -4,16 +4,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import registerServiceWorker from './registerServiceWorker';
-import 'unsemantic/assets/stylesheets/unsemantic-grid-responsive-no-ie7.css';
-import 'typicons.font';
 import './index.css';
+
+let box = window || {};
+let localStorage = box.localStorage || {};
 
 /****** ACTIONS ******/
 import pomodoroActions from './actions/PomodoroActions';
 
 /****** STORES ******/
 import pomodoroStoreFactory from './stores/PomodoroStore';
-let pomodoroStore = pomodoroStoreFactory();
+let pomodoroStore = pomodoroStoreFactory(localStorage);
 
 /****** COMPONENTS ******/
 import tomatoIconFactory from './components/TimerSelector/TomatoIcon';
