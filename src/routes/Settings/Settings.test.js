@@ -1,17 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import howItWorksFactory from './Settings';
+import {shallow} from 'enzyme';
+import settingsFactory from './Settings';
+
+let Settings;
+
+const pomodoroStoreStub = {
+    get: function () {
+        return {
+            totalTime: 0,
+            timeLeft: 0
+        };
+    },
+
+    addChangeListener: jest.fn()
+};
 
 describe('Settings', () => {
 
-    let Settings;
-
     beforeEach(() => {
-        Settings = howItWorksFactory(React);
+        Settings = settingsFactory(React, pomodoroStoreStub, {}, null);
     });
 
     it('should render without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<Settings/>, div);
+        shallow(<App/>);
     });
 });
