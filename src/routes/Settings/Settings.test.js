@@ -22,6 +22,6 @@ describe('Settings', () => {
     });
 
     it('should render without crashing', () => {
-        shallow(<App/>);
+        shallow(<Settings/>);
     });
 });
