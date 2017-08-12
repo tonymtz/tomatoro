@@ -43,6 +43,10 @@ button:not(:disabled) {
   cursor: pointer;
 }
 
+button, a {
+  transition: background .15s ease-in-out;
+}
+
 .text-center {
   text-align: center;
 }

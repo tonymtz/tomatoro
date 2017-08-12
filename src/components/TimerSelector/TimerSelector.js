@@ -13,7 +13,8 @@ export default function (React, PropTypes, TomatoIcon) {
             currentStep: PropTypes.number.isRequired,
             onPomodoro: PropTypes.func.isRequired,
             onShortBreak: PropTypes.func.isRequired,
-            onLongBreak: PropTypes.func.isRequired
+            onLongBreak: PropTypes.func.isRequired,
+            onSettingsTrigger: PropTypes.func.isRequired
         };
 
         render() {
@@ -37,6 +38,11 @@ export default function (React, PropTypes, TomatoIcon) {
                         disabled={this.props.currentStep === STEP_LONG_BREAK}
                         onClick={this.props.onLongBreak}>
                         <TomatoIcon/> Long Break - 15 min
+                    </button>
+
+                    <button onClick={this.props.onSettingsTrigger}>
+                        <img src="svg/icon-settings-inactive.svg"
+                             alt="icon-settings-inactive"/> Settings
                     </button>
                 </div>
             );
