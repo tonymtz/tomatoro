@@ -5,7 +5,7 @@ function formatTime(time) {
     return time < 10 ? '0' + time : time;
 }
 
-export default function (React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector) {
+export default function (React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector, Modal, Settings) {
 
     function getPomodoroStore() {
         let pomodoroStoreSnapshot = pomodoroStore.get();
@@ -21,7 +21,8 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
             hasFinished: pomodoroStoreSnapshot.hasFinished,
             currentStep: pomodoroStoreSnapshot.currentStep,
             timeLeft: pomodoroStoreSnapshot.timeLeft,
-            totalTime: pomodoroStoreSnapshot.totalTime
+            totalTime: pomodoroStoreSnapshot.totalTime,
+            isSettingsModalOpen: pomodoroStoreSnapshot.isSettingsModalOpen
         };
     }
 
@@ -78,6 +79,10 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
             pomodoroActions.changeToLongBreak();
         };
 
+        onSettingsTriggerClick = () => {
+            pomodoroActions.toggleSettingsModal();
+        };
+
         render() {
             return (
                 <div className="app">
@@ -107,10 +112,17 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
                                 onLongBreak={this.onLongBreakStepClick}
                                 onPomodoro={this.onPomodoroStepClick}
                                 onShortBreak={this.onShortBreakStepClick}
+                                onSettingsTrigger={this.onSettingsTriggerClick}
                             />
                         </div>
 
                     </div>
+
+                    <Modal
+                        title="Edit timelapses"
+                        isSettingsModalOpen={this.state.isSettingsModalOpen}>
+                        <Settings/>
+                    </Modal>
 
                 </div>
             );

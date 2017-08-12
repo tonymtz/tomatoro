@@ -10,6 +10,7 @@ import {
     TIMER_STOP,
     TIMER_TICK,
     POMODORO_CHANGE_DURATION,
+    SETTINGS_MODAL_TOGGLE,
     SHORT_BREAK_CHANGE_DURATION,
     LONG_BREAK_CHANGE_DURATION
 } from '../constants/AppConstants';
@@ -43,6 +44,12 @@ export default {
         AppDispatcher.dispatch({
             actionType: POMODORO_NEW_STEP_ACTION,
             step: STEP_LONG_BREAK
+        });
+    },
+
+    toggleSettingsModal() {
+        AppDispatcher.dispatch({
+            actionType: SETTINGS_MODAL_TOGGLE
         });
     },
 

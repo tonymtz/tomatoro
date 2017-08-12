@@ -16,6 +16,7 @@ import {
     TIMER_STOP,
     TIMER_TICK,
     POMODORO_CHANGE_DURATION,
+    SETTINGS_MODAL_TOGGLE,
     SHORT_BREAK_CHANGE_DURATION,
     LONG_BREAK_CHANGE_DURATION
 } from '../constants/AppConstants';
@@ -36,6 +37,7 @@ class PomodoroStore extends EventEmitter {
         this.hasFinished = false;
         this.isRunning = false;
         this.pomodoros = 0;
+        this.isSettingsModalOpen = false;
     }
 
     reset() {
@@ -53,7 +55,7 @@ class PomodoroStore extends EventEmitter {
         this.emitChange();
     }
 
-    get () {
+    get() {
         return {
             timeLeft: this.timeLeft,
             totalTime: this.totalTime,
@@ -63,7 +65,8 @@ class PomodoroStore extends EventEmitter {
             currentStep: this.currentStep,
             pomodoroDuration: this.pomodoroDuration,
             breakShortDuration: this.breakShortDuration,
-            breakLongDuration: this.breakLongDuration
+            breakLongDuration: this.breakLongDuration,
+            isSettingsModalOpen: this.isSettingsModalOpen
         };
     }
 
@@ -139,6 +142,11 @@ class PomodoroStore extends EventEmitter {
             this._updateTimers();
         }
         this._saveToStorage();
+        this.emitChange();
+    }
+
+    toggleSettingsModal() {
+        this.isSettingsModalOpen = !this.isSettingsModalOpen;
         this.emitChange();
     }
 
@@ -226,6 +234,10 @@ export default function (localStorageImpl) {
 
             case LONG_BREAK_CHANGE_DURATION:
                 store.updateLongBreakDuration(action.data);
+                break;
+
+            case SETTINGS_MODAL_TOGGLE:
+                store.toggleSettingsModal();
                 break;
 
             default:

@@ -35,18 +35,20 @@ let Contact = contactFactory(React);
 import footerFactory from './components/Footer/Footer';
 let Footer = footerFactory(React);
 
+import modalFactory from './components/Modal/Modal';
+let Modal = modalFactory(React, PropTypes, pomodoroStore, pomodoroActions);
 import notificationsFactory from './components/Notifications/Notifications';
 let Notifications = notificationsFactory(React, pomodoroStore);
 import timerSelectorFactory from './components/TimerSelector/TimerSelector';
 let TimerSelector = timerSelectorFactory(React, PropTypes, TomatoIcon);
-// import rangeSliderFactory from './components/RangeSlider/RangeSlider';
-// let RangeSlider = rangeSliderFactory(React, PropTypes);
+import rangeSliderFactory from './components/RangeSlider/RangeSlider';
+let RangeSlider = rangeSliderFactory(React, PropTypes);
 
 /****** ROUTES ******/
+import settingsFactory from './routes/Settings/Settings';
+let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
 import appFactory from './routes/App/App';
-let App = appFactory(React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector);
-// import settingsFactory from './routes/Settings/Settings';
-// let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
+let App = appFactory(React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector, Modal, Settings);
 
 ReactDOM.render(
     <div>

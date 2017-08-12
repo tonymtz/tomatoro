@@ -5,15 +5,15 @@
   $range-width: 100% !default;
 
   $range-handle-color: $mainColor !default;
-  $range-handle-color-hover: lighten($mainColor, 20%) !default;
-  $range-handle-size: 2.5em !default;
+  $range-handle-color-hover: $grayLight !default;
+  $range-handle-size: 1.5rem !default;
 
   $range-track-color: $transparentGray !default;
-  $range-track-height: 1em !default;
+  $range-track-height: 0.75rem !default;
 
   $rangeLabelBackground: $textInverseColor !default;
   $rangeLabelTextColor: $mainColor !default;
-  $rangeLabelWidth: 3em !default;
+  $rangeLabelWidth: 4rem !default;
 
   width: $range-width;
 
@@ -29,7 +29,7 @@
     display: inline-block;
 
     &.with-label {
-      width: calc(100% - (#{$rangeLabelWidth + 4em}));
+      width: calc(100% - (#{$rangeLabelWidth + 0.5rem}));
     }
 
     // Range Handle
