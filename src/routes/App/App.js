@@ -22,7 +22,10 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
             currentStep: pomodoroStoreSnapshot.currentStep,
             timeLeft: pomodoroStoreSnapshot.timeLeft,
             totalTime: pomodoroStoreSnapshot.totalTime,
-            isSettingsModalOpen: pomodoroStoreSnapshot.isSettingsModalOpen
+            isSettingsModalOpen: pomodoroStoreSnapshot.isSettingsModalOpen,
+            pomodoroDuration: pomodoroStoreSnapshot.pomodoroDuration,
+            breakShortDuration: pomodoroStoreSnapshot.breakShortDuration,
+            breakLongDuration: pomodoroStoreSnapshot.breakLongDuration
         };
     }
 
@@ -113,6 +116,9 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
                                 onPomodoro={this.onPomodoroStepClick}
                                 onShortBreak={this.onShortBreakStepClick}
                                 onSettingsTrigger={this.onSettingsTriggerClick}
+                                pomodoroDuration={this.state.pomodoroDuration / 60000}
+                                breakShortDuration={this.state.breakShortDuration / 60000}
+                                breakLongDuration={this.state.breakLongDuration / 60000}
                             />
                         </div>
 

@@ -14,7 +14,10 @@ export default function (React, PropTypes, TomatoIcon) {
             onPomodoro: PropTypes.func.isRequired,
             onShortBreak: PropTypes.func.isRequired,
             onLongBreak: PropTypes.func.isRequired,
-            onSettingsTrigger: PropTypes.func.isRequired
+            onSettingsTrigger: PropTypes.func.isRequired,
+            pomodoroDuration: PropTypes.number.isRequired,
+            breakShortDuration: PropTypes.number.isRequired,
+            breakLongDuration: PropTypes.number.isRequired
         };
 
         render() {
@@ -25,19 +28,19 @@ export default function (React, PropTypes, TomatoIcon) {
                     <button
                         disabled={this.props.currentStep === STEP_POMODORO}
                         onClick={this.props.onPomodoro}>
-                        <TomatoIcon/> One Tomatoro - 25 min
+                        <TomatoIcon/> One Tomatoro - {this.props.pomodoroDuration} min
                     </button>
 
                     <button
                         disabled={this.props.currentStep === STEP_SHORT_BREAK}
                         onClick={this.props.onShortBreak}>
-                        <TomatoIcon/> Short Break - 5 min
+                        <TomatoIcon/> Short Break - {this.props.breakShortDuration} min
                     </button>
 
                     <button
                         disabled={this.props.currentStep === STEP_LONG_BREAK}
                         onClick={this.props.onLongBreak}>
-                        <TomatoIcon/> Long Break - 15 min
+                        <TomatoIcon/> Long Break - {this.props.breakLongDuration} min
                     </button>
 
                     <button onClick={this.props.onSettingsTrigger}>
