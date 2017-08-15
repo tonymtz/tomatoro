@@ -45,7 +45,7 @@ export default function (React, PropTypes, pomodoroStore, pomodoroActions) {
                     {this.props.children}
 
                     <div className="col-100 control">
-                        <button onClick={this.onCloseButtonClick}> Close
+                        <button onClick={this.onCloseButtonClick}> Ok
                         </button>
                     </div>
                 </div>
