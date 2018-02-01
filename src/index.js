@@ -11,6 +11,7 @@ let localStorage = box.localStorage || {};
 
 /****** ACTIONS ******/
 import pomodoroActions from './actions/PomodoroActions';
+import gaActions from './actions/GAActions';
 
 /****** STORES ******/
 import pomodoroStoreFactory from './stores/PomodoroStore';
@@ -48,7 +49,7 @@ let RangeSlider = rangeSliderFactory(React, PropTypes);
 import settingsFactory from './routes/Settings/Settings';
 let Settings = settingsFactory(React, pomodoroStore, pomodoroActions, RangeSlider);
 import appFactory from './routes/App/App';
-let App = appFactory(React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector, Modal, Settings);
+let App = appFactory(React, pomodoroStore, pomodoroActions, gaActions, TomatoControl, TimerSelector, Modal, Settings);
 
 ReactDOM.render(
     <div>

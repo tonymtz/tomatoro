@@ -5,3 +5,6 @@ export const EVENT_CATEGORY_SHORT_BREAK_CYCLE = 'BREAK_SHORT_CYCLE';
 export const EVENT_CATEGORY_LONG_BREAK_CYCLE = 'BREAK_LONG_CYCLE';
 export const EVENT_LABEL_COMPLETE = 'EVENT_LABEL_COMPLETE';
 export const EVENT_VALUE_COMPLETE = 1;
+export const GENERIC_CATEGORY = 'Category';
+export const GENERIC_ACTION = 'Action';
+export const GENERIC_LABEL = 'Label';

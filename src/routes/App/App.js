@@ -5,7 +5,7 @@ function formatTime(time) {
     return time < 10 ? '0' + time : time;
 }
 
-export default function (React, pomodoroStore, pomodoroActions, TomatoControl, TimerSelector, Modal, Settings) {
+export default function (React, pomodoroStore, pomodoroActions, gaActions, TomatoControl, TimerSelector, Modal, Settings) {
 
     function getPomodoroStore() {
         let pomodoroStoreSnapshot = pomodoroStore.get();
@@ -84,6 +84,7 @@ export default function (React, pomodoroStore, pomodoroActions, TomatoControl, T
 
         onSettingsTriggerClick = () => {
             pomodoroActions.toggleSettingsModal();
+            gaActions.openSettingsPopup();
         };
 
         render() {

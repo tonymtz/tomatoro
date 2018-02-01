@@ -33,7 +33,7 @@ export default function (React) {
                                 Tomatoros, take a longer 15 mins break. Repeat this cycle!
                             </p>
 
-                            <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank"
+                            <a href="https://softwaredevtools.com/blog/the-pomodoro-technique/?utm_source=jlene&utm_medium=page&utm_campaign=post51" target="_blank"
                                rel="noopener noreferrer">Read more about Pomodoro</a>
                         </div>
                     </div>
