@@ -8,18 +8,16 @@ import {
     EVENT_VALUE_COMPLETE, GENERIC_CATEGORY, GENERIC_ACTION, GENERIC_LABEL
 } from '../constants/GAConstants';
 
-import { DEBUG } from "../constants/AppConstants";
-
 let ga = (function (ga) {
 
-    if (ga && !DEBUG) {
-        return ga;
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+        return function () {
+            /* empty function */
+            console.log('[FAKE] GA EVENT:', arguments);
+        };
     }
 
-    return function () {
-        /* empty function */
-        console.log('GA EVENT:', arguments);
-    };
+    return ga;
 
 }(window.ga));
 
