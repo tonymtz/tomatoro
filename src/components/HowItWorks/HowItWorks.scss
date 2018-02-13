@@ -1,6 +1,6 @@
 /* HowItWorks.scss called from HowItWorks.js */
-@import "../../styles/colors";
-@import "../../styles/variables";
+@import "../../scss/colors";
+@import "../../scss/variables";
 
 section.how-it-works {
   padding: $sectionVerticalPadding 0 $sectionVerticalPadding * 2;

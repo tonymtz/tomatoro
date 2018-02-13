@@ -1,7 +1,7 @@
 /* Footer.scss called from Footer.js */
-@import "../../styles/colors";
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@import "../../scss/colors";
+@import "../../scss/variables";
+@import "../../scss/mixins";
 
 footer {
   background-color: $footer-background-color;

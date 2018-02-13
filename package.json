@@ -1,29 +1,29 @@
 {
   "name": "tomatoro",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
-    "enzyme": "^2.9.1",
-    "flux": "^3.1.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4"
-  },
-  "devDependencies": {
-    "codecov": "^2.3.0",
-    "node-sass-chokidar": "0.0.2",
-    "npm-run-all": "^4.0.2",
-    "react-scripts": "1.0.7"
+    "codecov": "^3.0.0",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --ignored=styles --watch --recursive",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "NODE_ENV=development npm-run-all -p watch-css start-js",
-    "build": "NODE_ENV=production npm run build-css && react-scripts build",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "NODE_ENV=production npm-run-all build-css build-js",
     "test": "NODE_ENV=test react-scripts test --env=jsdom",
     "test-coverage": "NODE_ENV=test react-scripts test --env=jsdom && ./node_modules/.bin/codecov",
     "eject": "react-scripts eject"
   },
-  "homepage": "./"
+  "homepage": "https://tomatoro.com"
 }
