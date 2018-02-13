@@ -16,17 +16,27 @@ class App extends Component {
             <div className="App">
                 <TopNav/>
 
-                <TomatoTimer/>
+                <div className="container">
+                    <div className="col-60">
+                        <TomatoTimer/>
+                    </div>
 
-                <TomatorosCounter/>
+                    <div className="col-40">
+                        <h1>Take your time. Get things done.</h1>
 
-                <StepSelector/>
+                        <TomatorosCounter/>
+
+                        <StepSelector/>
+                    </div>
+                </div>
 
                 <hr/>
 
                 <Settings/>
 
                 <HowItWorks/>
+
+                <hr/>
 
                 <Contact/>
 

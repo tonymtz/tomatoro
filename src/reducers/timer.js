@@ -94,9 +94,12 @@ export const tickTimer = () => {
         dispatch(decreaseTimer());
 
         if (timer.time <= 0) {
-            dispatch(addTomatoro());
+            const currentStepIsWorking = timer.step === STEP_WORK;
+            if (currentStepIsWorking) {
+                dispatch(addTomatoro());
+            }
+            sendNotification(currentStepIsWorking);
             dispatch(resetTimer());
-            sendNotification(timer.step === STEP_WORK);
         }
     };
 };

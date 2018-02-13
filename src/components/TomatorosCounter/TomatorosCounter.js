@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './style.css';
 
 class TomatorosCounter extends Component {
     render() {
         return (
-            <div className="tomatoros-counter">
-                My Tomatoros: { this.props.tomatoros }
-            </div>
+            <h2 className="tomatoros-counter">
+                My Tomatoros: <span className="highlight">{ this.props.tomatoros }</span>
+            </h2>
         )
     }
 }

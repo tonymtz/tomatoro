@@ -2,18 +2,64 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startTimer, resetTimer, stopTimer } from '../../reducers/timer';
 import { secondsToTimeFormat } from '../../lib/format';
+import './style.css';
+import PlayButton from './PlayButton';
+import RepeatButton from './RepeatButton';
 
 class TomatoTimer extends Component {
+    getProgressPercentage() {
+        let totalTime = this.props.workDuration;
+        let timeLeft = this.props.time;
+        return (timeLeft * 100) / totalTime;
+    };
+
+    getPercentage(value) {
+        let radius = 150;
+        let circumference = Math.PI * (radius * 2);
+
+        return (value / 100) * circumference;
+    }
+
+    getValue() {
+        let value = this.getProgressPercentage();
+
+        if (value < 0) {
+            value = 0;
+        }
+
+        if (value > 100) {
+            value = 100;
+        }
+
+        return value;
+    }
+
     render() {
+        let value = this.getValue();
+        let pct = { 'strokeDashoffset': this.getPercentage(value) };
+
         return (
-            <div className="tomato-timer">
-                { secondsToTimeFormat(this.props.time) }
+            <div className="tomato-timer text-center" data-pct="100">
+                <svg className="svg" viewBox="0 0 310 310" version="1.1">
+                    <circle r="150" cx="50%" cy="50%" fill="transparent"></circle>
+                    <circle className="bar" style={ pct || 40 } r="150" cx="-50%" cy="50%" fill="transparent"></circle>
+                </svg>
 
-                <hr/>
+                <div className="timer">
+                    { secondsToTimeFormat(this.props.time) }
+                </div>
 
-                <button onClick={ () => this.props.startTimer() } disabled={ this.props.isRunning }>start</button>
-                <button onClick={ () => this.props.stopTimer() } disabled={ !this.props.isRunning }>stop</button>
-                <button onClick={ () => this.props.resetTimer() }>reset</button>
+                <div className="control">
+                    <PlayButton
+                        onPause={ () => this.props.stopTimer() }
+                        onStart={ () => this.props.startTimer() }
+                        isRunning={ this.props.isRunning }
+                    />
+
+                    <RepeatButton
+                        onClick={ () => this.props.resetTimer() }
+                    />
+                </div>
             </div>
         );
     }
@@ -22,7 +68,8 @@ class TomatoTimer extends Component {
 export default connect(
     (state) => ({
         time: state.timer.time,
-        isRunning: state.timer.isRunning
+        isRunning: state.timer.isRunning,
+        workDuration: state.settings.workDuration
     }),
     { startTimer, resetTimer, stopTimer }
 )(TomatoTimer);
