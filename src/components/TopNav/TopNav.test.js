@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import topNavFactory from './TopNav';
 
-describe('TopNavComponent', () => {
+describe.skip('TopNavComponent', () => {
 
     let TopNav;
 

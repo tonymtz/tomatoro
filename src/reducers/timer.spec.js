@@ -1,4 +1,4 @@
-/* global describe, test, expect */
+/* global describe, test, expect, jest */
 
 import reducer, {
     decreaseTimer,
@@ -9,23 +9,31 @@ import reducer, {
     startTimer,
     processTimer
 } from './timer';
+
 import {
     TIMER_DECREASE,
-    TIMER_STATUS_OFF,
-    TIMER_STATUS_ON,
     TIMER_RESET,
     TIMER_START,
     STEP_WORK,
     STEP_BREAK_SHORT,
     STEP_BREAK_LONG
 } from './timer';
+
 import { TOMATORO_ADD } from './tomatoros';
+
+jest.mock('../lib/notification', () => {
+    return { sendNotification: jest.fn() }
+});
+
+jest.mock('../lib/settings', () => {
+    return { getSettings: jest.fn() }
+});
 
 describe('Timer Reducer', () => {
 
     test('returns a state object', () => {
         const result = reducer(undefined, { type: 'ANYTHING' });
-        expect(result).toEqual({ time: 10, status: TIMER_STATUS_OFF, step: STEP_WORK });
+        expect(result).toEqual({ time: 1500, isRunning: false, step: STEP_WORK });
     });
 
     test('#decreaseTimer', () => {
@@ -47,16 +55,16 @@ describe('Timer Reducer', () => {
 
     test('#resetTimer', () => {
         const action = resetTimer();
-        const startState = { time: 5, status: 'ANYTHING' };
-        const expectedState = { time: 10, status: TIMER_STATUS_OFF };
+        const startState = { time: 99, isRunning: true };
+        const expectedState = { time: 1500, isRunning: false };
         const result = reducer(startState, action);
         expect(result).toEqual(expectedState);
     });
 
     test('#turnTimerOn', () => {
         const action = turnTimerOn();
-        const startState = { status: 'ANYTHING' };
-        const expectedState = { status: TIMER_STATUS_ON };
+        const startState = { isRunning: false };
+        const expectedState = { isRunning: true };
         const result = reducer(startState, action);
         expect(result).toEqual(expectedState);
     });
@@ -66,7 +74,7 @@ describe('Timer Reducer', () => {
         test('should update state from STEP_WORK to STEP_BREAK_SHORT', () => {
             const action = updateStep(STEP_BREAK_SHORT);
             const startState = { step: STEP_WORK };
-            const expectedState = { status: 'TIMER_STATUS_OFF', step: 'STEP_BREAK_SHORT', time: 10 };
+            const expectedState = { isRunning: false, step: 'STEP_BREAK_SHORT', time: 1500 };
             const result = reducer(startState, action);
             expect(result).toEqual(expectedState);
         });
@@ -74,7 +82,7 @@ describe('Timer Reducer', () => {
         test('should update state from STEP_BREAK_SHORT to STEP_BREAK_LONG', () => {
             const action = updateStep(STEP_BREAK_LONG);
             const startState = { step: STEP_BREAK_SHORT };
-            const expectedState = { status: 'TIMER_STATUS_OFF', step: 'STEP_BREAK_LONG', time: 10 };
+            const expectedState = { isRunning: false, step: 'STEP_BREAK_LONG', time: 1500 };
             const result = reducer(startState, action);
             expect(result).toEqual(expectedState);
         });
@@ -114,18 +122,18 @@ describe('Timer Reducer', () => {
 
     describe('#tickTimer', () => {
 
-        test('with TIMER_STATUS_OFF', () => {
+        test('with timer OFF', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { status: TIMER_STATUS_OFF } });
+            const getState = () => ({ timer: { isRunning: false } });
 
             tickTimer()(dispatch, getState);
 
             expect(dispatch).not.toHaveBeenCalled();
         });
 
-        test('with TIMER_STATUS_ON and more than 0 seconds remaining', () => {
+        test('with timer ON and more than 0 seconds remaining', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { time: 10, status: TIMER_STATUS_ON } });
+            const getState = () => ({ timer: { time: 10, isRunning: true } });
 
             tickTimer()(dispatch, getState);
 
@@ -133,9 +141,9 @@ describe('Timer Reducer', () => {
             expect(dispatch).toHaveBeenCalledTimes(1);
         });
 
-        test('with TIMER_STATUS_ON and exactly 0 seconds remaining', () => {
+        test('with timer ON and exactly 0 seconds remaining', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { time: 0, status: TIMER_STATUS_ON } });
+            const getState = () => ({ timer: { time: 0, isRunning: true } });
 
             tickTimer()(dispatch, getState);
 

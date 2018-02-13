@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import contactFactory from './Contact';
 
-describe('ContactComponent', () => {
+describe.skip('ContactComponent', () => {
 
     let Contact;
 
