@@ -5,11 +5,11 @@
 
 App to aux you with the pomodoro technique
 
-## npm scripts
+## Tasks
 
-* `npm start` - Build and start the app in dev mode at http://localhost:3000
-* `npm test` - Run the tests
-* `npm run build` - Run a production build
+* `yarn start` - Build and start the app in dev mode at http://localhost:3000
+* `yarn test` - Run the tests
+* `yarn run build` - Run a production build
 
 ## Conventions
 
