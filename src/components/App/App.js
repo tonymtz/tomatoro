@@ -12,10 +12,10 @@ import Footer from '../Footer/Footer';
 class App extends Component {
     render() {
         return (
-            <div className="App">
+            <div className="app">
                 <TopNav/>
 
-                <div className="container">
+                <div className="tomato container">
                     <div className="col-60">
                         <TomatoTimer/>
                     </div>

@@ -36,6 +36,10 @@ body.blurry::before {
 
   // ==
 
+  button {
+    width: unset;
+  }
+
   header {
     h1 {
       margin-top: 0;
