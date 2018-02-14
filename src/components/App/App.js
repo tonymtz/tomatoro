@@ -9,7 +9,13 @@ import HowItWorks from '../HowItWorks/HowItWorks';
 import Contact from '../Contact/Contact';
 import Footer from '../Footer/Footer';
 
+import { requestPermission } from '../../lib/notification';
+
 class App extends Component {
+    componentWillMount() {
+        requestPermission();
+    }
+
     render() {
         return (
             <div className="app">

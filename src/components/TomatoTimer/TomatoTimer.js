@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { startTimer, resetTimer, stopTimer } from '../../reducers/timer';
+import { startTimer, resetTimer, stopTimer, STEP_BREAK_SHORT, STEP_BREAK_LONG } from '../../reducers/timer';
 import { secondsToTimeFormat } from '../../lib/format';
 import './style.css';
 import PlayButton from './PlayButton';
@@ -8,7 +8,16 @@ import RepeatButton from './RepeatButton';
 
 class TomatoTimer extends Component {
     getProgressPercentage() {
-        let totalTime = this.props.workDuration;
+        let totalTime;
+
+        if (this.props.step === STEP_BREAK_LONG) {
+            totalTime = this.props.settings.longBreakDuration;
+        } else if (this.props.step === STEP_BREAK_SHORT) {
+            totalTime = this.props.settings.shortBreakDuration;
+        } else {
+            totalTime = this.props.settings.workDuration;
+        }
+
         let timeLeft = this.props.time;
         return (timeLeft * 100) / totalTime;
     };
@@ -69,7 +78,8 @@ export default connect(
     (state) => ({
         time: state.timer.time,
         isRunning: state.timer.isRunning,
-        workDuration: state.settings.workDuration
+        step: state.timer.step,
+        settings: state.settings
     }),
     { startTimer, resetTimer, stopTimer }
 )(TomatoTimer);

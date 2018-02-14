@@ -4,7 +4,7 @@ const havePermission = () => {
     return global.Notification.permission === 'granted';
 };
 
-const requestPermission = () => {
+export const requestPermission = () => {
     if (!havePermission()) {
         global.Notification.requestPermission();
     }
@@ -31,5 +31,3 @@ export const sendNotification = (isStepWork) => {
         notification.close();
     };
 };
-
-window.sendNotification = sendNotification;
