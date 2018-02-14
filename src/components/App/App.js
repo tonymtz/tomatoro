@@ -3,7 +3,6 @@ import './App.css';
 import TomatoTimer from '../TomatoTimer';
 import StepSelector from '../StepSelector';
 import TomatorosCounter from '../TomatorosCounter';
-import Settings from '../Settings';
 
 import TopNav from '../TopNav/TopNav';
 import HowItWorks from '../HowItWorks/HowItWorks';
@@ -31,8 +30,6 @@ class App extends Component {
                 </div>
 
                 <hr/>
-
-                <Settings/>
 
                 <HowItWorks/>
 
