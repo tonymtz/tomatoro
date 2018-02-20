@@ -32,7 +32,7 @@ jest.mock('../lib/settings', () => {
 describe('Timer Reducer', () => {
 
     test('returns a state object', () => {
-        const result = reducer(undefined, { type: 'ANYTHING' });
+        const result = reducer(undefined, {});
         expect(result).toEqual({ time: 1500, isRunning: false, step: STEP_WORK });
     });
 
