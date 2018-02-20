@@ -143,7 +143,7 @@ describe('Timer Reducer', () => {
 
         test('with timer ON and exactly 0 seconds remaining', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { time: 0, isRunning: true } });
+            const getState = () => ({ timer: { time: 0, isRunning: true, step: STEP_WORK } });
 
             tickTimer()(dispatch, getState);
 

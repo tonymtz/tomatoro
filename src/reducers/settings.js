@@ -1,4 +1,5 @@
-import { getSettings, saveSettings, resetSettings } from '../lib/settings';
+import { getSettings, saveSettings, dropSettings } from '../lib/settings';
+import { resetTimer } from './timer';
 
 const initState = () => {
     return getSettings() || {
@@ -21,31 +22,63 @@ export const updateLongBreakDuration = (newDuration) => ({ type: LONG_BREAK_DURA
 export const resetAllSettings = () => ({ type: RESET_SETTINGS });
 export const toggleModal = () => ({ type: TOGGLE_MODAL });
 
-export default (state = initState(), action) => {
-    let newState;
+export const updateAndSaveWorkDuration = (newDuration) => {
+    return (dispatch, getState) => {
+        dispatch(updateWorkDuration(newDuration));
 
+        const settings = getState().settings;
+        saveSettings(settings);
+
+        dispatch(resetTimer());
+    };
+};
+
+export const updateAndSaveShortBreakDuration = (newDuration) => {
+    return (dispatch, getState) => {
+        dispatch(updateShortBreakDuration(newDuration));
+
+        const settings = getState().settings;
+        saveSettings(settings);
+
+        dispatch(resetTimer());
+    };
+};
+
+export const updateAndSaveLongBreakDuration = (newDuration) => {
+    return (dispatch, getState) => {
+        dispatch(updateLongBreakDuration(newDuration));
+
+        const settings = getState().settings;
+        saveSettings(settings);
+
+        dispatch(resetTimer());
+    };
+};
+
+export const resetAndSaveSettings = () => {
+    return (dispatch, getState) => {
+        dropSettings();
+        dispatch(resetAllSettings());
+
+        const settings = getState().settings;
+        saveSettings(settings);
+
+        dispatch(resetTimer());
+    };
+};
+
+export default (state = initState(), action) => {
     switch (action.type) {
         case WORK_DURATION_UPDATE:
-            newState = { ...state, workDuration: action.payload };
-            saveSettings(newState);
-            return newState;
+            return { ...state, workDuration: action.payload };
         case SHORT_BREAK_DURATION_UPDATE:
-            newState = { ...state, shortBreakDuration: action.payload };
-            saveSettings(newState);
-            return newState;
+            return { ...state, shortBreakDuration: action.payload };
         case LONG_BREAK_DURATION_UPDATE:
-            newState = { ...state, longBreakDuration: action.payload };
-            saveSettings(newState);
-            return newState;
+            return { ...state, longBreakDuration: action.payload };
         case RESET_SETTINGS:
-            resetSettings();
-            newState = initState();
-            saveSettings(newState);
-            return newState;
+            return initState();
         case TOGGLE_MODAL:
-            newState = { ...state, isModalOpen: !state.isModalOpen };
-            saveSettings(newState);
-            return newState;
+            return { ...state, isModalOpen: !state.isModalOpen };
         default:
             return state;
     }

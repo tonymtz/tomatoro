@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RangeSlider from './RangeSlider';
 import {
-    updateWorkDuration,
-    updateShortBreakDuration,
-    updateLongBreakDuration,
-    resetAllSettings
+    updateAndSaveWorkDuration,
+    updateAndSaveShortBreakDuration,
+    updateAndSaveLongBreakDuration,
+    resetAndSaveSettings
 } from '../../reducers/settings';
 import { secondsToTimeFormat } from '../../lib/format';
 
@@ -20,7 +20,7 @@ class Settings extends Component {
                             value={ this.props.settings.workDuration }
                             min={ 5 * 60 }
                             max={ 60 * 60 }
-                            onChange={ this.props.updateWorkDuration }
+                            onChange={ this.props.updateAndSaveWorkDuration }
                             showValueLabel={ true }
                             formattedValue={ secondsToTimeFormat(this.props.settings.workDuration) }
                         />
@@ -32,7 +32,7 @@ class Settings extends Component {
                             value={ this.props.settings.shortBreakDuration }
                             min={ 1 * 60 }
                             max={ 15 * 60 }
-                            onChange={ this.props.updateShortBreakDuration }
+                            onChange={ this.props.updateAndSaveShortBreakDuration }
                             showValueLabel={ true }
                             formattedValue={ secondsToTimeFormat(this.props.settings.shortBreakDuration) }
                         />
@@ -42,14 +42,14 @@ class Settings extends Component {
                         <label htmlFor="breakLongDuration">Long Break Duration</label>
                         <RangeSlider
                             value={ this.props.settings.longBreakDuration }
-                            onChange={ this.props.updateLongBreakDuration }
+                            onChange={ this.props.updateAndSaveLongBreakDuration }
                             showValueLabel={ true }
                             formattedValue={ secondsToTimeFormat(this.props.settings.longBreakDuration) }
                         />
                     </div>
 
                     <div className="col-100">
-                        <button onClick={ this.props.resetAllSettings }>Reset</button>
+                        <button onClick={ this.props.resetAndSaveSettings }>Reset</button>
                     </div>
                 </div>
             </div>
@@ -61,5 +61,5 @@ export default connect(
     (state) => ({
         settings: state.settings
     }),
-    { updateWorkDuration, updateShortBreakDuration, updateLongBreakDuration, resetAllSettings }
+    { updateAndSaveWorkDuration, updateAndSaveShortBreakDuration, updateAndSaveLongBreakDuration, resetAndSaveSettings }
 )(Settings);

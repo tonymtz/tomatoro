@@ -3,8 +3,7 @@
 const STORAGE_ITEM_NAME = 'MY_TOMATORO_SETTINGS';
 
 export const getSettings = () => {
-    const localStorage = global.localStorage;
-    const settings = localStorage.getItem(STORAGE_ITEM_NAME);
+    const settings = global.localStorage.getItem(STORAGE_ITEM_NAME);
 
     if (settings) {
         return JSON.parse(settings);
@@ -14,11 +13,9 @@ export const getSettings = () => {
 };
 
 export const saveSettings = (settings) => {
-    const localStorage = global.localStorage;
-    localStorage.setItem(STORAGE_ITEM_NAME, JSON.stringify(settings));
+    global.localStorage.setItem(STORAGE_ITEM_NAME, JSON.stringify(settings));
 };
 
-export const resetSettings = () => {
-    const localStorage = global.localStorage;
-    localStorage.removeItem(STORAGE_ITEM_NAME);
+export const dropSettings = () => {
+    global.localStorage.removeItem(STORAGE_ITEM_NAME);
 };
