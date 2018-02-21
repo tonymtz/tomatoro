@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { startTimer, resetTimer, stopTimer, STEP_BREAK_SHORT, STEP_BREAK_LONG } from '../../reducers/timer';
+import { startTimer, resetTimer, stopTimer } from '../../reducers/timer';
 import { secondsToTimeFormat } from '../../lib/format';
 import './style.css';
 import PlayButton from './PlayButton';
 import RepeatButton from './RepeatButton';
+import { STEP_BREAK_LONG, STEP_BREAK_SHORT } from "../../reducers/constants";
 
 class TomatoTimer extends Component {
     getProgressPercentage() {
