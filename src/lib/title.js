@@ -4,11 +4,11 @@ import { secondsToTimeFormat } from './format';
 
 export const APP_TITLE = 'Tomatoro';
 
-export const updateTitle = (timeLabel) => {
+export const updateTitle = (seconds) => {
     let title;
 
-    if (timeLabel) {
-        title = `(${secondsToTimeFormat(timeLabel)}) - ${APP_TITLE}`;
+    if (seconds) {
+        title = `(${secondsToTimeFormat(seconds)}) - ${APP_TITLE}`;
     } else {
         title = APP_TITLE;
     }
