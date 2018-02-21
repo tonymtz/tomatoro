@@ -1,4 +1,11 @@
-/* global describe, test, expect, jest, beforeEach,afterEach */
+/* global describe, test, expect, jest, beforeEach, afterEach */
+
+import {
+    LONG_BREAK_DURATION_UPDATE,
+    RESET_SETTINGS,
+    SHORT_BREAK_DURATION_UPDATE,
+    WORK_DURATION_UPDATE
+} from './constants';
 
 const mockGetSettings = jest.fn(() => undefined);
 const mockSaveSettings = jest.fn();
@@ -55,10 +62,7 @@ describe('Settings Reducer', () => {
         const dispatch = jest.fn();
         const getState = () => ({});
 
-        const {
-            updateAndSaveWorkDuration,
-            WORK_DURATION_UPDATE
-        } = require('./settings');
+        const { updateAndSaveWorkDuration } = require('./settings');
 
         updateAndSaveWorkDuration(666)(dispatch, getState);
 
@@ -73,10 +77,7 @@ describe('Settings Reducer', () => {
         const dispatch = jest.fn();
         const getState = () => ({});
 
-        const {
-            updateAndSaveShortBreakDuration,
-            SHORT_BREAK_DURATION_UPDATE
-        } = require('./settings');
+        const { updateAndSaveShortBreakDuration } = require('./settings');
 
         updateAndSaveShortBreakDuration(13)(dispatch, getState);
 
@@ -91,10 +92,7 @@ describe('Settings Reducer', () => {
         const dispatch = jest.fn();
         const getState = () => ({});
 
-        const {
-            updateAndSaveLongBreakDuration,
-            LONG_BREAK_DURATION_UPDATE
-        } = require('./settings');
+        const { updateAndSaveLongBreakDuration } = require('./settings');
 
         updateAndSaveLongBreakDuration(38)(dispatch, getState);
 
@@ -109,10 +107,7 @@ describe('Settings Reducer', () => {
         const dispatch = jest.fn();
         const getState = () => ({});
 
-        const {
-            resetAndSaveSettings,
-            RESET_SETTINGS
-        } = require('./settings');
+        const { resetAndSaveSettings } = require('./settings');
 
         resetAndSaveSettings()(dispatch, getState);
 

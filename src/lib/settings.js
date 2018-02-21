@@ -3,7 +3,6 @@
 const STORAGE_ITEM_NAME = 'MY_TOMATORO_SETTINGS';
 
 export const getSettings = () => {
-    console.log('afa');
     const settings = global.localStorage.getItem(STORAGE_ITEM_NAME);
 
     if (settings) {

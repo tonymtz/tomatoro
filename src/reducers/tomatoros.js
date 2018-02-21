@@ -1,8 +1,8 @@
+import { TOMATORO_ADD } from './constants';
+
 const initState = {
     tomatoros: 0
 };
-
-export const TOMATORO_ADD = 'TOMATORO_ADD';
 
 export const addTomatoro = () => ({ type: TOMATORO_ADD });
 

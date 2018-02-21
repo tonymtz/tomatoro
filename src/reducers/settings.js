@@ -1,3 +1,11 @@
+import {
+    LONG_BREAK_DURATION_UPDATE,
+    RESET_SETTINGS,
+    SHORT_BREAK_DURATION_UPDATE,
+    TOGGLE_MODAL,
+    WORK_DURATION_UPDATE
+} from './constants';
+
 import { getSettings, saveSettings, dropSettings } from '../lib/settings';
 import { resetTimer } from './timer';
 
@@ -9,12 +17,6 @@ const initState = () => {
         isModalOpen: false
     };
 };
-
-export const WORK_DURATION_UPDATE = 'WORK_DURATION_UPDATE';
-export const SHORT_BREAK_DURATION_UPDATE = 'SHORT_BREAK_DURATION_UPDATE';
-export const LONG_BREAK_DURATION_UPDATE = 'LONG_BREAK_DURATION_UPDATE';
-export const RESET_SETTINGS = 'RESET_SETTINGS';
-const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 export const updateWorkDuration = (newDuration) => ({ type: WORK_DURATION_UPDATE, payload: newDuration });
 export const updateShortBreakDuration = (newDuration) => ({ type: SHORT_BREAK_DURATION_UPDATE, payload: newDuration });

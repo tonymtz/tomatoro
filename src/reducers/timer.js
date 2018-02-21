@@ -1,13 +1,19 @@
+import {
+    STEP_WORK,
+    STEP_BREAK_LONG,
+    STEP_BREAK_SHORT,
+    STEP_UPDATE,
+    TIMER_DECREASE,
+    TIMER_RESET,
+    TIMER_START, TIMER_STOP,
+    TIMER_UPDATE
+} from './constants';
+
 import { addTomatoro } from './tomatoros';
 import { sleepASecond } from '../lib/clock';
 import { getSettings } from '../lib/settings';
 import { updateTitle } from '../lib/title';
 import { sendNotification } from '../lib/notification';
-
-/* states definition */
-export const STEP_WORK = 'STEP_WORK';
-export const STEP_BREAK_SHORT = 'STEP_BREAK_SHORT';
-export const STEP_BREAK_LONG = 'STEP_BREAK_LONG';
 
 const initState = (currentState = {}) => {
     const state = {
@@ -28,14 +34,6 @@ const initState = (currentState = {}) => {
     }
     return state;
 };
-
-/* actions */
-export const TIMER_DECREASE = 'TIMER_DECREASE';
-export const TIMER_RESET = 'TIMER_RESET'; // TODO - unused in real life ?
-export const TIMER_START = 'TIMER_START';
-export const TIMER_STOP = 'TIMER_STOP';
-export const TIMER_UPDATE = 'TIMER_UPDATE';
-export const STEP_UPDATE = 'STEP_UPDATE';
 
 export const decreaseTimer = () => ({ type: TIMER_DECREASE });
 export const resetTimer = () => ({ type: TIMER_RESET });
@@ -67,6 +65,7 @@ export const startTimer = () => {
     };
 };
 
+// TODO
 export const processTimer = () => {
     return (dispatch, getState) => {
         return sleepASecond()
@@ -116,9 +115,9 @@ export default (state = initState(), action) => {
             };
         case TIMER_START:
             return { ...state, isRunning: true };
-        case TIMER_STOP:
+        case TIMER_STOP: // TODO
             return { ...state, isRunning: false };
-        case TIMER_UPDATE:
+        case TIMER_UPDATE: // TODO
             return { ...state, time: action.payload };
         case STEP_UPDATE:
             return {
