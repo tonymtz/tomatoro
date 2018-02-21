@@ -65,7 +65,6 @@ export const startTimer = () => {
     };
 };
 
-// TODO
 export const processTimer = () => {
     return (dispatch, getState) => {
         return sleepASecond()
@@ -115,9 +114,9 @@ export default (state = initState(), action) => {
             };
         case TIMER_START:
             return { ...state, isRunning: true };
-        case TIMER_STOP: // TODO
+        case TIMER_STOP:
             return { ...state, isRunning: false };
-        case TIMER_UPDATE: // TODO
+        case TIMER_UPDATE:
             return { ...state, time: action.payload };
         case STEP_UPDATE:
             return {

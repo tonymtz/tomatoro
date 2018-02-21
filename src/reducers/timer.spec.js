@@ -1,14 +1,4 @@
-/* global describe, test, expect, jest */
-
-import reducer, {
-    decreaseTimer,
-    resetTimer,
-    turnTimerOn,
-    updateStep,
-    tickTimer,
-    startTimer,
-    processTimer
-} from './timer';
+/* global require, describe, test, expect, jest, beforeEach, afterEach */
 
 import {
     TIMER_DECREASE,
@@ -17,26 +7,80 @@ import {
     STEP_WORK,
     STEP_BREAK_SHORT,
     STEP_BREAK_LONG,
-    TOMATORO_ADD
+    TOMATORO_ADD, STEP_UPDATE, TIMER_UPDATE
 } from './constants';
 
+const mockGetSettings = jest.fn(() => undefined);
+const mockSaveSettings = jest.fn();
+const mockDropSettings = jest.fn();
+
+const mockSendNotification = jest.fn();
+
+const mockUpdateTitle = jest.fn();
+
+const mockSleepASecond = jest.fn(() => {
+    return new Promise((resolve) => {
+        process.nextTick(resolve);
+    });
+});
+
+jest.mock('../lib/clock', () => {
+    return { sleepASecond: mockSleepASecond }
+});
+
+jest.mock('../lib/title', () => {
+    return { updateTitle: mockUpdateTitle }
+});
+
 jest.mock('../lib/notification', () => {
-    return { sendNotification: jest.fn() }
+    return { sendNotification: mockSendNotification }
 });
 
 jest.mock('../lib/settings', () => {
-    return { getSettings: jest.fn() }
+    return { getSettings: mockGetSettings, saveSettings: mockSaveSettings, dropSettings: mockDropSettings }
 });
 
 describe('Timer Reducer', () => {
 
-    test('returns a state object', () => {
-        const result = reducer(undefined, {});
-        expect(result).toEqual({ time: 1500, isRunning: false, step: STEP_WORK });
+    let reducer;
+
+    beforeEach(() => {
+        reducer = require('./timer').default;
     });
 
-    test.skip('#decreaseTimer', () => {
-        const action = decreaseTimer();
+    afterEach(() => {
+        mockGetSettings.mockClear();
+        mockGetSettings.mockRestore();
+
+        mockSaveSettings.mockClear();
+        mockSaveSettings.mockRestore();
+
+        mockDropSettings.mockClear();
+        mockDropSettings.mockRestore();
+
+        mockSendNotification.mockClear();
+        mockSendNotification.mockRestore();
+
+        mockUpdateTitle.mockClear();
+        mockUpdateTitle.mockRestore();
+
+        jest.resetModules();
+    });
+
+    test('returns a state object', () => {
+        const result = reducer(undefined, {});
+
+        expect(result).toEqual({
+            time: 1500,
+            isRunning: false,
+            step: STEP_WORK
+        });
+
+        expect(mockGetSettings).toHaveBeenCalledTimes(1);
+    });
+
+    test('#decreaseTimer', () => {
+        const action = require('./timer').decreaseTimer();
         const startState = { time: 10 };
 
         const expectedStateAfterOnce = { time: 9 };
@@ -52,26 +96,42 @@ describe('Timer Reducer', () => {
         expect(resultAfterThrice).toEqual(expectedStateAfterThrice);
     });
 
-    test.skip('#resetTimer', () => {
-        const action = resetTimer();
+    test('#resetTimer', () => {
+        const action = require('./timer').resetTimer();
         const startState = { time: 99, isRunning: true };
         const expectedState = { time: 1500, isRunning: false };
         const result = reducer(startState, action);
         expect(result).toEqual(expectedState);
     });
 
-    test.skip('#turnTimerOn', () => {
-        const action = turnTimerOn();
+    test('#turnTimerOn', () => {
+        const action = require('./timer').turnTimerOn();
         const startState = { isRunning: false };
         const expectedState = { isRunning: true };
         const result = reducer(startState, action);
         expect(result).toEqual(expectedState);
     });
 
-    describe.skip('#updateStep', () => {
+    test('#stopTimer', () => {
+        const action = require('./timer').stopTimer();
+        const startState = { isRunning: true };
+        const expectedState = { isRunning: false };
+        const result = reducer(startState, action);
+        expect(result).toEqual(expectedState);
+    });
+
+    test('#updateTimer', () => {
+        const action = require('./timer').updateTimer(15);
+        const startState = { time: 10 };
+        const expectedState = { time: 15 };
+        const result = reducer(startState, action);
+        expect(result).toEqual(expectedState);
+    });
+
+    describe('#updateStep', () => {
 
         test('should update state from STEP_WORK to STEP_BREAK_SHORT', () => {
-            const action = updateStep(STEP_BREAK_SHORT);
+            const action = require('./timer').updateStep(STEP_BREAK_SHORT);
             const startState = { step: STEP_WORK };
             const expectedState = { isRunning: false, step: 'STEP_BREAK_SHORT', time: 1500 };
             const result = reducer(startState, action);
@@ -79,7 +139,7 @@ describe('Timer Reducer', () => {
         });
 
         test('should update state from STEP_BREAK_SHORT to STEP_BREAK_LONG', () => {
-            const action = updateStep(STEP_BREAK_LONG);
+            const action = require('./timer').updateStep(STEP_BREAK_LONG);
             const startState = { step: STEP_BREAK_SHORT };
             const expectedState = { isRunning: false, step: 'STEP_BREAK_LONG', time: 1500 };
             const result = reducer(startState, action);
@@ -88,44 +148,106 @@ describe('Timer Reducer', () => {
 
     });
 
-    test.skip('#startTimer', () => {
+    describe('#updateStepAndTimer', () => {
+
+        let dispatch;
+        let getState;
+
+        beforeEach(() => {
+            dispatch = jest.fn();
+            getState = jest.fn(() => ({
+                settings: {
+                    step: 'ANYTHING',
+                    workDuration: 666,
+                    shortBreakDuration: 777,
+                    longBreakDuration: 888
+                }
+            }));
+        });
+
+        afterEach(() => {
+            dispatch.mockClear();
+            dispatch.mockRestore();
+
+            getState.mockClear();
+            getState.mockRestore();
+        });
+
+        test('with STEP_WORK as step value', () => {
+            require('./timer').updateStepAndTimer(STEP_WORK)(dispatch, getState);
+
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(getState).toHaveBeenCalledTimes(1);
+
+            expect(dispatch.mock.calls[ 0 ]).toEqual([ { type: STEP_UPDATE, payload: STEP_WORK } ]);
+            expect(dispatch.mock.calls[ 1 ]).toEqual([ { type: TIMER_UPDATE, payload: 666 } ]);
+        });
+
+        test('with STEP_BREAK_SHORT as step value', () => {
+            require('./timer').updateStepAndTimer(STEP_BREAK_SHORT)(dispatch, getState);
+
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(getState).toHaveBeenCalledTimes(1);
+
+            expect(dispatch.mock.calls[ 0 ]).toEqual([ { type: STEP_UPDATE, payload: STEP_BREAK_SHORT } ]);
+            expect(dispatch.mock.calls[ 1 ]).toEqual([ { type: TIMER_UPDATE, payload: 777 } ]);
+        });
+
+        test('with STEP_BREAK_LONG as step value', () => {
+            require('./timer').updateStepAndTimer(STEP_BREAK_LONG)(dispatch, getState);
+
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(getState).toHaveBeenCalledTimes(1);
+
+            expect(dispatch.mock.calls[ 0 ]).toEqual([ { type: STEP_UPDATE, payload: STEP_BREAK_LONG } ]);
+            expect(dispatch.mock.calls[ 1 ]).toEqual([ { type: TIMER_UPDATE, payload: 888 } ]);
+        });
+    });
+
+    test('#startTimer', () => {
         const dispatch = jest.fn();
 
-        startTimer()(dispatch);
+        require('./timer').startTimer()(dispatch);
 
         expect(dispatch).toHaveBeenCalledWith({ type: TIMER_START });
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
 
-    describe.skip('#processTimer', () => {
+    describe('#processTimer', () => {
 
         test('with TIMER_STATUS_ON', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { status: TIMER_STATUS_ON } });
+            const getState = jest.fn(() => ({ timer: { isRunning: true, time: 666 } }));
 
-            processTimer()(dispatch, getState).then(() => {
+            return require('./timer').processTimer()(dispatch, getState).then(() => {
                 expect(dispatch).toHaveBeenCalledTimes(2);
+                expect(getState).toHaveBeenCalledTimes(1);
+                expect(mockUpdateTitle).toHaveBeenCalledTimes(1);
+                expect(mockUpdateTitle).toHaveBeenCalledWith(666);
             });
         });
 
         test('with TIMER_STATUS_OFF', () => {
             const dispatch = jest.fn();
-            const getState = () => ({ timer: { status: TIMER_STATUS_OFF } });
+            const getState = jest.fn(() => ({ timer: { isRunning: false, time: 666 } }));
 
-            processTimer()(dispatch, getState).then(() => {
+            return require('./timer').processTimer()(dispatch, getState).then(() => {
                 expect(dispatch).toHaveBeenCalledTimes(1);
+                expect(getState).toHaveBeenCalledTimes(1);
+                expect(mockUpdateTitle).toHaveBeenCalledTimes(1);
+                expect(mockUpdateTitle).toHaveBeenCalledWith(); // should invoke it with no params
             });
         });
 
     });
 
-    describe.skip('#tickTimer', () => {
+    describe('#tickTimer', () => {
 
         test('with timer OFF', () => {
             const dispatch = jest.fn();
             const getState = () => ({ timer: { isRunning: false } });
 
-            tickTimer()(dispatch, getState);
+            require('./timer').tickTimer()(dispatch, getState);
 
             expect(dispatch).not.toHaveBeenCalled();
         });
@@ -134,7 +256,7 @@ describe('Timer Reducer', () => {
             const dispatch = jest.fn();
             const getState = () => ({ timer: { time: 10, isRunning: true } });
 
-            tickTimer()(dispatch, getState);
+            require('./timer').tickTimer()(dispatch, getState);
 
             expect(dispatch).toHaveBeenCalledWith({ type: TIMER_DECREASE });
             expect(dispatch).toHaveBeenCalledTimes(1);
@@ -144,7 +266,7 @@ describe('Timer Reducer', () => {
             const dispatch = jest.fn();
             const getState = () => ({ timer: { time: 0, isRunning: true, step: STEP_WORK } });
 
-            tickTimer()(dispatch, getState);
+            require('./timer').tickTimer()(dispatch, getState);
 
             expect(dispatch.mock.calls).toEqual([
                 [ { type: TIMER_DECREASE } ],

@@ -1,4 +1,4 @@
-/* global describe, test, expect, jest, beforeEach, afterEach */
+/* global require, describe, test, expect, jest, beforeEach, afterEach */
 
 import {
     LONG_BREAK_DURATION_UPDATE,
