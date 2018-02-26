@@ -12,19 +12,25 @@ import {
 
 const ga = (function (ga) {
 
+    let gaService;
+
     if (process.env.NODE_ENV === 'production') {
-        return ga;
+        gaService = ga;
+    } else if (process.env.NODE_ENV === 'test') {
+        gaService = function () {
+            // silent on tests
+        };
+    } else {
+        gaService = function () {
+            // empty function
+            console.log('[MOCK] GA EVENT:', arguments);
+        };
     }
 
-    if (process.env.NODE_ENV === 'test') {
-        return function () {
-        }; // silent on tests
-    }
+    gaService('create', 'UA-103153391-1', 'auto');
+    gaService('send', 'pageview');
 
-    return function () {
-        /* empty function */
-        console.log('[MOCK] GA EVENT:', arguments);
-    };
+    return gaService;
 
 }(global.ga));
 
