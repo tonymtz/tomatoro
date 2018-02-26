@@ -5,7 +5,7 @@ import {
     RESET_SETTINGS,
     SHORT_BREAK_DURATION_UPDATE,
     WORK_DURATION_UPDATE
-} from './constants';
+} from '../constants';
 
 const mockGetSettings = jest.fn(() => undefined);
 const mockSaveSettings = jest.fn();

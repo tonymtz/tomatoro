@@ -1,4 +1,4 @@
-import { TOMATORO_ADD } from './constants';
+import { TOMATORO_ADD } from '../constants';
 
 const initState = {
     tomatoros: 0

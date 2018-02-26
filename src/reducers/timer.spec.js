@@ -8,7 +8,7 @@ import {
     STEP_BREAK_SHORT,
     STEP_BREAK_LONG,
     TOMATORO_ADD, STEP_UPDATE, TIMER_UPDATE
-} from './constants';
+} from '../constants';
 
 const mockGetSettings = jest.fn(() => undefined);
 const mockSaveSettings = jest.fn();

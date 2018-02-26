@@ -4,10 +4,11 @@ import {
     SHORT_BREAK_DURATION_UPDATE,
     TOGGLE_MODAL,
     WORK_DURATION_UPDATE
-} from './constants';
+} from '../constants';
 
 import { getSettings, saveSettings, dropSettings } from '../lib/settings';
 import { resetTimer } from './timer';
+import { openSettingsPopup } from '../lib/ga';
 
 const initState = () => {
     return getSettings() || {
@@ -80,6 +81,7 @@ export default (state = initState(), action) => {
         case RESET_SETTINGS:
             return initState();
         case TOGGLE_MODAL:
+            if (!state.isModalOpen) openSettingsPopup(); // TODO - refactor this
             return { ...state, isModalOpen: !state.isModalOpen };
         default:
             return state;

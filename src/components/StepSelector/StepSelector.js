@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../reducers/settings';
 import { updateStepAndTimer } from '../../reducers/timer';
-import { STEP_WORK, STEP_BREAK_LONG, STEP_BREAK_SHORT } from '../../reducers/constants';
+import { STEP_WORK, STEP_BREAK_LONG, STEP_BREAK_SHORT } from '../../constants';
 import './style.css';
 import TomatoIcon from './TomatoIcon';
 import Modal from '../Modal/Modal';

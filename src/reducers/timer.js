@@ -7,13 +7,14 @@ import {
     TIMER_RESET,
     TIMER_START, TIMER_STOP,
     TIMER_UPDATE
-} from './constants';
+} from '../constants';
 
 import { addTomatoro } from './tomatoros';
 import { sleepASecond } from '../lib/clock';
 import { getSettings } from '../lib/settings';
 import { updateTitle } from '../lib/title';
 import { sendNotification } from '../lib/notification';
+import { longBreakCycleComplete, shortBreakCycleComplete, workCycleComplete } from '../lib/ga';
 
 const initState = (currentState = {}) => {
     const state = {
@@ -92,10 +93,20 @@ export const tickTimer = () => {
         dispatch(decreaseTimer());
 
         if (timer.time <= 0) {
+            // TODO - refactor this :/
             const currentStepIsWorking = timer.step === STEP_WORK;
+
             if (currentStepIsWorking) {
                 dispatch(addTomatoro());
+                workCycleComplete();
+            } else {
+                if (timer.step === STEP_BREAK_SHORT) {
+                    shortBreakCycleComplete();
+                } else {
+                    longBreakCycleComplete();
+                }
             }
+
             sendNotification(currentStepIsWorking);
             dispatch(resetTimer());
         }

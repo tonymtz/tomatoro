@@ -5,7 +5,7 @@ import { secondsToTimeFormat } from '../../lib/format';
 import './style.css';
 import PlayButton from './PlayButton';
 import RepeatButton from './RepeatButton';
-import { STEP_BREAK_LONG, STEP_BREAK_SHORT } from "../../reducers/constants";
+import { STEP_BREAK_LONG, STEP_BREAK_SHORT } from '../../constants';
 
 class TomatoTimer extends Component {
     getProgressPercentage() {
