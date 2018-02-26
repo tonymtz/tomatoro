@@ -21,7 +21,7 @@ export const sendNotification = (isStepWork) => {
 
     let options = {
         body: BODY,
-        icon: 'http://i.imgur.com/nkhPpdK.png'
+        icon: 'favicon/favicon-96x96.png'
     };
 
     let notification = new Notification(TITLE, options);
