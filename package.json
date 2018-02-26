@@ -25,5 +25,9 @@
     "test-coverage": "NODE_ENV=test react-scripts test --env=jsdom --coverage && ./node_modules/.bin/codecov",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://tomatoro.com"
+  "homepage": "https://tomatoro.com",
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
 }
