@@ -22,7 +22,7 @@
     "build-js": "react-scripts build",
     "build": "NODE_ENV=production npm-run-all build-css build-js",
     "test": "NODE_ENV=test react-scripts test --env=jsdom",
-    "test-coverage": "NODE_ENV=test react-scripts test --env=jsdom && ./node_modules/.bin/codecov",
+    "test-coverage": "NODE_ENV=test react-scripts test --env=jsdom --coverage && ./node_modules/.bin/codecov",
     "eject": "react-scripts eject"
   },
   "homepage": "https://tomatoro.com"
