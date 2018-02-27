@@ -2,9 +2,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Footer from './Footer';
+import RangeSlider from './RangeSlider';
 
 it('should render without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Footer/>, div);
+    ReactDOM.render(<RangeSlider/>, div);
 });
