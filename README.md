@@ -1,6 +1,6 @@
 # Tomatoro
 
-[![Build Status](https://travis-ci.org/tonymtz/tomatoro.svg?branch=master)](https://travis-ci.org/tonymtz/tomatoro)
+[![Codeship Status for tonymtz/tomatoro](https://app.codeship.com/projects/e33e1500-f333-0135-0806-42c9fc202b29/status?branch=master)](https://app.codeship.com/projects/272196)
 [![codecov](https://codecov.io/gh/tonymtz/tomatoro/branch/master/graph/badge.svg)](https://codecov.io/gh/tonymtz/tomatoro)
 
 Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
