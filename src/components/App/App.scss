@@ -5,14 +5,14 @@
 
 .app {
   .tomato.container {
-    padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
+    padding: $sectionVerticalPadding $verticalSpacing * 2.5 $sectionVerticalPadding / 2;
 
     @include big-screen {
-      padding: $sectionVerticalPadding * 2.5 0 $sectionVerticalPadding;
+      padding: $sectionVerticalPadding * 2.5 $verticalSpacing * 2.5 $sectionVerticalPadding;
     }
 
     @include mobile {
-      padding: $sectionVerticalPadding 0 $sectionVerticalPadding / 2;
+      padding: $sectionVerticalPadding $verticalSpacing * 2.5 $sectionVerticalPadding / 2;
 
       h1, h2 {
         text-align: center;
