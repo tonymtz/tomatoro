@@ -32,7 +32,7 @@ class Modal extends Component {
                 { this.props.children }
 
                 <div className="col-100 control">
-                    <button onClick={ () => this.props.onClick() }>Cerrar</button>
+                    <button onClick={ () => this.props.onClick() }>Close</button>
                 </div>
             </div>
         );
