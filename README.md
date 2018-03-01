@@ -1,8 +1,9 @@
 # Tomatoro
 
-[![Codeship Status for tonymtz/tomatoro](https://img.shields.io/codeship/e33e1500-f333-0135-0806-42c9fc202b29.svg)](https://app.codeship.com/projects/272196)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/a3cecfe1fc0840d89fd00aa3fee0e96e)](https://www.codacy.com/app/tonymtz/tomatoro?utm_source=github.com&utm_medium=referral&utm_content=tonymtz/tomatoro&utm_campaign=Badge_Coverage)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a3cecfe1fc0840d89fd00aa3fee0e96e)](https://www.codacy.com/app/tonymtz/tomatoro?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tonymtz/tomatoro&amp;utm_campaign=Badge_Grade)
+[![Codeship](https://img.shields.io/codeship/e33e1500-f333-0135-0806-42c9fc202b29.svg)](https://app.codeship.com/projects/272196)
+[![Codacy](https://img.shields.io/codacy/grade/a3cecfe1fc0840d89fd00aa3fee0e96e.svg)](https://www.codacy.com/app/tonymtz/tomatoro)
+[![Codacy](https://img.shields.io/codacy/coverage/a3cecfe1fc0840d89fd00aa3fee0e96e.svg)](https://www.codacy.com/app/tonymtz/tomatoro)
+[![David](https://img.shields.io/david/tonymtz/tomatoro.svg)](https://david-dm.org/tonymtz/tomatoro)
 
 Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
