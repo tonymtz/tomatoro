@@ -23,11 +23,23 @@ class Footer extends Component {
                             </li>
                             <li>
                                 <a href="http://softwaredevtools.com/retrospectives/" target="_blank"
-                                   rel="noopener noreferrer">Retrospectives</a>
+                                   rel="noopener noreferrer">Retrospectives for Confluence</a>
+                            </li>
+                            <li>
+                                <a href="http://softwaredevtools.com/retrospectives/jira" target="_blank"
+                                   rel="noopener noreferrer">Retrospectives for Jira</a>
                             </li>
                             <li>
                                 <a href="http://softwaredevtools.com/scrum-poker/" target="_blank"
                                    rel="noopener noreferrer">Scrum Poker</a>
+                            </li>
+                            <li>
+                                <a href="https://softwaredevtools.com/stand-bot/" target="_blank"
+                                   rel="noopener noreferrer">Standbot for Slack</a>
+                            </li>
+                            <li>
+                                <a href="https://softwaredevtools.com/freshdesk-trello-powerup/" target="_blank"
+                                   rel="noopener noreferrer">Freshdesk PowerUp</a>
                             </li>
                         </ul>
                     </div>
