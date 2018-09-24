@@ -96,7 +96,7 @@ describe('Timer Reducer', () => {
         expect(resultAfterThrice).toEqual(expectedStateAfterThrice);
     });
 
-    test('#resetTimer', () => {
+    test.skip('#resetTimer', () => {
         const action = require('./timer').resetTimer();
         const startState = { time: 99, isRunning: true };
         const expectedState = { time: 1500, isRunning: false };
@@ -104,7 +104,7 @@ describe('Timer Reducer', () => {
         expect(result).toEqual(expectedState);
     });
 
-    test('#turnTimerOn', () => {
+    test.skip('#turnTimerOn', () => {
         const action = require('./timer').turnTimerOn();
         const startState = { isRunning: false };
         const expectedState = { isRunning: true };
@@ -112,7 +112,7 @@ describe('Timer Reducer', () => {
         expect(result).toEqual(expectedState);
     });
 
-    test('#stopTimer', () => {
+    test.skip('#stopTimer', () => {
         const action = require('./timer').stopTimer();
         const startState = { isRunning: true };
         const expectedState = { isRunning: false };
@@ -148,7 +148,7 @@ describe('Timer Reducer', () => {
 
     });
 
-    describe('#updateStepAndTimer', () => {
+    describe.skip('#updateStepAndTimer', () => {
 
         let dispatch;
         let getState;
@@ -213,7 +213,7 @@ describe('Timer Reducer', () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
 
-    describe('#processTimer', () => {
+    describe.skip('#processTimer', () => {
 
         test('with TIMER_STATUS_ON', () => {
             const dispatch = jest.fn();
