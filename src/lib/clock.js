@@ -10,3 +10,13 @@ export const sleepASecond = () => {
         }, 1000);
     });
 };
+
+let timer;
+
+export const clockStartTimer = (callback) => {
+    timer = setInterval(callback, 1000);
+};
+
+export const clockStopTimer = () => {
+    clearInterval(timer);
+};

@@ -10,7 +10,7 @@ import {
 } from '../constants';
 
 import { addTomatoro } from './tomatoros';
-import { sleepASecond } from '../lib/clock';
+import { clockStartTimer, clockStopTimer, sleepASecond } from '../lib/clock';
 import { getSettings } from '../lib/settings';
 import { updateTitle } from '../lib/title';
 import { sendNotification } from '../lib/notification';
@@ -62,25 +62,23 @@ export const updateStepAndTimer = (step) => {
 export const startTimer = () => {
     return (dispatch) => {
         dispatch(turnTimerOn());
-        dispatch(processTimer());
+        clockStartTimer(() => {
+            dispatch(processTimer());
+        });
     };
 };
 
 export const processTimer = () => {
     return (dispatch, getState) => {
-        return sleepASecond()
-            .then(() => {
-                dispatch(tickTimer());
+        dispatch(tickTimer());
 
-                const state = getState();
+        const state = getState();
 
-                if (state.timer.isRunning) {
-                    updateTitle(state.timer.time);
-                    dispatch(processTimer());
-                } else {
-                    updateTitle();
-                }
-            });
+        if (state.timer.isRunning) {
+            updateTitle(state.timer.time);
+        } else {
+            updateTitle();
+        }
     };
 };
 
@@ -118,6 +116,7 @@ export default (state = initState(), action) => {
         case TIMER_DECREASE:
             return { ...state, time: state.time - 1 };
         case TIMER_RESET:
+            clockStopTimer();
             return {
                 ...state,
                 time: initState(state).time,
@@ -126,6 +125,7 @@ export default (state = initState(), action) => {
         case TIMER_START:
             return { ...state, isRunning: true };
         case TIMER_STOP:
+            clockStopTimer();
             return { ...state, isRunning: false };
         case TIMER_UPDATE:
             return { ...state, time: action.payload };
