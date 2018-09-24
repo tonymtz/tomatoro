@@ -10,7 +10,7 @@ import {
 } from '../constants';
 
 import { addTomatoro } from './tomatoros';
-import { clockStartTimer, clockStopTimer, sleepASecond } from '../lib/clock';
+import { clockStartTimer, clockStopTimer } from '../lib/clock';
 import { getSettings } from '../lib/settings';
 import { updateTitle } from '../lib/title';
 import { sendNotification } from '../lib/notification';
