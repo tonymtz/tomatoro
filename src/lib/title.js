@@ -8,7 +8,7 @@ export const updateTitle = (seconds) => {
     let title;
 
     if (seconds) {
-        title = `(${secondsToTimeFormat(seconds)}) - ${APP_TITLE}`;
+        title = `(${ secondsToTimeFormat(seconds) }) - ${ APP_TITLE }`;
     } else {
         title = APP_TITLE;
     }

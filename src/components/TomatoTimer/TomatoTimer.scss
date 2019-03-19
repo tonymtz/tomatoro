@@ -1,0 +1,101 @@
+@import "../../styles/colors";
+
+.tomato-timer {
+  //background: url('/svg/tomato.svg') no-repeat top center;
+  //background-size: contain;
+  //color: $white;
+  //height: 400px;
+  //margin: 0 auto;
+  //max-width: 400px;
+  //padding-top: 59px;
+
+  //width: 80%;
+
+  .widget-wrapper {
+    color: $white;
+    position: relative;
+
+    .svg {
+      background: url('/svg/tomato.svg') no-repeat top center;
+      background-size: contain;
+      margin: 0 auto;
+      min-width: 420px;
+      max-height: 400px;
+      position: relative;
+
+      circle {
+        stroke-dasharray: 945;
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 0.25s linear;
+        stroke: $white;
+        stroke-width: 0.25em;
+      }
+
+      .bar {
+        stroke: $contrast-color;
+        transform: rotate(-90deg);
+        stroke-width: 0.45em;
+      }
+    }
+
+    .timer {
+      display: block;
+      font-family: 'Dosis', sans-serif;
+      font-size: 100px;
+      font-weight: 800;
+      position: absolute;
+      text-align: center;
+      top: 130px;
+      width: 100%;
+    }
+
+  }
+
+  .control {
+    position: absolute;
+    text-align: center;
+    top: 260px;
+    width: 100%;
+
+    button {
+      background: transparent;
+      border: none;
+      padding: 1.5em 1em;
+      vertical-align: middle;
+    }
+  }
+
+  .play-button {
+    .play--state {
+      ellipse {
+        fill: $white;
+      }
+
+      path {
+        fill: $tomato;
+      }
+    }
+
+    .pause--state {
+      ellipse {
+        fill: $white;
+      }
+
+      rect {
+        fill: $tomato;
+      }
+    }
+  }
+
+  .repeat-button {
+    .circle {
+      fill: transparent;
+      stroke: $white;
+      stroke-width: 2px;
+    }
+
+    .icon {
+      fill: $white;
+    }
+  }
+}

@@ -1,36 +1,47 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { startTimer, resetTimer, stopTimer } from '../../reducers/timer';
-import { secondsToTimeFormat } from '../../lib/format';
-import './style.css';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
+import { emptyFn } from 'contants';
+import TomatoTimerController from './TomatoTimerController';
+import { secondsToTimeFormat } from 'lib/format';
+
 import PlayButton from './PlayButton';
 import RepeatButton from './RepeatButton';
-import { STEP_BREAK_LONG, STEP_BREAK_SHORT } from '../../constants';
+import PauseButton from './PauseButton';
 
-class TomatoTimer extends Component {
-    getProgressPercentage() {
-        let totalTime;
+import './TomatoTimer.scss';
 
-        if (this.props.step === STEP_BREAK_LONG) {
-            totalTime = this.props.settings.longBreakDuration;
-        } else if (this.props.step === STEP_BREAK_SHORT) {
-            totalTime = this.props.settings.shortBreakDuration;
-        } else {
-            totalTime = this.props.settings.workDuration;
-        }
-
-        let timeLeft = this.props.time;
-        return (timeLeft * 100) / totalTime;
+export default class TomatoTimer extends PureComponent {
+    static propTypes = {
+        seconds: PropTypes.number.isRequired,
+        onStop: PropTypes.func,
+        onStart: PropTypes.func,
+        onTick: PropTypes.func,
+        onComplete: PropTypes.func
     };
 
-    getPercentage(value) {
-        let radius = 150;
-        let circumference = Math.PI * (radius * 2);
+    static defaultProps = {
+        onTick: emptyFn,
+        onComplete: emptyFn
+    };
 
-        return (value / 100) * circumference;
+    controller = TomatoTimerController(this);
+
+    state = {
+        count: this.props.seconds,
+        isRunning: false
+    };
+
+    componentWillUnmount() {
+        this.controller.stop();
     }
 
-    getValue() {
+    getProgressPercentage = () => {
+        let timeLeft = this.state.count;
+        return (timeLeft * 100) / this.props.seconds;
+    };
+
+    getValue = () => {
         let value = this.getProgressPercentage();
 
         if (value < 0) {
@@ -42,45 +53,38 @@ class TomatoTimer extends Component {
         }
 
         return value;
-    }
+    };
 
     render() {
-        let value = this.getValue();
-        let pct = { 'strokeDashoffset': this.getPercentage(value) };
+        const { count, isRunning } = this.state;
+        const value = this.getValue();
+        const pct = { 'strokeDashoffset': getPercentage(value) };
 
         return (
-            <div className="tomato-timer text-center" data-pct="100">
-                <svg className="svg" viewBox="0 0 310 310" version="1.1">
-                    <circle r="150" cx="50%" cy="50%" fill="transparent"></circle>
-                    <circle className="bar" style={ pct || 40 } r="150" cx="-50%" cy="50%" fill="transparent"></circle>
-                </svg>
+            <div className="tomato-timer">
+                <div className="widget-wrapper">
+                    <svg className="svg" viewBox="0 0 310 310">
+                        <circle r="120" cx="50%" cy="58%" fill="transparent"/>
+                        <circle className="bar" style={ pct || 40 } r="120" cx="-58%" cy="50%" fill="transparent"/>
+                    </svg>
+                    <span className="timer">{ secondsToTimeFormat(count) }</span>
 
-                <div className="timer">
-                    { secondsToTimeFormat(this.props.time) }
-                </div>
+                    <div className="control">
+                        { isRunning ?
+                            <PauseButton onClick={ this.controller.stop }/> :
+                            <PlayButton onClick={ this.controller.start }/> }
 
-                <div className="control">
-                    <PlayButton
-                        onPause={ () => this.props.stopTimer() }
-                        onStart={ () => this.props.startTimer() }
-                        isRunning={ this.props.isRunning }
-                    />
-
-                    <RepeatButton
-                        onClick={ () => this.props.resetTimer() }
-                    />
+                        <RepeatButton onClick={ this.controller.reset }/>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default connect(
-    (state) => ({
-        time: state.timer.time,
-        isRunning: state.timer.isRunning,
-        step: state.timer.step,
-        settings: state.settings
-    }),
-    { startTimer, resetTimer, stopTimer }
-)(TomatoTimer);
+function getPercentage(value) {
+    const radius = 150;
+    const circumference = Math.PI * (radius * 2);
+
+    return (value / 100) * circumference;
+}

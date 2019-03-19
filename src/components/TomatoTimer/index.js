@@ -1,3 +1,5 @@
 import TomatoTimer from './TomatoTimer';
 
-export default TomatoTimer;
+export {
+    TomatoTimer as default
+};

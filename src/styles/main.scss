@@ -1,0 +1,24 @@
+$sidebar-width: 80px;
+
+html,
+body,
+#root,
+.full-height {
+  height: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  min-width: 480px;
+}
+
+.sidebar {
+  display: inline-block;
+  height: 100%;
+  width: $sidebar-width;
+}
+
+.content {
+  display: inline-block;
+  width: calc(100% - #{$sidebar-width});
+}

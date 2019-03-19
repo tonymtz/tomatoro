@@ -1,3 +1,5 @@
 import StepSelector from './StepSelector';
 
-export default StepSelector;
+export {
+    StepSelector as default
+};

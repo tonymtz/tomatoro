@@ -8,7 +8,7 @@ import {
     EVENT_CATEGORY_LONG_BREAK_CYCLE,
     EVENT_LABEL_COMPLETE,
     EVENT_VALUE_COMPLETE, GENERIC_CATEGORY, GENERIC_ACTION, GENERIC_LABEL
-} from '../constants';
+} from 'constants';
 
 const ga = (function (ga) {
 
