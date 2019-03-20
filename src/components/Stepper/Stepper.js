@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { TiMediaRecord, TiMediaRecordOutline } from 'react-icons/lib/ti';
 
-export default class Stepper extends Component {
-    static propTypes = {};
+export default class Stepper extends PureComponent {
+    static propTypes = {
+        steps: PropTypes.node.isRequired
+    };
 
     state = {
-        steps: this.props.steps,
         currentStep: 0
     };
 

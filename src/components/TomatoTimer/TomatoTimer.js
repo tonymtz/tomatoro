@@ -29,11 +29,12 @@ export default class TomatoTimer extends PureComponent {
 
     state = {
         count: this.props.seconds,
+        isStopped: true,
         isRunning: false
     };
 
     componentWillUnmount() {
-        this.controller.stop();
+        this.controller.pause();
     }
 
     getProgressPercentage = () => {
@@ -55,6 +56,12 @@ export default class TomatoTimer extends PureComponent {
         return value;
     };
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.isStopped || prevProps.seconds !== this.props.seconds) {
+            this.setState({ count: this.props.seconds });
+        }
+    }
+
     render() {
         const { count, isRunning } = this.state;
         const value = this.getValue();
@@ -71,7 +78,7 @@ export default class TomatoTimer extends PureComponent {
 
                     <div className="control">
                         { isRunning ?
-                            <PauseButton onClick={ this.controller.stop }/> :
+                            <PauseButton onClick={ this.controller.pause }/> :
                             <PlayButton onClick={ this.controller.start }/> }
 
                         <RepeatButton onClick={ this.controller.reset }/>

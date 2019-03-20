@@ -5,7 +5,7 @@ export default function TomatoTimerController(component) {
 
     return {
         start,
-        stop,
+        pause,
         reset,
         _tick
     };
@@ -15,13 +15,16 @@ export default function TomatoTimerController(component) {
             return;
         }
         intervalId = setInterval(_tick, SECOND);
-        component.setState({ isRunning: true }, component.props.onStart);
+        component.setState({
+            isRunning: true,
+            isStopped: false
+        }, component.props.onStart);
     }
 
-    function stop() {
+    function pause() {
         clearInterval(intervalId);
         intervalId = null;
-        component.setState({ isRunning: false });
+        component.setState({ isRunning: false }, component.props.onStop);
     }
 
     function reset() {
@@ -30,6 +33,7 @@ export default function TomatoTimerController(component) {
         component.setState({
             count: component.props.seconds,
             isRunning: false,
+            isStopped: true
         }, component.props.onStop);
     }
 

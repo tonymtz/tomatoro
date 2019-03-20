@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Prompt } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import { sendNotification } from 'lib/notifications';
 
 import { withAppContext } from 'withAppContext';
 
-class Home extends Component {
+class Home extends PureComponent {
     static propTypes = {
         appState: PropTypes.object.isRequired,
         userPrefs: PropTypes.object.isRequired,

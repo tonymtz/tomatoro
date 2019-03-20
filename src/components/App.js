@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { requestPermission } from 'lib/notifications';
@@ -13,7 +13,7 @@ import Register from 'routes/Register';
 import Login from 'routes/Login';
 import { AppContextProvider } from 'withAppContext';
 
-export default class App extends Component {
+export default class App extends PureComponent {
     controller = AppController(this);
 
     state = {

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withAppContext } from 'withAppContext';
 import RangeSlider from 'components/RangeSlider';
 import { secondsToTimeFormat } from 'lib/format';
 import PropTypes from 'prop-types';
 
-class Settings extends Component {
+class Settings extends PureComponent {
     static propTypes = {
         appState: PropTypes.object.isRequired,
         userPrefs: PropTypes.object.isRequired,
