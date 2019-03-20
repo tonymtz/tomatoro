@@ -25,7 +25,7 @@ class Contact extends Component {
                         </p>
 
                         <p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScvGhHBkJE_3S05NtU10C7nt65rKNXU-UyBB393CYOAlR_gBQ/viewform"
+                            <a href="https://goo.gl/forms/T9BxmGcn38dlZz2w1"
                                target="_blank"
                                rel="noopener noreferrer">Leave your feedback</a>
                         </p>
