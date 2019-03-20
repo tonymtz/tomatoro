@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './StepSelector.scss';
+
 const StepSelector = ({ userPrefs, currentStep, updateCurrentStep, isUpdatePermitted }) => {
     return (
-        <div>
+        <div className="step-selector">
             <h3>Set the time and hit play:</h3>
 
             <button

@@ -1,0 +1,8 @@
+@import '../../styles/colors';
+
+.step-selector {
+  button[disabled] {
+    background: $tomato;
+    color: $white;
+  }
+}
