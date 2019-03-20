@@ -33,53 +33,71 @@ class Settings extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Settings</h1>
-
-                <div>
-                    <label htmlFor="pomodoroDuration">Pomodoro Duration</label>
-                    <RangeSlider
-                        name="pomodoroDuration"
-                        value={ this.state.workLength }
-                        min={ 5 * 60 }
-                        max={ 45 * 60 }
-                        onChange={ (value) => this.updateKey('workLength', value) }
-                        showValueLabel={ true }
-                        formatValue={ secondsToTimeFormat }
-                    />
+            <div className="container">
+                <div className="row">
+                    <div className="twelve column">
+                        <h1>Settings</h1>
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="shortBreakDuration">Short Break Duration</label>
-                    <RangeSlider
-                        name="shortBreakDuration"
-                        value={ this.state.shortBreakLength }
-                        min={ 2 * 60 / 2 }
-                        max={ 10 * 60 }
-                        onChange={ (value) => this.updateKey('shortBreakLength', value) }
-                        showValueLabel={ true }
-                        formatValue={ secondsToTimeFormat }
-                    />
+                <hr/>
+
+                <div className="row">
+                    <div className="twelve column">
+                        <label htmlFor="pomodoroDuration">Pomodoro Duration</label>
+                        <RangeSlider
+                            name="pomodoroDuration"
+                            value={ this.state.workLength }
+                            min={ 5 * 60 }
+                            max={ 45 * 60 }
+                            onChange={ (value) => this.updateKey('workLength', value) }
+                            showValueLabel={ true }
+                            formatValue={ secondsToTimeFormat }
+                        />
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="longBreakDuration">Long Break Duration</label>
-                    <RangeSlider
-                        name="longBreakDuration"
-                        value={ this.state.longBreakLength }
-                        min={ 5 * 60 }
-                        max={ 25 * 60 }
-                        onChange={ (value) => this.updateKey('longBreakLength', value) }
-                        showValueLabel={ true }
-                        formatValue={ secondsToTimeFormat }
-                    />
+                <div className="row">
+                    <div className="twelve column">
+                        <label htmlFor="shortBreakDuration">Short Break Duration</label>
+                        <RangeSlider
+                            name="shortBreakDuration"
+                            value={ this.state.shortBreakLength }
+                            min={ 2 * 60 / 2 }
+                            max={ 10 * 60 }
+                            onChange={ (value) => this.updateKey('shortBreakLength', value) }
+                            showValueLabel={ true }
+                            formatValue={ secondsToTimeFormat }
+                        />
+                    </div>
                 </div>
 
-                <button
-                    disabled={ !this.state.isDirty }
-                    onClick={ this.saveState }>
-                    Save Changes
-                </button>
+                <div className="row">
+                    <div className="twelve column">
+                        <label htmlFor="longBreakDuration">Long Break Duration</label>
+                        <RangeSlider
+                            name="longBreakDuration"
+                            value={ this.state.longBreakLength }
+                            min={ 5 * 60 }
+                            max={ 25 * 60 }
+                            onChange={ (value) => this.updateKey('longBreakLength', value) }
+                            showValueLabel={ true }
+                            formatValue={ secondsToTimeFormat }
+                        />
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div className="row">
+                    <div className="twelve column">
+                        <button
+                            disabled={ !this.state.isDirty }
+                            onClick={ this.saveState }>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     }

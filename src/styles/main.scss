@@ -12,13 +12,29 @@ body {
   min-width: 480px;
 }
 
+h1,
+h2 {
+  font-family: Dosis, sans-serif;
+}
+
+h1 {
+  font-size: 46px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
 .sidebar {
   display: inline-block;
   height: 100%;
+  position: fixed;
   width: $sidebar-width;
 }
 
 .content {
   display: inline-block;
+  padding-top: 2em;
+  padding-left: $sidebar-width;
   width: calc(100% - #{$sidebar-width});
 }

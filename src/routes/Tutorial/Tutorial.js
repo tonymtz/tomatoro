@@ -9,15 +9,6 @@ export default () => (
                 <div className="row">
                     <div className="twelve column">
                         <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/WqBuh4HWu8U"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen/>
-                    </div>
-                    <div className="twelve column">
-                        <iframe
                             title="tutorial"
                             width="560"
                             height="315"

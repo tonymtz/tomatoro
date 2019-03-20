@@ -43,27 +43,35 @@ class Home extends Component {
         const totalSecondsForCurrentStep = this.props.userPrefs[ this.props.appState.currentStep ];
 
         return (
-            <Fragment>
-                <TomatoTimer
-                    seconds={ totalSecondsForCurrentStep }
-                    onStop={ this.onStop }
-                    onStart={ this.onStart }
-                    onComplete={ this.onComplete }
-                    onTick={ this.onTick }
-                />
+            <div className="container">
+                <div className="row">
+                    <div className="twelve column">
+                        <TomatoTimer
+                            seconds={ totalSecondsForCurrentStep }
+                            onStop={ this.onStop }
+                            onStart={ this.onStart }
+                            onComplete={ this.onComplete }
+                            onTick={ this.onTick }
+                        />
+                    </div>
+                </div>
 
-                <StepSelector
-                    currentStep={ this.props.appState.currentStep }
-                    userPrefs={ this.props.userPrefs }
-                    updateCurrentStep={ this.props.updateCurrentStep }
-                    isUpdatePermitted={ !this.state.isBlocking }
-                />
+                <div className="row">
+                    <div className="twelve column">
+                        <StepSelector
+                            currentStep={ this.props.appState.currentStep }
+                            userPrefs={ this.props.userPrefs }
+                            updateCurrentStep={ this.props.updateCurrentStep }
+                            isUpdatePermitted={ !this.state.isBlocking }
+                        />
+                    </div>
+                </div>
 
                 <Prompt
                     when={ this.state.isBlocking }
                     message="Are you sure? you will interrupt your current session."
                 />
-            </Fragment>
+            </div>
         );
     }
 }

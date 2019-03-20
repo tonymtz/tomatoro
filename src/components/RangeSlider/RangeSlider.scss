@@ -1,0 +1,91 @@
+@import "../../styles/colors";
+
+.range-slider {
+  $range-handle-color: $tomato !default;
+  $range-handle-color-hover: $gray !default;
+  $range-handle-size: 1.5em !default;
+
+  $range-track-color: $gray-light !default;
+  $range-track-height: 0.75em !default;
+
+  $rangeLabelBackground: $white !default;
+  $rangeLabelTextColor: $tomato !default;
+  $rangeLabelWidth: 4em !default;
+
+  width: 100%;
+
+  .range {
+    -webkit-appearance: none;
+    height: $range-track-height;
+    border-radius: 5px;
+    background: $range-track-color;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: calc(100% - (#{$rangeLabelWidth + 2em}));
+
+    // Range Handle
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: $range-handle-size;
+      height: $range-handle-size;
+      border: none;
+      border-radius: 50%;
+      background: $range-handle-color;
+      cursor: pointer;
+      transition: background .15s ease-in-out;
+
+      &:hover {
+        background: $range-handle-color-hover;
+      }
+    }
+
+    &:active::-webkit-slider-thumb {
+      background: $range-handle-color-hover;
+    }
+
+    &::-moz-range-thumb {
+      width: $range-handle-size;
+      height: $range-handle-size;
+      border: 0;
+      border-radius: 50%;
+      background: $range-handle-color;
+      cursor: pointer;
+      transition: background .15s ease-in-out;
+
+      &:hover {
+        background: $range-handle-color-hover;
+      }
+    }
+
+    &:active::-moz-range-thumb {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  .value {
+    display: inline-block;
+    position: relative;
+    width: $rangeLabelWidth;
+    color: $rangeLabelBackground;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background: $rangeLabelTextColor;
+    padding: 5px 10px;
+    margin-left: 8px;
+
+    //&:after {
+    //  position: absolute;
+    //  top: 8px;
+    //  left: -7px;
+    //  width: 0;
+    //  height: 0;
+    //  border-top: 7px solid transparent;
+    //  border-right: 7px solid $rangeLabelTextColor;
+    //  border-bottom: 7px solid transparent;
+    //  content: '';
+    //}
+  }
+}

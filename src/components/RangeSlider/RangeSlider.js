@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './RangeSlider.scss';
+
 const RangeSlider = ({ value, min, max, step, onChange, formatValue }) => {
     return (
         <div className="range-slider">
             <input
+                className='range with-label'
                 type="range"
                 value={ value }
                 onChange={ evt => onChange(evt.target.value) }
