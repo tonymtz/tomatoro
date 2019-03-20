@@ -16,9 +16,11 @@ Already there:
 
 To be added (in no particular order):
 
+- Sounds
 - Themes
 - Statistics
 - Cloud backup
+- Stand alone client
 
 ## Development
 
