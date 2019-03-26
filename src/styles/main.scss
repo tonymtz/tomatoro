@@ -1,3 +1,5 @@
+@import "colors";
+
 $sidebar-width: 80px;
 
 html,
@@ -18,11 +20,18 @@ h2 {
 }
 
 h1 {
+  color: $dark;
   font-size: 46px;
 }
 
 h2 {
   font-size: 28px;
+}
+
+h3 {
+  color: $gray;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .sidebar {
@@ -37,4 +46,8 @@ h2 {
   padding-top: 2em;
   padding-left: $sidebar-width;
   width: calc(100% - #{$sidebar-width});
+}
+
+.tac {
+  text-align: center;
 }

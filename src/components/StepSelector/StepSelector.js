@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TomatoIcon from '../TomatoIcon';
+
 import './StepSelector.scss';
 
 const StepSelector = ({ userPrefs, currentStep, updateCurrentStep, isUpdatePermitted }) => {
@@ -11,16 +13,19 @@ const StepSelector = ({ userPrefs, currentStep, updateCurrentStep, isUpdatePermi
             <button
                 disabled={ currentStep === 'workLength' }
                 onClick={ () => onUpdateCurrentStep('workLength') }>
+                <TomatoIcon/>
                 One Tomatoro - { userPrefs.workLength / 60 } min
             </button>
             <button
                 disabled={ currentStep === 'shortBreakLength' }
                 onClick={ () => onUpdateCurrentStep('shortBreakLength') }>
+                <TomatoIcon/>
                 Short Break - { userPrefs.shortBreakLength / 60 } min
             </button>
             <button
                 disabled={ currentStep === 'longBreakLength' }
                 onClick={ () => onUpdateCurrentStep('longBreakLength') }>
+                <TomatoIcon/>
                 Long Break - { userPrefs.longBreakLength / 60 } min
             </button>
         </div>

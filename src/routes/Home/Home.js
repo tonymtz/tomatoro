@@ -58,6 +58,9 @@ class Home extends PureComponent {
 
                 <div className="row">
                     <div className="twelve column">
+                        <h1 className="tac">Take your time. Get things done</h1>
+                    </div>
+                    <div className="twelve column">
                         <StepSelector
                             currentStep={ this.props.appState.currentStep }
                             userPrefs={ this.props.userPrefs }

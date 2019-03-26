@@ -1,16 +1,6 @@
 @import "../../styles/colors";
 
 .tomato-timer {
-  //background: url('/svg/tomato.svg') no-repeat top center;
-  //background-size: contain;
-  //color: $white;
-  //height: 400px;
-  //margin: 0 auto;
-  //max-width: 400px;
-  //padding-top: 59px;
-
-  //width: 80%;
-
   .widget-wrapper {
     color: $white;
     position: relative;
@@ -32,7 +22,7 @@
       }
 
       .bar {
-        stroke: $contrast-color;
+        stroke: $yellow;
         transform: rotate(-90deg);
         stroke-width: 0.45em;
       }
