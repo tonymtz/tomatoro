@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import { expect } from 'chai';
 
-import { emptyFn } from 'contants';
+import { emptyFn } from 'appConstants';
 import { getDummyComponent } from 'testUtils';
 
 import TomatoTimerController from './TomatoTimerController';

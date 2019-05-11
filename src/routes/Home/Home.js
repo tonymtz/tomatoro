@@ -13,7 +13,8 @@ class Home extends PureComponent {
     static propTypes = {
         appState: PropTypes.object.isRequired,
         userPrefs: PropTypes.object.isRequired,
-        updateCurrentStep: PropTypes.func.isRequired
+        updateCurrentStep: PropTypes.func.isRequired,
+        updateTomatorosCount: PropTypes.func.isRequired
     };
 
     state = {
@@ -31,8 +32,15 @@ class Home extends PureComponent {
 
     onComplete = () => {
         this.setState({ isBlocking: false });
+
+        if (this.props.appState.currentStep === 'workLength') {
+            this.props.updateTomatorosCount(this.props.appState.tomatorosCount + 1);
+            sendNotification(true);
+        } else {
+            sendNotification();
+        }
+
         updateTitle();
-        sendNotification(true);
     };
 
     onTick = ({ count }) => {
@@ -41,6 +49,7 @@ class Home extends PureComponent {
 
     render() {
         const totalSecondsForCurrentStep = this.props.userPrefs[ this.props.appState.currentStep ];
+        const tomatorosCount = this.props.appState.tomatorosCount;
 
         return (
             <div className="container">
@@ -59,6 +68,9 @@ class Home extends PureComponent {
                 <div className="row">
                     <div className="twelve column">
                         <h1 className="tac">Take your time. Get things done</h1>
+                    </div>
+                    <div className="twelve column">
+                        <h2>My Tomatoros: { tomatorosCount }</h2>
                     </div>
                     <div className="twelve column">
                         <StepSelector

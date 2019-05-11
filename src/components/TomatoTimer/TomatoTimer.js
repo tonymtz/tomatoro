@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { emptyFn } from 'contants';
+import { emptyFn } from 'appConstants';
 import TomatoTimerController from './TomatoTimerController';
 import { secondsToTimeFormat } from 'lib/format';
 

@@ -5,31 +5,31 @@ import TomatoIcon from '../TomatoIcon';
 
 import './StepSelector.scss';
 
+const buttons = [
+    { key: 'workLength', label: 'One Tomatoro' },
+    { key: 'shortBreakLength', label: 'Short Break' },
+    { key: 'longBreakLength', label: 'Long Break' }
+];
+
 const StepSelector = ({ userPrefs, currentStep, updateCurrentStep, isUpdatePermitted }) => {
     return (
         <div className="step-selector">
             <h3>Set the time and hit play:</h3>
-
-            <button
-                disabled={ currentStep === 'workLength' }
-                onClick={ () => onUpdateCurrentStep('workLength') }>
-                <TomatoIcon/>
-                One Tomatoro - { userPrefs.workLength / 60 } min
-            </button>
-            <button
-                disabled={ currentStep === 'shortBreakLength' }
-                onClick={ () => onUpdateCurrentStep('shortBreakLength') }>
-                <TomatoIcon/>
-                Short Break - { userPrefs.shortBreakLength / 60 } min
-            </button>
-            <button
-                disabled={ currentStep === 'longBreakLength' }
-                onClick={ () => onUpdateCurrentStep('longBreakLength') }>
-                <TomatoIcon/>
-                Long Break - { userPrefs.longBreakLength / 60 } min
-            </button>
+            { buttons.map(({ key, label }) => renderButton(key, label)) }
         </div>
     );
+
+    function renderButton(key, label) {
+        return (
+            <button
+                key={ key }
+                disabled={ currentStep === key }
+                onClick={ () => onUpdateCurrentStep(key) }>
+                <TomatoIcon/>
+                { label } - { userPrefs[ key ] / 60 } min
+            </button>
+        );
+    }
 
     function onUpdateCurrentStep(step) {
         if (isUpdatePermitted) {

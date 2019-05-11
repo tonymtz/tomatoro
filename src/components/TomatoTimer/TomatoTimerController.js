@@ -1,4 +1,4 @@
-import { SECOND } from 'contants';
+import { SECOND } from 'appConstants';
 
 export default function TomatoTimerController(component) {
     let intervalId;

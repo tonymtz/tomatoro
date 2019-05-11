@@ -1,4 +1,4 @@
-import { emptyFn } from 'contants';
+import { emptyFn } from 'appConstants';
 
 export function getDummyComponent(props) {
     return {

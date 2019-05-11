@@ -36,6 +36,7 @@ export default class App extends PureComponent {
         const appContext = {
             ...this.state,
             updateCurrentStep: this.controller.updateCurrentStep,
+            updateTomatorosCount: this.controller.updateTomatorosCount,
             updateUserPrefs: this.controller.updateUserPrefs
         };
 

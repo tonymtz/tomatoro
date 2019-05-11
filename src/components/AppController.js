@@ -7,7 +7,8 @@ const INITIAL_STATE = {
         longBreakLength: 60 * 15
     },
     appState: {
-        currentStep: 'workLength'
+        currentStep: 'workLength',
+        tomatorosCount: 0
     }
 };
 
@@ -15,6 +16,7 @@ export default function AppController(component) {
     return {
         getDefaultState: () => INITIAL_STATE,
         updateCurrentStep,
+        updateTomatorosCount,
         updateUserPrefs,
         loadStateFromLocalStorage,
         saveStateToLocalStorage
@@ -23,6 +25,12 @@ export default function AppController(component) {
     function updateCurrentStep(currentStep) {
         component.setState({
             appState: { ...component.state.appState, currentStep }
+        });
+    }
+
+    function updateTomatorosCount(tomatorosCount) {
+        component.setState({
+            appState: { ...component.state.appState, tomatorosCount }
         });
     }
 
@@ -43,7 +51,15 @@ export default function AppController(component) {
     function loadStateFromLocalStorage() {
         const stringifiedState = global.localStorage.getItem(STORAGE_VAULT);
         const parsedState = JSON.parse(stringifiedState);
-        component.setState({ ...parsedState });
+
+        if (parsedState) {
+            component.setState({
+                userPrefs: {
+                    ...component.state.userPrefs,
+                    ...parsedState.userPrefs
+                }
+            });
+        }
     }
 
     function saveStateToLocalStorage() {
