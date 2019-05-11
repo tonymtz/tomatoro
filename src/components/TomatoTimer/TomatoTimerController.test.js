@@ -9,7 +9,7 @@ import TomatoTimerController from './TomatoTimerController';
 describe('<TomatoTimerController/>', () => {
     it('should return an object', () => {
         const subject = TomatoTimerController();
-        expect(subject).to.be.an('object').that.has.all.keys('start', 'stop', 'reset', '_tick');
+        expect(subject).to.be.an('object').that.has.all.keys('start', 'pause', 'reset', '_tick');
     });
 
     describe('', () => {
@@ -47,10 +47,10 @@ describe('<TomatoTimerController/>', () => {
             });
         });
 
-        it('#stop should call component.setState()', () => {
+        it('#pause should call component.setState()', () => {
             const setStateSpy = sinon.spy(dummyComponent, 'setState');
 
-            subject.stop();
+            subject.pause();
 
             expect(setStateSpy.calledWith({ isRunning: false })).to.equal(true);
         });

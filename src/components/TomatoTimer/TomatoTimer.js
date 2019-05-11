@@ -21,15 +21,16 @@ export default class TomatoTimer extends PureComponent {
     };
 
     static defaultProps = {
+        onStop: emptyFn,
+        onStart: emptyFn,
         onTick: emptyFn,
-        onComplete: emptyFn
+        onComplete: emptyFn,
     };
 
     controller = TomatoTimerController(this);
 
     state = {
         count: this.props.seconds,
-        isStopped: true,
         isRunning: false
     };
 
@@ -57,7 +58,7 @@ export default class TomatoTimer extends PureComponent {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.state.isStopped || prevProps.seconds !== this.props.seconds) {
+        if (!this.state.isRunning && prevProps.seconds !== this.props.seconds) {
             this.setState({ count: this.props.seconds });
         }
     }

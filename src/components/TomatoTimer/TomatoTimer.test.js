@@ -24,11 +24,11 @@ describe('<TomatoTimer/>', () => {
 
     it('#componentWillUnmount', () => {
         const instance = wrapper.instance();
-        const stopSpy = sinon.spy(instance.controller, 'stop');
+        const pauseSpy = sinon.spy(instance.controller, 'pause');
 
         instance.componentWillUnmount();
 
-        expect(stopSpy.calledOnce).to.equal(true);
+        expect(pauseSpy.calledOnce).to.equal(true);
     });
 
     describe('render', () => {
