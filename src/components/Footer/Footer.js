@@ -84,7 +84,7 @@ class Footer extends Component {
 
                 <div className="container">
                     <p className="copy">
-                        ©2017 Tomatoro. All Rights Reserved —&nbsp;
+                        ©2017-2021 Tomatoro. All Rights Reserved —&nbsp;
                         <a target="_blank" rel="noopener noreferrer" href="/privacy">Terms and Conditions</a>
                     </p>
                 </div>
