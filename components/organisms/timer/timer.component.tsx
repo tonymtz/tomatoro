@@ -1,48 +1,39 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 
 import { Button } from '~/components/atoms/button'
-import { useTimerHooks } from '~/components/organisms/timer/timer.hooks'
+import { useTimerContext } from '~/contexts/timer.context'
 
 import { Container, Controls, Display } from './timer.styles'
 import { formatTime } from './timer.utils'
 
-interface Props {
-  initialTime?: number;
-}
-
-export const Timer: FC<Props> = ({ initialTime }) => {
-  const [isRunning, setIsRunning] = useState<boolean>(false)
-  const [isStarted, setIsStarted] = useState<boolean>(false)
-  const { time, onReset, onStart, onStop } = useTimerHooks(initialTime)
+export const Timer: FC = () => {
+  const { state, startTimer, stopTimer, resetTimer } = useTimerContext()
 
   const onToggleClick = () => {
-    if (!isStarted) {
-      setIsStarted(true)
+    if (!state.isStarted) {
+      startTimer()
     }
-    if (isRunning) {
-      onStop()
+    if (state.isRunning) {
+      stopTimer()
     } else {
-      onStart()
+      startTimer()
     }
-    setIsRunning(!isRunning)
   }
 
   const onStopClick = () => {
-    onReset()
-    setIsRunning(false)
-    setIsStarted(false)
+    resetTimer()
   }
 
   return (
     <Container>
-      <Display>{ formatTime(time) }</Display>
+      <Display>{ formatTime(state.time) }</Display>
       <Controls>
-        <Button onClick={ onStopClick } disabled={!isStarted}>Done</Button>
+        <Button onClick={ onStopClick } disabled={ !state.isStarted }>Done</Button>
         <Button
           onClick={ onToggleClick }
-          variant={ isRunning ? 'yellow' : 'green'}
+          variant={ state.isRunning ? 'yellow' : 'green' }
         >
-          { isRunning ? 'Pause' : 'Start' }
+          { state.isRunning ? 'Pause' : 'Start' }
         </Button>
       </Controls>
     </Container>

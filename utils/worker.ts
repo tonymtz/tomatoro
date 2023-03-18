@@ -1,27 +1,27 @@
 // NOTE: This is a module worker
-import { WORKER } from "~/utils/config";
+import { WORKER } from '~/utils/config'
 
-let isRunning: boolean = false;
-let interval: NodeJS.Timer;
+let isRunning: boolean = false
+let interval: NodeJS.Timer
 
 addEventListener('message', (event: MessageEvent<string>) => {
-  processMessage(event.data);
+  processMessage(event.data)
 })
 
-function processMessage(data: string) {
+function processMessage (data: string) {
   switch (data) {
     case 'start':
       if (!isRunning) {
-        isRunning = true;
+        isRunning = true
         interval = setInterval(() => {
-          self.postMessage('tick');
-        }, WORKER.tick);
+          self.postMessage('tick')
+        }, WORKER.tick)
       }
-      break;
+      break
     case 'stop':
     default:
-      clearInterval(interval);
-      isRunning = false;
-      break;
+      clearInterval(interval)
+      isRunning = false
+      break
   }
 }

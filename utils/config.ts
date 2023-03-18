@@ -1,14 +1,17 @@
 export const WORKER = {
   tick: 1000,
-};
+}
+
+export type SegmentType = 'WORK' | 'SHORT' | 'LONG'
 
 export interface Segment {
   name: string;
-  value: number;
+  time: number;
+  type: SegmentType;
 }
 
-export const SEGMENTS = {
-  WORK: { value: 25 * 60, name: "Work" },
-  SHORT: { value: 5 * 60, name: "Short Break" },
-  LONG: { value: 15 * 60, name: "Long Break" },
-};
+export const SEGMENTS: Record<SegmentType, Segment> = {
+  WORK: { time: 25 * 60, type: 'WORK', name: 'Work' },
+  SHORT: { time: 5 * 60, type: 'SHORT', name: 'Short Break' },
+  LONG: { time: 15 * 60, type: 'LONG', name: 'Long Break' },
+}
