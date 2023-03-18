@@ -1,8 +1,9 @@
 import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react'
 
-import { TimerContextType } from '~/contexts/timer-context.types'
-import { INITIAL_VALUES, TimerReducer } from '~/contexts/timer.reducer'
 import { SegmentType } from '~/utils/config'
+
+import { INITIAL_VALUES, TimerContextReducer } from './timer-context.reducer'
+import { TimerContextType } from './timer-context.types'
 
 export const TimerContext = React.createContext<{
   state: TimerContextType;
@@ -26,7 +27,7 @@ export const useTimerContext = () => {
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(
-    TimerReducer,
+    TimerContextReducer,
     INITIAL_VALUES,
   )
 

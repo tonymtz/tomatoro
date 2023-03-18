@@ -1,4 +1,4 @@
-import { useTimerContext } from '~/contexts/timer.context'
+import { useTimerContext } from '~/contexts/timer'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
 import { Container, InlineList } from './timer-selector.styles'

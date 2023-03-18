@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { defaultTheme, GlobalStyle } from '~/components/themes'
-import { TimerProvider } from '~/contexts/timer.context'
+import { TimerProvider } from '~/contexts/timer'
 
 export default function App ({ Component, pageProps }: AppProps) {
   const [theme] = useLocalStorage('theme', defaultTheme)

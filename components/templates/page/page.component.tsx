@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { FC } from 'react'
 
 import { Header } from '~/components/organisms/header'
-import { SEO } from '~/utils/config'
+import { SEO, VERSION } from '~/utils/config'
 
 interface PageProps {
   children: React.ReactNode
@@ -24,6 +24,8 @@ export const Page: FC<PageProps> = ({ children, title }) => {
       <Header/>
 
       { children }
+
+      <small>v{ VERSION }</small>
     </div>
   )
 }

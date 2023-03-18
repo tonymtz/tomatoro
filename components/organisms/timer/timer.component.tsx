@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import { Button } from '~/components/atoms/button'
-import { useTimerContext } from '~/contexts/timer.context'
+import { useTimerContext } from '~/contexts/timer'
 
 import { Container, Controls, Display } from './timer.styles'
 import { formatTime } from './timer.utils'

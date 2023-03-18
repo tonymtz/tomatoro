@@ -1,5 +1,6 @@
-import { TimerContextActionType, TimerContextType } from '~/contexts/timer-context.types'
 import { SEGMENTS } from '~/utils/config'
+
+import { TimerContextActionType, TimerContextType } from './timer-context.types'
 
 export const INITIAL_VALUES: TimerContextType = {
   time: SEGMENTS.WORK.time,
@@ -8,7 +9,7 @@ export const INITIAL_VALUES: TimerContextType = {
   isStarted: false,
 }
 
-export const TimerReducer = (
+export const TimerContextReducer = (
   state: TimerContextType,
   action: TimerContextActionType,
 ): TimerContextType => {
