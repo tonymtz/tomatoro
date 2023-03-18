@@ -1,6 +1,6 @@
 {
   "name": "tomatoro",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.26",
-    "eslint-plugin-adonis": "^2.1.1"
+    "eslint-plugin-adonis": "^2.1.1",
+    "husky": "^8.0.3"
   }
 }
