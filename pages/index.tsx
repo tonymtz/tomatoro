@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Header } from '~/components/organisms/header'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector/timer-with-selector.component'
+import { VERSION } from '~/utils/config'
 
 export default function Home () {
   return (
@@ -17,6 +18,8 @@ export default function Home () {
       <Header/>
 
       <TimerWithSelector/>
+
+      <small>V{ VERSION }</small>
     </>
   )
 }

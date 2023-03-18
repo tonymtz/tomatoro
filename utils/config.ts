@@ -1,3 +1,9 @@
+// @ts-ignore
+// eslint-disable-next-line import/no-unresolved
+import pkgJson from '/package.json'
+
+export const VERSION = pkgJson.version
+
 export const WORKER = {
   tick: 1000,
 }
