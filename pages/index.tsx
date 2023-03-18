@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import React from "react";
+import React from 'react'
 
-import { Header } from '~/components/organisms/header';
-import { TimerWithSelector } from "~/components/templates/timer-with-selector/timer-with-selector.component";
+import { Header } from '~/components/organisms/header'
+import { TimerWithSelector } from '~/components/templates/timer-with-selector/timer-with-selector.component'
 
-export default function Home() {
-
+export default function Home () {
   return (
     <>
       <Head>

@@ -1,12 +1,14 @@
-import Link from "next/link";
-import { H1 } from "~/components/atoms/heading";
-import { Container, InlineList } from "./header.styles";
+import Link from 'next/link'
+
+import { H1 } from '~/components/atoms/heading'
+
+import { Container, InlineList } from './header.styles'
 
 const menuItems = [
   { name: 'How it works', href: '#' },
   { name: 'Contact', href: '#' },
   { name: 'SoftwareDevTools', href: '#' },
-];
+]
 
 export const Header = () => {
   return (
@@ -24,5 +26,5 @@ export const Header = () => {
         </InlineList>
       </nav>
     </Container>
-  );
+  )
 }

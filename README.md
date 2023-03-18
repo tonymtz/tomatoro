@@ -19,3 +19,4 @@ The most used commands are:
 
 * `npm run dev` - Build and start the app in dev mode at http://localhost:3000
 * `npm run test` - Run the tests
+* `npm run lint` - Lint the code

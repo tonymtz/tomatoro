@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: #979797;
   margin: 0 auto;
   max-width: 600px;
   display: flex;
-`;
+`
 
 export const Col = styled.div`
   display: flex;
   width: 100%;
-`;
+`
 
 export const InlineList = styled.ul`
   list-style: none;

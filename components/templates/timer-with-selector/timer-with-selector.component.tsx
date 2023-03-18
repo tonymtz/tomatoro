@@ -1,14 +1,15 @@
-import { FC, useState } from "react";
-import { Timer } from "~/components/organisms/timer";
-import { Segment, SEGMENTS } from "~/utils/config";
-import { Col, Container, InlineList } from "./timer-with-selector.styles";
+import { FC, useState } from 'react'
 
+import { Timer } from '~/components/organisms/timer'
+import { Segment, SEGMENTS } from '~/utils/config'
+
+import { Col, Container, InlineList } from './timer-with-selector.styles'
 
 interface Props {
 }
 
 export const TimerWithSelector: FC<Props> = () => {
-  const [segment, setSegment] = useState<Segment>(SEGMENTS.WORK);
+  const [segment, setSegment] = useState<Segment>(SEGMENTS.WORK)
 
   return (
     <Container>
@@ -28,5 +29,5 @@ export const TimerWithSelector: FC<Props> = () => {
         </InlineList>
       </Col>
     </Container>
-  );
+  )
 }

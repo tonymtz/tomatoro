@@ -1,1 +1,1 @@
-export * from './timer-with-selector.component';
+export * from './timer-with-selector.component'

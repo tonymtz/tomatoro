@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import styled, { css } from "styled-components";
+import { ReactNode } from 'react'
+import styled, { css } from 'styled-components'
 
 const variants = {
   primary: css``,
@@ -10,7 +10,7 @@ const variants = {
   yellow: css`
     background-color: #ccac56;
   `,
-};
+}
 
 export interface ButtonProps {
   children?: ReactNode;
@@ -39,4 +39,4 @@ export const StyledButton = styled.button<ButtonProps>`
   &:disabled {
     opacity: 0.75;
   }
-`;
+`

@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { SEGMENTS } from "~/utils/config";
-import { Container, InlineList } from "./timer-selector.styles";
+import { useState } from 'react'
+
+import { SEGMENTS } from '~/utils/config'
+
+import { Container, InlineList } from './timer-selector.styles'
 
 export const TimeSelector = () => {
-  const [selected, setSelected] = useState(SEGMENTS.WORK);
+  const [selected, setSelected] = useState(SEGMENTS.WORK)
 
   return (
     <Container>
@@ -17,5 +19,5 @@ export const TimeSelector = () => {
         )) }
       </InlineList>
     </Container>
-  );
+  )
 }

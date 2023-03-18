@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.section`
   background-color: #888888;
@@ -7,7 +7,7 @@ export const Container = styled.section`
   //display: flex;
   //justify-content: space-between;
   //padding: 1em;
-`;
+`
 
 export const InlineList = styled.ul`
   //display: flex;

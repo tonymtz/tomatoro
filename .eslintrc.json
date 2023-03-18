@@ -1,3 +1,41 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:adonis/typescriptApp"
+  ],
+  "rules": {
+    //    "react/jsx-indent": [2, 2, { "checkAttributes": true }],
+    //    "react/jsx-indent-props": [2, 2],
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "parens-new-line",
+        "assignment": "parens-new-line",
+        "return": "parens-new-line",
+        "arrow": "parens-new-line",
+        "condition": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "parens-new-line"
+      }
+    ],
+    "import/no-unresolved": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", // Built-in imports (come from NodeJS native) go first
+          "external", // <- External imports
+          "internal", // <- Absolute imports
+          ["sibling", "parent"], // <- Relative imports, the sibling and parent types they can be mingled together
+          "index", // <- index imports
+          "unknown" // <- everything else I guess
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }
