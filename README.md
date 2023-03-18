@@ -2,7 +2,7 @@
 
 Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
-![tomatoro app screenshot](tomatoro/public/screenshot.png)
+![tomatoro app screenshot](public/screenshot.png)
 
 ## Features
 
