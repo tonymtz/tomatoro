@@ -1,11 +1,12 @@
 {
   "name": "tomatoro",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "echo 'ok'",
     "lint": "next lint"
   },
   "dependencies": {
