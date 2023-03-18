@@ -21,3 +21,12 @@ export const SEGMENTS: Record<SegmentType, Segment> = {
   SHORT: { time: 5 * 60, type: 'SHORT', name: 'Short Break' },
   LONG: { time: 15 * 60, type: 'LONG', name: 'Long Break' },
 }
+
+/**
+ * SEO STUFF
+ */
+export const SEO = {
+  title: 'T🍅matoro',
+  // eslint-disable-next-line max-len
+  description: 'Tomatoro will help you power through distractions, hyper-focus, and get things done in short bursts, while taking frequent breaks to get some air and relax.',
+}

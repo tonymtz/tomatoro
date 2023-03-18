@@ -10,7 +10,7 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 - 🔔 ~~Alerts/Notifications~~ (coming soon)
 - 🎨 ~~Customizable work/break time~~ (coming soon)
 - 🏕️ ~~Settings saved in your session~~ (coming soon)
-- 👀 ~~Timer in menu bar~~ (coming soon)
+- 👀 Timer in menu bar
 - 🍅 Minimalistic design
 
 ## Development

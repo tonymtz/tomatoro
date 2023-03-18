@@ -13,7 +13,12 @@ export const Footer = () => {
     <Container>
       <Row>
         <Third>
-          <Image src="https://placehold.co/100x40.png" alt="placeholder"/>
+          <Image
+            alt="placeholder"
+            height={40}
+            src="https://placehold.co/100x40.png"
+            width={100}
+          />
         </Third>
         <Half>
           <Heading>Tools</Heading>
