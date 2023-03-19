@@ -1,23 +1,14 @@
-// components/themes/darkTheme.tsx
-import { DefaultTheme } from 'styled-components'
+import type { Theme } from 'theme-ui'
 
-export const darkTheme: DefaultTheme = {
-  name: 'default',
-  borderRadius: '4px',
-  bodyColor: '#888',
-  textColor: '#fff',
-  palette: {
-    common: {
-      black: '#121212',
-      white: '#ffffff',
-    },
-    primary: {
-      main: '#3b82f6',
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#d946ef',
-      contrastText: '#ffffff',
-    },
+export const darkTheme: Theme = {
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: '"Avenir Next", sans-serif',
+    monospace: 'Menlo, monospace',
+  },
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#ee6b33',
   },
 }

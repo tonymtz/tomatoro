@@ -1,6 +1,6 @@
 import { FC } from 'react'
+import { Button } from 'theme-ui'
 
-import { Button } from '~/components/atoms/button'
 import { useTimerContext } from '~/contexts/timer'
 
 import { Container, Controls, Display } from './timer.styles'
@@ -31,7 +31,7 @@ export const Timer: FC = () => {
         <Button onClick={ onStopClick } disabled={ !state.isStarted }>Done</Button>
         <Button
           onClick={ onToggleClick }
-          variant={ state.isRunning ? 'yellow' : 'green' }
+          // variant={ state.isRunning ? 'yellow' : 'green' }
         >
           { state.isRunning ? 'Pause' : 'Start' }
         </Button>

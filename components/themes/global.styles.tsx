@@ -1,9 +1,13 @@
-import { createGlobalStyle } from 'styled-components'
+import { css, Global } from '@emotion/react'
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${ ({ theme }) => theme.bodyColor };
-    color: ${ ({ theme }) => theme.textColor };
-    margin: 0;
-  }
-`
+export const globalStyles = (
+  <Global
+    styles={css`
+      html,
+      body {
+        margin: 0;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+    `}
+  />
+)

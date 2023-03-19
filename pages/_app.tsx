@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'theme-ui'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { defaultTheme, GlobalStyle } from '~/components/themes'
+import { defaultTheme, globalStyles } from '~/components/themes'
+import { NotificationsProvider } from '~/contexts/notifications/notifications-context.provider'
 import { TimerProvider } from '~/contexts/timer'
 
 export default function App ({ Component, pageProps }: AppProps) {
@@ -10,10 +11,12 @@ export default function App ({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={ theme }>
-      <TimerProvider>
-        <GlobalStyle/>
-        <Component { ...pageProps } />
-      </TimerProvider>
+      <NotificationsProvider>
+        <TimerProvider>
+          {globalStyles}
+          <Component { ...pageProps } />
+        </TimerProvider>
+      </NotificationsProvider>
     </ThemeProvider>
   )
 }

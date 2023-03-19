@@ -1,8 +1,7 @@
 import Link from 'next/link'
+import { Box, Flex, Heading, NavLink } from 'theme-ui'
 
-import { H1 } from '~/components/atoms/heading'
-
-import { Container, InlineList } from './header.styles'
+import { Container } from './header.styles'
 
 const menuItems = [
   { name: 'How it works', href: '#' },
@@ -12,19 +11,19 @@ const menuItems = [
 
 export const Header = () => {
   return (
-    <Container>
-      <Link href='/'>
-        <H1>Tomatoro</H1>
-      </Link>
-      <nav>
-        <InlineList>
-          { menuItems.map((item) => (
-            <li key={ item.name }>
-              <a href={ item.href }>{ item.name }</a>
-            </li>
-          )) }
-        </InlineList>
-      </nav>
+    <Container as='header'>
+      <Box>
+        <Heading>Tomatoro</Heading>
+      </Box>
+      <Flex sx={ {
+        gap: 3,
+      } }>
+        { menuItems.map((item) => (
+          <NavLink key={ item.name } as={ Link } href={ item.href }>
+            { item.name }
+          </NavLink>
+        )) }
+      </Flex>
     </Container>
   )
 }

@@ -1,5 +1,6 @@
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import { ReactNode } from 'react'
-import styled, { css } from 'styled-components'
 
 const variants = {
   primary: css``,

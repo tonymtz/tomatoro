@@ -1,26 +1,14 @@
-// components/themes/defaultTheme.tsx
-import { DefaultTheme } from 'styled-components'
+import type { Theme } from 'theme-ui'
 
-const primaryColor = '#3b82f6'
-
-export const defaultTheme: DefaultTheme = {
-  name: 'default',
-
-  borderRadius: '4px',
-  bodyColor: '#ffffff',
-  textColor: '#000000',
-  palette: {
-    common: {
-      black: '#121212',
-      white: '#ffffff',
-    },
-    primary: {
-      main: '#3b82f6',
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#d946ef',
-      contrastText: '#ffffff',
-    },
+export const defaultTheme: Theme = {
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: '"Avenir Next", sans-serif',
+    monospace: 'Menlo, monospace',
+  },
+  colors: {
+    text: '#000',
+    background: '#fff',
+    primary: '#33e',
   },
 }
