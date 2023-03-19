@@ -1,16 +1,16 @@
 import { FC } from 'react'
+import { Flex } from 'theme-ui'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { Button } from '~/components/atoms/button'
-import { darkTheme, defaultTheme } from '~/components/themes'
 
 export const ThemeSelector: FC = () => {
-  const [, setTheme] = useLocalStorage('theme', defaultTheme)
+  const [, setTheme] = useLocalStorage('theme', 'light')
 
   return (
-    <>
-      <Button onClick={ () => setTheme(defaultTheme) }>Default</Button>
-      <Button onClick={ () => setTheme(darkTheme) }>Dark</Button>
-    </>
+    <Flex sx={ { gap: '1em' } }>
+      <Button onClick={ () => setTheme('light') }>Default</Button>
+      <Button onClick={ () => setTheme('dark') }>Dark</Button>
+    </Flex>
   )
 }

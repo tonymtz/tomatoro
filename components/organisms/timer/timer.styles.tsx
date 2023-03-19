@@ -1,16 +1,28 @@
 import styled from '@emotion/styled'
+import { IBM_Plex_Mono } from 'next/font/google'
+import { Button as _Button, Flex } from 'theme-ui'
 
-export const Container = styled.div`
-  background-color: #00A155;
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
+export const Container = styled(Flex)`
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
 `
 
 export const Display = styled.h1`
+  ${ibmPlexMono.style}
   font-size: 5em;
-  width: 50%;
+  margin: 0;
 `
 
-export const Controls = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
+export const Controls = styled(Flex)`
+  gap: 1em;
+`
+
+export const Button = styled(_Button)`
+  width: 100px;
 `

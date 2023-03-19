@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { FC } from 'react'
+import { Box } from 'theme-ui'
 
-import { ThemeSelector } from '~/components/molecules/theme-selector'
 import { Header } from '~/components/organisms/header'
 import { SEO, VERSION } from '~/utils/config'
 
@@ -26,8 +26,13 @@ export const Page: FC<PageProps> = ({ children, title }) => {
 
       { children }
 
-      <small>v{ VERSION }</small>
-      <ThemeSelector />
+      <Box sx={{
+        position: 'absolute',
+        bottom: '1em',
+        right: '1em',
+      }}>
+        <small>v{ VERSION }</small>
+      </Box>
     </div>
   )
 }

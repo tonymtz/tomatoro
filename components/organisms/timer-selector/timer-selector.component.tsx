@@ -1,7 +1,10 @@
+import { Button } from 'theme-ui'
+
+import { Text } from '~/components/atoms/text'
 import { useTimerContext } from '~/contexts/timer'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
-import { Container, InlineList } from './timer-selector.styles'
+import { Container } from './timer-selector.styles'
 
 export const TimeSelector = () => {
   const {
@@ -15,19 +18,21 @@ export const TimeSelector = () => {
 
   return (
     <Container>
-      <InlineList>
-        { Object.entries(SEGMENTS).map(([key, value]) => (
-          <li key={ key }>
-            <button
-              onClick={ () => onSelect(key as SegmentType) }
-              disabled={ currentSegment === key }
-            >
-              { value.name }
-              ({ value.time / 60 })
-            </button>
-          </li>
-        )) }
-      </InlineList>
+      <Text variant='caption'>Set the timer:</Text>
+      { Object.entries(SEGMENTS).map(([key, value]) => (
+        <Button
+          key={ key }
+          onClick={ () => onSelect(key as SegmentType) }
+          disabled={ currentSegment === key }
+          sx={{
+            width: 'fit-content',
+          }}
+        >
+          { value.name }
+          ({ value.time / 60 })
+        </Button>
+      )) }
+
     </Container>
   )
 }

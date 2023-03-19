@@ -6,7 +6,6 @@ import { Container } from './header.styles'
 const menuItems = [
   { name: 'How it works', href: '#' },
   { name: 'Contact', href: '#' },
-  { name: 'SoftwareDevTools', href: '#' },
 ]
 
 export const Header = () => {

@@ -1,6 +1,6 @@
 import { Button } from 'theme-ui'
 
-import { Text } from '~/components/atoms/text.component'
+import { Text } from '~/components/atoms/text'
 import { useNotificationsContext } from '~/contexts/notifications'
 
 import { Frame } from './notifications-warn.styles'
@@ -13,8 +13,8 @@ export const NotificationsWarn = () => {
   }
 
   return (
-    <Frame>
-      <Text as="p">
+    <Frame variant='warn'>
+      <Text>
         ¿Nos permites enviarte notificaciones de alarma?<br />
         Así te avisaremos cuando termine tu ciclo.
       </Text>

@@ -1,12 +1,10 @@
 import styled from '@emotion/styled'
-import { Flex } from 'theme-ui'
+import { Message } from 'theme-ui'
 
-export const Frame = styled(Flex)`
+export const Frame = styled(Message)`
   align-items: center;
-  background-color: #fdece5;
-  border: 1px solid #eee;
+  display: flex;
   justify-content: space-between;
-  padding: 2em;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 1em auto;
 `

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 
-export type NotificationPayload = {
-  title: string
-}
+import { NotificationPayload } from './notifications-context.types'
 
 export const NotificationsContext = React.createContext<{
   hasPermissions: boolean
