@@ -1,10 +1,12 @@
-import { Box } from '~/components/atoms/box'
-import { Button } from '~/components/atoms/button'
-import { Frame } from '~/components/organisms/notifications-warn/notifications-warn.styles'
-import { useNotificationsContext } from '~/contexts/notifications/notifications-context.provider'
+import { Button } from 'theme-ui'
+
+import { Text } from '~/components/atoms/text.component'
+import { useNotificationsContext } from '~/contexts/notifications'
+
+import { Frame } from './notifications-warn.styles'
 
 export const NotificationsWarn = () => {
-  const { hasPermissions } = useNotificationsContext()
+  const { hasPermissions, requestPermission } = useNotificationsContext()
 
   if (hasPermissions) {
     return null
@@ -12,11 +14,15 @@ export const NotificationsWarn = () => {
 
   return (
     <Frame>
-      <Box m={1}>
-        Tomatoro requires notifications
-      </Box>
-      <Button onClick={ () => {
-      } }>Fix</Button>
+      <Text as="p">
+        ¿Nos permites enviarte notificaciones de alarma?<br />
+        Así te avisaremos cuando termine tu ciclo.
+      </Text>
+      <Button
+        sx={ {
+          height: 'fit-content',
+        } }
+        onClick={ () => requestPermission() }>Arreglarlo</Button>
     </Frame>
   )
 }

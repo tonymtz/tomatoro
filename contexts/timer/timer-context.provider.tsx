@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react'
 
+import { useNotificationsContext } from '~/contexts/notifications'
 import { SegmentType } from '~/utils/config'
 
 import { INITIAL_VALUES, TimerContextReducer } from './timer-context.reducer'
@@ -26,6 +27,7 @@ export const useTimerContext = () => {
 }
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const { notify } = useNotificationsContext()
   const [state, dispatch] = useReducer(
     TimerContextReducer,
     INITIAL_VALUES,
@@ -66,8 +68,9 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   useEffect(() => {
     if (state.time < 1) {
       stopTimer()
+      notify({ title: 'Time is up!' })
     }
-  }, [state.time, stopTimer])
+  }, [notify, state.time, stopTimer])
 
   const workerRef = useRef<Worker>()
 

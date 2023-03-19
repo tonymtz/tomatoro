@@ -6,6 +6,11 @@ export const defaultTheme: Theme = {
     heading: '"Avenir Next", sans-serif',
     monospace: 'Menlo, monospace',
   },
+  text: {
+    default: {
+      fontFamily: 'body',
+    },
+  },
   colors: {
     text: '#000',
     background: '#fff',

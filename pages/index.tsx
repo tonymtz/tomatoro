@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { NotificationsWarn } from '~/components/organisms/notifications-warn/notifications-warn.component'
 import { formatTime } from '~/components/organisms/timer/timer.utils'
 import { Page } from '~/components/templates/page'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector/timer-with-selector.component'
@@ -12,6 +13,7 @@ export default function Home () {
   return (
     <>
       <Page title={ title }>
+        <NotificationsWarn/>
         <TimerWithSelector/>
       </Page>
     </>

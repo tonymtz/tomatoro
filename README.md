@@ -7,7 +7,7 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 ## Features
 
 - ⏳ Time accuracy
-- 🔔 ~~Alerts/Notifications~~ (coming soon)
+- 🔔 Alerts/Notifications
 - 🎨 ~~Customizable work/break time~~ (coming soon)
 - 🏕️ ~~Settings saved in your session~~ (coming soon)
 - 👀 Timer in menu bar

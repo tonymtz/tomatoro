@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
+import { Flex } from 'theme-ui'
 
-import { Box } from '~/components/atoms/box'
-
-export const Frame = styled(Box)`
-  border: 1px solid #666;
+export const Frame = styled(Flex)`
+  align-items: center;
+  background-color: #fdece5;
+  border: 1px solid #eee;
+  justify-content: space-between;
   padding: 2em;
+  max-width: 600px;
+  margin: 0 auto;
 `
