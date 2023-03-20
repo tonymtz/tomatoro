@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { Box, Flex, Heading, NavLink } from 'theme-ui'
+import { Grid, Heading, NavLink, Text } from 'theme-ui'
 
-import { Container } from './header.styles'
+import { Container, Nav } from './header.styles'
 
 const menuItems = [
   { name: 'How it works', href: '#' },
@@ -11,18 +11,18 @@ const menuItems = [
 export const Header = () => {
   return (
     <Container as='header'>
-      <Box>
+      <Grid variant='contained' columns={ 2 } sx={ { alignItems: 'center' } }>
         <Heading>Tomatoro</Heading>
-      </Box>
-      <Flex sx={ {
-        gap: 3,
-      } }>
-        { menuItems.map((item) => (
-          <NavLink key={ item.name } as={ Link } href={ item.href }>
-            { item.name }
-          </NavLink>
-        )) }
-      </Flex>
+        <Nav as='nav'>
+          { menuItems.map((item) => (
+            <NavLink key={ item.name } as={ Link } href={ item.href }>
+              <Text>
+                { item.name }
+              </Text>
+            </NavLink>
+          )) }
+        </Nav>
+      </Grid>
     </Container>
   )
 }

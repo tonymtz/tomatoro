@@ -1,38 +1,45 @@
-import Image from 'next/image'
+import Link from 'next/link'
+import React, { FC } from 'react'
+import { Flex, Grid, Heading, NavLink, Text } from 'theme-ui'
 
-import { Container, Half, Heading, Row, Third } from './footer.styles'
+import { footerData } from './footer.config'
+import { Container } from './footer.styles'
 
-const menuItems = [
-  { name: 'How it works', href: '#' },
-  { name: 'Contact', href: '#' },
-  { name: 'SoftwareDevTools', href: '#' },
-]
+interface Props {
+  version?: string
+}
 
-export const Footer = () => {
+export const Footer: FC<Props> = ({ version }) => {
   return (
-    <Container>
-      <Row>
-        <Third>
-          <Image
-            alt="placeholder"
-            height={40}
-            src="https://placehold.co/100x40.png"
-            width={100}
-          />
-        </Third>
-        <Half>
-          <Heading>Tools</Heading>
-        </Half>
-        <Third>
-          <Heading>Get in touch</Heading>
-        </Third>
-      </Row>
-      <Row>
-        <Heading>Tools</Heading>
-      </Row>
-      <Row>
-        <Heading>Get in touch</Heading>
-      </Row>
+    <Container as='footer'>
+      <Grid variant='contained' columns={ [4, '2fr 1fr 1fr 1fr'] }>
+        <Flex sx={ { flexDirection: 'column' } }>
+          <Heading as='h4' mb={ 3 }>Tomatoro</Heading>
+          <Text variant='small'>Work smarter, not harder.</Text>
+        </Flex>
+
+        { footerData.links.map((linkGroup) => (
+          <Flex key={ linkGroup.title } sx={ { flexDirection: 'column', gap: 1 } }>
+            <Heading as='h4' mb={ 3 }>{ linkGroup.title }</Heading>
+            { linkGroup.items.map((item) => (
+              <NavLink key={ item.name } as={ Link } href={ item.href }>
+                <Text variant='small'>{ item.name }</Text>
+              </NavLink>
+            )) }
+          </Flex>
+        )) }
+      </Grid>
+      <Grid variant='contained' columns={ 2 }>
+        <Text variant='small' as='span'>
+          &copy; 2017-{ new Date().getFullYear() } Tomatoro. All Rights Reserved.
+        </Text>
+
+        { version && (
+          <Text variant='small' sx={ { textAlign: 'right' } }>
+            v{ version }
+          </Text>
+        ) }
+      </Grid>
     </Container>
   )
 }

@@ -6,5 +6,5 @@ export const Frame = styled(Message)`
   display: flex;
   justify-content: space-between;
   max-width: 600px;
-  margin: 1em auto;
+  margin: 0 auto 1em;
 `

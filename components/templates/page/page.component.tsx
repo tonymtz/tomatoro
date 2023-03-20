@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { FC } from 'react'
-import { Box } from 'theme-ui'
 
+import { Footer } from '~/components/organisms/footer'
 import { Header } from '~/components/organisms/header'
 import { SEO, VERSION } from '~/utils/config'
 
@@ -26,13 +26,7 @@ export const Page: FC<PageProps> = ({ children, title }) => {
 
       { children }
 
-      <Box sx={{
-        position: 'absolute',
-        bottom: '1em',
-        right: '1em',
-      }}>
-        <small>v{ VERSION }</small>
-      </Box>
+      <Footer version={VERSION} />
     </div>
   )
 }

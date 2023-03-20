@@ -1,6 +1,5 @@
-import { Button } from 'theme-ui'
+import { Button, Text } from 'theme-ui'
 
-import { Text } from '~/components/atoms/text'
 import { useTimerContext } from '~/contexts/timer'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
@@ -18,18 +17,17 @@ export const TimeSelector = () => {
 
   return (
     <Container>
-      <Text variant='caption'>Set the timer:</Text>
+      <Text>Set the timer:</Text>
       { Object.entries(SEGMENTS).map(([key, value]) => (
         <Button
           key={ key }
           onClick={ () => onSelect(key as SegmentType) }
           disabled={ currentSegment === key }
-          sx={{
+          sx={ {
             width: 'fit-content',
-          }}
+          } }
         >
-          { value.name }
-          ({ value.time / 60 })
+          { value.name } ({ value.time / 60 })
         </Button>
       )) }
 

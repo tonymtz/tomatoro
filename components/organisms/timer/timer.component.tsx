@@ -1,9 +1,10 @@
 import { FC } from 'react'
+import { Text } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
+import { formatTime } from '~/utils/timer.utils'
 
-import { Button, Container, Controls, Display } from './timer.styles'
-import { formatTime } from './timer.utils'
+import { Button, Container, Controls } from './timer.styles'
 
 export const Timer: FC = () => {
   const { state, startTimer, stopTimer, resetTimer } = useTimerContext()
@@ -25,7 +26,9 @@ export const Timer: FC = () => {
 
   return (
     <Container>
-      <Display>{ formatTime(state.time) }</Display>
+      <Text variant='display'>
+        { formatTime(state.time) }
+      </Text>
       <Controls>
         <Button
           onClick={ onStopClick }
@@ -35,7 +38,7 @@ export const Timer: FC = () => {
         </Button>
         <Button
           onClick={ onToggleClick }
-          variant={ state.isRunning ? 'yellow' : 'green' }
+          bg={ state.isRunning ? 'yellow' : 'green' }
         >
           { state.isRunning ? 'Pause' : 'Start' }
         </Button>

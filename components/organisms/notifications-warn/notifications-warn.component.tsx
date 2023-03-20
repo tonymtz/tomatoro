@@ -1,6 +1,5 @@
-import { Button } from 'theme-ui'
+import { Button, Text } from 'theme-ui'
 
-import { Text } from '~/components/atoms/text'
 import { useNotificationsContext } from '~/contexts/notifications'
 
 import { Frame } from './notifications-warn.styles'
@@ -15,14 +14,14 @@ export const NotificationsWarn = () => {
   return (
     <Frame variant='warn'>
       <Text>
-        ¿Nos permites enviarte notificaciones de alarma?<br />
-        Así te avisaremos cuando termine tu ciclo.
+        Can we send you notifications?<br />
+        We&apos;ll let you know when your cycle finishes.
       </Text>
       <Button
         sx={ {
           height: 'fit-content',
         } }
-        onClick={ () => requestPermission() }>Arreglarlo</Button>
+        onClick={ () => requestPermission() }>Fix</Button>
     </Frame>
   )
 }
