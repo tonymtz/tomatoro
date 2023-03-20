@@ -26,7 +26,7 @@ export const SEGMENTS: Record<SegmentType, Segment> = {
  * SEO STUFF
  */
 export const SEO = {
-  title: 'T🍅matoro',
+  title: 'Tomatoro',
   // eslint-disable-next-line max-len
   description: 'Tomatoro will help you power through distractions, hyper-focus, and get things done in short bursts, while taking frequent breaks to get some air and relax.',
 }
