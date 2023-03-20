@@ -8,10 +8,10 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 
 - ⏳ Time accuracy
 - 🔔 Alerts/Notifications
-- 🎨 ~~Customizable work/break time~~ (coming soon)
+- ⚙️ ~~Customizable work/break time~~ (coming soon)
 - 🏕️ ~~Settings saved in your session~~ (coming soon)
 - 👀 Timer in menu bar
-- 🍅 Minimalistic design
+- 🎨 Minimalistic design
 
 ## Development
 
@@ -25,3 +25,13 @@ The most used commands are:
 Husky is used to run lint and tests before commit, so you don't need to worry about it. It also increases the version number in `package.json` and `package-lock.json` automatically.
 
 If you want to skip it, use `git commit --no-verify`. We recommend you to not do it.
+
+## Roadmap
+
+This schedule is not final and will change in time:
+
+- **v3.0** (in progress...) - Complete rework
+- **v3.1** (2023) - Dark theme
+- **v3.2** (2023) - Multi-language support (ES, EN)
+- **v3.3** (2023) - User accounts
+- **v3.4** (2023) - Tasks
