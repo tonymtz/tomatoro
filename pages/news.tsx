@@ -18,25 +18,23 @@ export async function getServerSideProps () {
 
 export default function Terms ({ updates }: { updates: Update[] }) {
   return (
-    <>
-      <Page title='News'>
-        <Screen>
-          <Grid variant='contained'>
-            <Heading as='h1'>News</Heading>
+    <Page title='News'>
+      <Screen>
+        <Grid variant='contained'>
+          <Heading as='h1'>News</Heading>
 
-            { updates.map((update) => (
-              <div key={ update.id }>
-                <Heading as='h4'>
-                  { update.title }
-                </Heading>
-                <Paragraph>
-                  { update.content }
-                </Paragraph>
-              </div>
-            )) }
-          </Grid>
-        </Screen>
-      </Page>
-    </>
+          { updates.map((update) => (
+            <div key={ update.id }>
+              <Heading as='h4'>
+                { update.title }
+              </Heading>
+              <Paragraph>
+                { update.content }
+              </Paragraph>
+            </div>
+          )) }
+        </Grid>
+      </Screen>
+    </Page>
   )
 }

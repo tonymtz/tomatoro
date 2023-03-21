@@ -10,6 +10,7 @@ export const Container = styled(Flex)`
 `
 
 export const Nav = styled(Flex)`
+  align-items: center;
   gap: 1.5em;
   justify-content: flex-end;
 `

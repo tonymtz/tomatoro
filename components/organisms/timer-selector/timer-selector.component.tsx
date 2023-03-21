@@ -29,7 +29,6 @@ export const TimeSelector = () => {
           { value.name } ({ value.time / 60 })
         </Button>
       )) }
-
     </Container>
   )
 }

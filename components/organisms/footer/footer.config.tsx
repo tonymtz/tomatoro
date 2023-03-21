@@ -22,6 +22,7 @@ const toolItems: FooterLink[] = [
   { name: 'Tomatoro', href: LINKS.TOMATORO },
   { name: 'Dolar en Bancos', href: LINKS.DOLAR },
   { name: 'Clipps', href: LINKS.CLIPPS },
+  { name: 'Gatolinero', href: LINKS.TOMATORO },
   { name: 'Songbox', href: LINKS.SONGBOX },
 ]
 
@@ -29,6 +30,6 @@ export const footerData = {
   links: [
     { title: 'Site', items: siteItems },
     { title: 'Support', items: supportItems },
-    { title: 'Tools', items: toolItems },
+    { title: 'More tools', items: toolItems },
   ],
 }

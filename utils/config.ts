@@ -45,4 +45,5 @@ export const LINKS = {
   DOLAR: 'https://dolarenbancos.com',
   CLIPPS: 'https://clipps.io',
   SONGBOX: 'https://songbox.io',
+  GATOLINERO: 'https://t.me/GatolineroBot',
 }
