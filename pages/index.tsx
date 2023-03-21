@@ -1,7 +1,10 @@
 import React from 'react'
+import { Box, Divider } from 'theme-ui'
 
 import { Screen } from '~/components/atoms/screen'
 import { NotificationsWarn } from '~/components/organisms/notifications-warn'
+import { GetInTouch } from '~/components/templates/get-in-touch'
+import { HowItWorks } from '~/components/templates/how-it-works'
 import { Page } from '~/components/templates/page'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector'
 import { useTimerContext } from '~/contexts/timer'
@@ -14,9 +17,21 @@ export default function Home () {
   return (
     <>
       <Page title={ title }>
-        <Screen>
+        <Box my={ 2 } pb={ 5 }>
           <NotificationsWarn/>
           <TimerWithSelector/>
+        </Box>
+
+        <Divider/>
+
+        <Screen id='how-it-works'>
+          <HowItWorks/>
+        </Screen>
+
+        <Divider/>
+
+        <Screen id='get-in-touch'>
+          <GetInTouch/>
         </Screen>
       </Page>
     </>

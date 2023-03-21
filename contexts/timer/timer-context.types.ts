@@ -9,6 +9,7 @@ export type TimerContextActionType = {
 
 export interface TimerContextType {
   time: number
+  totalTime: number
   currentSegment: SegmentType
   isRunning: boolean
   isStarted: boolean

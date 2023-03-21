@@ -11,6 +11,8 @@ const openSans = Open_Sans({
   subsets: ['latin'],
 })
 
+const maxWidth = '768px'
+
 export const defaultTheme: Theme = {
   fonts: {
     body: openSans.style.fontFamily,
@@ -25,17 +27,22 @@ export const defaultTheme: Theme = {
       fontSize: '0.8em',
       fontFamily: 'body',
     },
-    heading: {
-      fontFamily: 'heading',
-    },
     display: {
       fontFamily: 'monospace',
       fontSize: '5em',
       fontWeight: 'bold',
     },
+    title: {
+      fontSize: '2em',
+      fontFamily: 'heading',
+    },
+    paragraph: {
+      color: '#666',
+      textAlign: 'justify',
+    },
   },
   colors: {
-    text: '#000',
+    text: '#333',
     background: '#fff',
     primary: '#f55e3c',
     yellow: '#eab440',
@@ -65,9 +72,16 @@ export const defaultTheme: Theme = {
       alignItems: 'start',
       justifyContent: 'space-between',
       mx: 'auto',
-      maxWidth: '960px',
+      maxWidth,
       padding: '1em',
       width: '100%',
+    },
+  },
+  styles: {
+    hr: {
+      borderColor: '#eee',
+      maxWidth,
+      mx: 'auto',
     },
   },
 }

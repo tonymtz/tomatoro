@@ -1,22 +1,18 @@
 import styled from '@emotion/styled'
-import { IBM_Plex_Mono } from 'next/font/google'
-import { Button as _Button, Flex } from 'theme-ui'
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-})
+import { Button as _Button, Donut as _Donut, Flex } from 'theme-ui'
 
 export const Container = styled(Flex)`
   align-items: center;
   flex-direction: column;
   gap: 1em;
+  justify-content: center;
+  position: relative;
 `
 
-export const Display = styled.h1`
-  ${ibmPlexMono.style}
-  font-size: 5em;
-  margin: 0;
+export const Donut = styled(_Donut)`
+  position: absolute;
+  top: 0;
+  z-index: -1;
 `
 
 export const Controls = styled(Flex)`

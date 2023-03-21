@@ -4,8 +4,8 @@ import { Grid, Heading, NavLink, Text } from 'theme-ui'
 import { Container, Nav } from './header.styles'
 
 const menuItems = [
-  { name: 'How it works', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'How it works', href: '#how-it-works' },
+  { name: 'Contact', href: '#get-in-touch' },
 ]
 
 export const Header = () => {

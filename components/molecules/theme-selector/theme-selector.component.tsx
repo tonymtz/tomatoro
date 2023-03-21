@@ -1,8 +1,6 @@
 import { FC } from 'react'
-import { Flex } from 'theme-ui'
+import { Button, Flex } from 'theme-ui'
 import { useLocalStorage } from 'usehooks-ts'
-
-import { Button } from '~/components/atoms/button'
 
 export const ThemeSelector: FC = () => {
   const [, setTheme] = useLocalStorage('theme', 'light')

@@ -30,3 +30,10 @@ export const SEO = {
   // eslint-disable-next-line max-len
   description: 'Tomatoro will help you power through distractions, hyper-focus, and get things done in short bursts, while taking frequent breaks to get some air and relax.',
 }
+
+export const LINKS = {
+  GITHUB: 'https://github.com/tonymtz/tomatoro',
+  FEEDBACK: 'https://goo.gl/forms/T9BxmGcn38dlZz2w1',
+  LEARN_MORE: 'https://www.techtarget.com/whatis/definition/pomodoro-technique',
+  STATUS: 'https://statuspage.freshping.io/65694-Tomatoro',
+}

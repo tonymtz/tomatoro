@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import { Box } from 'theme-ui'
+import { Flex } from 'theme-ui'
 
-export const Screen = styled(Box)`
-  height: calc(90vh - 66px);
-  padding: 1em;
+export const Screen = styled(Flex)`
+  flex-direction: column;
+  min-height: calc(80vh - 66px);
+  padding: 3em 0;
 `

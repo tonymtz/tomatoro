@@ -4,6 +4,7 @@ import { TimerContextActionType, TimerContextType } from './timer-context.types'
 
 export const INITIAL_VALUES: TimerContextType = {
   time: SEGMENTS.WORK.time,
+  totalTime: SEGMENTS.WORK.time,
   currentSegment: SEGMENTS.WORK.type,
   isRunning: false,
   isStarted: false,
@@ -22,13 +23,11 @@ export const TimerContextReducer = (
   }
 
   if (action.type === 'RESET') {
-    const { time } = SEGMENTS[state.currentSegment]
-
     return {
       ...state,
       isRunning: false,
       isStarted: false,
-      time,
+      time: state.totalTime,
     }
   }
 
@@ -39,7 +38,12 @@ export const TimerContextReducer = (
   if (action.type === 'SET_SEGMENT') {
     const { time, type } = SEGMENTS[action.payload]
 
-    return { ...INITIAL_VALUES, currentSegment: type, time }
+    return {
+      ...INITIAL_VALUES,
+      currentSegment: type,
+      totalTime: time,
+      time,
+    }
   }
 
   return state

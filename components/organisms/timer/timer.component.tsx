@@ -4,7 +4,7 @@ import { Text } from 'theme-ui'
 import { useTimerContext } from '~/contexts/timer'
 import { formatTime } from '~/utils/timer.utils'
 
-import { Button, Container, Controls } from './timer.styles'
+import { Button, Container, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
   const { state, startTimer, stopTimer, resetTimer } = useTimerContext()
@@ -25,7 +25,7 @@ export const Timer: FC = () => {
   }
 
   return (
-    <Container>
+    <Container sx={ { height: 400 } }>
       <Text variant='display'>
         { formatTime(state.time) }
       </Text>
@@ -43,6 +43,12 @@ export const Timer: FC = () => {
           { state.isRunning ? 'Pause' : 'Start' }
         </Button>
       </Controls>
+      <Donut
+        strokeWidth={ 2 / 2 }
+        size={ 400 }
+        title='progress made'
+        value={ state.time / state.totalTime }
+      />
     </Container>
   )
 }

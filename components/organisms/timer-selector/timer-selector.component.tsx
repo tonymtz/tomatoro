@@ -1,4 +1,4 @@
-import { Button, Text } from 'theme-ui'
+import { Button } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
 import { SEGMENTS, SegmentType } from '~/utils/config'
@@ -17,7 +17,6 @@ export const TimeSelector = () => {
 
   return (
     <Container>
-      <Text>Set the timer:</Text>
       { Object.entries(SEGMENTS).map(([key, value]) => (
         <Button
           key={ key }

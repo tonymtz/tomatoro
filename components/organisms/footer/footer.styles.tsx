@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Flex } from 'theme-ui'
 
 export const Container = styled(Flex)`
-  background-color: #1a1a1a;
+  background-color: #333;
   color: white;
   flex-direction: column;
   padding: 2em 0;
