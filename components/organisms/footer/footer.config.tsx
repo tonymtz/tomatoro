@@ -6,6 +6,7 @@ interface FooterLink {
 }
 
 const siteItems: FooterLink[] = [
+  { name: 'News', href: LINKS.NEWS },
   { name: 'Terms of service', href: LINKS.TERMS },
   { name: 'Privacy notice', href: LINKS.PRIVACY },
   { name: 'Github', href: LINKS.GITHUB },

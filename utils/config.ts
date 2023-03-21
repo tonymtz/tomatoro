@@ -36,6 +36,7 @@ export const LINKS = {
   PRIVACY: '/privacy',
   FAQ: '/faq',
   HOW_IT_WORKS: '/how-it-works',
+  NEWS: '/news',
   SUPPORT: 'mailto:hello@tomatoro.com',
   GITHUB: 'https://github.com/tonymtz/tomatoro',
   FEEDBACK: 'https://goo.gl/forms/T9BxmGcn38dlZz2w1',
