@@ -9,11 +9,11 @@ import { useTimerContext } from '~/contexts/timer'
 import { formatTime } from '~/utils/timer.utils'
 
 export async function getServerSideProps () {
-  const { data: blog } = await axios.get('https://blog.tomatoro.com/blogs/1')
+  const { data: blog } = await axios.get('https://blog.tomatoro.com/blogs/3')
   return { props: { blog } }
 }
 
-export default function Terms ({ blog }: { blog: Blog }) {
+export default function Faq ({ blog }: { blog: Blog }) {
   const { state: { isStarted, time } } = useTimerContext()
   const title = isStarted ? formatTime(time) : undefined
 

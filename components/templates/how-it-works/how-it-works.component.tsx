@@ -5,14 +5,13 @@ import { Box, Grid, Heading, Link, Paragraph } from 'theme-ui'
 import graphicRepeat from '~/public/svg/graphic-repeat.svg'
 import graphicSetTime from '~/public/svg/graphic-set-time.svg'
 import graphicTakeBreak from '~/public/svg/graphic-take-break.svg'
+import { LINKS } from '~/utils/config'
 
 const sections = [
   { title: 'Set the Time', graphic: graphicSetTime },
   { title: 'Take a Break', graphic: graphicTakeBreak },
   { title: 'Repeat', graphic: graphicRepeat },
 ]
-
-const link = 'https://www.techtarget.com/whatis/definition/pomodoro-technique'
 
 export const HowItWorks: FC = () => (
   <Grid variant='contained' gap={ 5 }>
@@ -46,7 +45,7 @@ export const HowItWorks: FC = () => (
     </Box>
 
     <Box mx='auto'>
-      <Link href={ link } target='_blank'>Read more about this technique</Link>
+      <Link href={ LINKS.HOW_IT_WORKS } target='_blank'>Read more about this technique</Link>
     </Box>
   </Grid>
 )

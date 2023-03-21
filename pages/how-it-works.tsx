@@ -9,7 +9,7 @@ import { useTimerContext } from '~/contexts/timer'
 import { formatTime } from '~/utils/timer.utils'
 
 export async function getServerSideProps () {
-  const { data: blog } = await axios.get('https://blog.tomatoro.com/blogs/1')
+  const { data: blog } = await axios.get('https://blog.tomatoro.com/blogs/4')
   return { props: { blog } }
 }
 

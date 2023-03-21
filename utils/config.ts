@@ -32,8 +32,16 @@ export const SEO = {
 }
 
 export const LINKS = {
+  TERMS: '/terms',
+  PRIVACY: '/privacy',
+  FAQ: '/faq',
+  HOW_IT_WORKS: '/how-it-works',
+  SUPPORT: 'mailto:hello@tomatoro.com',
   GITHUB: 'https://github.com/tonymtz/tomatoro',
   FEEDBACK: 'https://goo.gl/forms/T9BxmGcn38dlZz2w1',
-  LEARN_MORE: 'https://www.techtarget.com/whatis/definition/pomodoro-technique',
   STATUS: 'https://statuspage.freshping.io/65694-Tomatoro',
+  TOMATORO: 'https://tomatoro.com',
+  DOLAR: 'https://dolarenbancos.com',
+  CLIPPS: 'https://clipps.io',
+  SONGBOX: 'https://songbox.io',
 }

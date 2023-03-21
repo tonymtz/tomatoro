@@ -1,5 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { Grid, Heading, NavLink, Text } from 'theme-ui'
+import { Grid, NavLink, Text } from 'theme-ui'
+
+import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
 
 import { Container, Nav } from './header.styles'
 
@@ -12,7 +15,14 @@ export const Header = () => {
   return (
     <Container as='header'>
       <Grid variant='contained' columns={ 2 } sx={ { alignItems: 'center' } }>
-        <Heading>Tomatoro</Heading>
+        <Link href='/'>
+          <Image
+            src={ logoTomatoro }
+            alt="Tomatoro's logo"
+            width={ 150 }
+            height={ 30 }
+          />
+        </Link>
         <Nav as='nav'>
           { menuItems.map((item) => (
             <NavLink key={ item.name } as={ Link } href={ item.href }>

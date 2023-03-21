@@ -17,7 +17,7 @@ export default function Home () {
   return (
     <>
       <Page title={ title }>
-        <Box my={ 2 } pb={ 5 }>
+        <Box pt={ 4 } pb={ 5 }>
           <NotificationsWarn/>
           <TimerWithSelector/>
         </Box>
