@@ -7,6 +7,7 @@ export default function Document () {
       <Head/>
       <body>
         <Main/>
+        <div id='modal-portal' />
         <NextScript/>
 
         {/* Global site tag (gtag.js) - Google Analytics */ }

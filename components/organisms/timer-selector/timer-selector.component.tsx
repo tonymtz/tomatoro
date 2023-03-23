@@ -1,5 +1,7 @@
+import React from 'react'
 import { Button } from 'theme-ui'
 
+import { Settings } from '~/components/templates/settings'
 import { useTimerContext } from '~/contexts/timer'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
@@ -22,13 +24,13 @@ export const TimeSelector = () => {
           key={ key }
           onClick={ () => onSelect(key as SegmentType) }
           disabled={ currentSegment === key }
-          sx={ {
-            width: 'fit-content',
-          } }
         >
           { value.name } ({ value.time / 60 })
         </Button>
       )) }
+      <Settings>
+        { (openSettings) => (<Button onClick={ openSettings }>Settings</Button>) }
+      </Settings>
     </Container>
   )
 }
