@@ -1,6 +1,6 @@
 {
   "name": "tomatoro",
-  "version": "3.0.22",
+  "version": "3.0.23",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,7 +26,8 @@
     "react-markdown": "^8.0.6",
     "theme-ui": "^0.15.5",
     "typescript": "4.9.5",
-    "usehooks-ts": "^2.9.1"
+    "usehooks-ts": "^2.9.1",
+    "zustand": "^4.3.6"
   },
   "devDependencies": {
     "eslint-plugin-adonis": "^2.1.1",

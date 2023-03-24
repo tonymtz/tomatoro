@@ -1,17 +1,14 @@
-import React, { ReactNode, useCallback, useEffect, useReducer, useRef } from 'react'
+import React, { ReactNode, useCallback, useEffect, useRef } from 'react'
 
 import { useNotificationsContext } from '~/contexts/notifications'
+import { useTimerStore } from '~/stores/timer.store'
 import { SegmentType } from '~/utils/config'
 
-import { INITIAL_VALUES, TimerContextReducer } from './timer-context.reducer'
-import { TimerContextType } from './timer-context.types'
-
 export const TimerContext = React.createContext<{
-  state: TimerContextType;
-  resetTimer(): void,
-  setSegment(param: SegmentType): void;
-  startTimer(): void;
-  stopTimer(): void;
+  onStartTimer(): void;
+  onStopTimer(): void;
+  onResetTimer(): void;
+  onUpdateSegment(_: SegmentType): void;
 } | undefined>(undefined)
 
 export const useTimerContext = () => {
@@ -28,49 +25,38 @@ export const useTimerContext = () => {
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { notify } = useNotificationsContext()
-  const [state, dispatch] = useReducer(
-    TimerContextReducer,
-    INITIAL_VALUES,
-  )
+  const { time, tick, start, stop, reset, setSegment } = useTimerStore()
 
-  const tick = useCallback(() => {
-    dispatch({ type: 'TICK' })
-  }, [])
+  const onTick = useCallback(() => {
+    tick()
+  }, [tick])
 
-  const startTimer = useCallback(() => {
-    dispatch({ type: 'START' })
+  const onStartTimer = useCallback(() => {
+    start()
     workerRef.current?.postMessage('start')
-  }, [])
+  }, [start])
 
-  const stopTimer = useCallback(() => {
-    dispatch({ type: 'STOP' })
+  const onStopTimer = useCallback(() => {
+    stop()
     workerRef.current?.postMessage('stop')
-  }, [])
+  }, [stop])
 
-  const resetTimer = useCallback(() => {
-    dispatch({ type: 'RESET' })
+  const onResetTimer = useCallback(() => {
+    reset()
     workerRef.current?.postMessage('stop')
-  }, [])
+  }, [reset])
 
-  const setSegment = useCallback((segmentType: SegmentType) => {
-    dispatch({ type: 'SET_SEGMENT', payload: segmentType })
+  const onUpdateSegment = useCallback((segmentType: SegmentType) => {
+    setSegment(segmentType)
     workerRef.current?.postMessage('stop')
-  }, [])
-
-  const value = {
-    state,
-    startTimer,
-    stopTimer,
-    resetTimer,
-    setSegment,
-  }
+  }, [setSegment])
 
   useEffect(() => {
-    if (state.time < 1) {
-      stopTimer()
+    if (time < 1) {
+      onStopTimer()
       notify({ title: 'Time is up!' })
     }
-  }, [notify, state.time, stopTimer])
+  }, [notify, onStopTimer, time])
 
   const workerRef = useRef<Worker>()
 
@@ -79,14 +65,21 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     workerRef.current.onmessage = (event: MessageEvent<string>) => {
       if (event.data === 'tick') {
-        tick()
+        onTick()
       }
     }
 
     return () => {
       workerRef.current?.terminate()
     }
-  }, [tick])
+  }, [onTick])
+
+  const value = {
+    onStartTimer,
+    onStopTimer,
+    onResetTimer,
+    onUpdateSegment,
+  }
 
   return (
     <TimerContext.Provider value={ value }>

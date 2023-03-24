@@ -2,52 +2,53 @@ import { FC } from 'react'
 import { Text } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
+import { useTimerState } from '~/stores/timer.store'
 import { formatTime } from '~/utils/timer.utils'
 
 import { Button, Container, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
-  const { state, startTimer, stopTimer, resetTimer } = useTimerContext()
+  const { onStartTimer, onStopTimer, onResetTimer } = useTimerContext()
+  const { time, totalTime, isRunning, isStarted } = useTimerState()
 
   const onToggleClick = () => {
-    if (!state.isStarted) {
-      startTimer()
-    }
-    if (state.isRunning) {
-      stopTimer()
+    if (!isStarted) {
+      onStartTimer()
+    } else if (isRunning) {
+      onStopTimer()
     } else {
-      startTimer()
+      onStartTimer()
     }
   }
 
   const onStopClick = () => {
-    resetTimer()
+    onResetTimer()
   }
 
   return (
     <Container sx={ { height: 400 } }>
       <Text variant='display'>
-        { formatTime(state.time) }
+        { formatTime(time) }
       </Text>
       <Controls>
         <Button
           onClick={ onStopClick }
-          disabled={ !state.isStarted }
+          disabled={ !isStarted }
         >
           Done
         </Button>
         <Button
           onClick={ onToggleClick }
-          bg={ state.isRunning ? 'yellow' : 'green' }
+          bg={ isRunning ? 'yellow' : 'green' }
         >
-          { state.isRunning ? 'Pause' : 'Start' }
+          { isRunning ? 'Pause' : 'Start' }
         </Button>
       </Controls>
       <Donut
         strokeWidth={ 2 / 2 }
         size={ 400 }
         title='progress made'
-        value={ state.time / state.totalTime }
+        value={ time / totalTime }
       />
     </Container>
   )

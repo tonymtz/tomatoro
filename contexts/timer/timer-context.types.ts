@@ -1,16 +1,21 @@
 import { SegmentType } from '~/utils/config'
 
-export type TimerContextActionType = {
-  type: 'START' | 'STOP' | 'RESET' | 'TICK',
-} | {
-  type: 'SET_SEGMENT',
-  payload: SegmentType,
-}
-
-export interface TimerContextType {
-  time: number
-  totalTime: number
+export interface TimerStateType {
   currentSegment: SegmentType
   isRunning: boolean
   isStarted: boolean
+  time: number
+  totalTime: number
+}
+
+export interface TimerActionsType {
+  reset(): void
+
+  setSegment(param: SegmentType): void
+
+  start(): void
+
+  stop(): void
+
+  tick(): void
 }
