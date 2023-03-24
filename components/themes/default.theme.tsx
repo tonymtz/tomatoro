@@ -77,6 +77,11 @@ export const defaultTheme: Theme = {
       width: '100%',
     },
   },
+  forms: {
+    label: {
+      color: 'text',
+    },
+  },
   styles: {
     hr: {
       borderColor: '#eee',

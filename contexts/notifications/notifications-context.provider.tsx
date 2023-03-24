@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 
+import { useSettingsContext } from '~/contexts/settings/settings-context.provider'
+
 import { NotificationPayload } from './notifications-context.types'
 
 export const NotificationsContext = React.createContext<{
@@ -23,11 +25,12 @@ export const useNotificationsContext = () => {
 export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { showNotifications } = useSettingsContext()
   const [hasPermissions, setHasPermissions] = React.useState<boolean>(true)
 
   useEffect(() => {
-    setHasPermissions(Notification.permission === 'granted')
-  }, [])
+    showNotifications && setHasPermissions(Notification.permission === 'granted')
+  }, [showNotifications])
 
   const requestPermission = () => {
     Notification.requestPermission()
@@ -37,10 +40,12 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   const notify = (notification: NotificationPayload) => {
-    new Notification(notification.title).onclick = (event) => {
-      window.focus()
-      // @ts-ignore
-      event.target?.close()
+    if (hasPermissions) {
+      new Notification(notification.title).onclick = (event) => {
+        window.focus()
+        // @ts-ignore
+        event.target?.close()
+      }
     }
   }
 

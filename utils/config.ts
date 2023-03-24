@@ -5,7 +5,7 @@ import pkgJson from '/package.json'
 export const VERSION = pkgJson.version
 
 export const WORKER = {
-  tick: 1000,
+  tick: 10,
 }
 
 export type SegmentType = 'WORK' | 'SHORT' | 'LONG'
