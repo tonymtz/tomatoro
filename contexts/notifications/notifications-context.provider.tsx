@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
-import { useSettingsContext } from '~/contexts/settings/settings-context.provider'
+import { useComposedStore } from '~/store'
 
 import { NotificationPayload } from './notifications-context.types'
 
@@ -25,7 +25,7 @@ export const useNotificationsContext = () => {
 export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { showNotifications } = useSettingsContext()
+  const { showNotifications } = useComposedStore()
   const [hasPermissions, setHasPermissions] = React.useState<boolean>(true)
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
       })
   }
 
-  const notify = (notification: NotificationPayload) => {
+  const notify = useCallback((notification: NotificationPayload) => {
     if (hasPermissions) {
       new Notification(notification.title).onclick = (event) => {
         window.focus()
@@ -47,7 +47,7 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
         event.target?.close()
       }
     }
-  }
+  },[hasPermissions])
 
   const value = {
     hasPermissions,

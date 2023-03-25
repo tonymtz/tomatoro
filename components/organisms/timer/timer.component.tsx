@@ -2,14 +2,14 @@ import { FC } from 'react'
 import { Text } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
-import { useTimerState } from '~/stores/timer.store'
+import { useComposedStore } from '~/store'
 import { formatTime } from '~/utils/timer.utils'
 
 import { Button, Container, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
   const { onStartTimer, onStopTimer, onResetTimer } = useTimerContext()
-  const { time, totalTime, isRunning, isStarted } = useTimerState()
+  const { time, totalTime, isRunning, isStarted } = useComposedStore()
 
   const onToggleClick = () => {
     if (!isStarted) {
