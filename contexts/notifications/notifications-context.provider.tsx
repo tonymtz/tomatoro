@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useComposedStore } from '~/store'
+import { useSettingsStore } from '~/stores/settings'
 
 import { NotificationPayload } from './notifications-context.types'
 
@@ -25,7 +25,7 @@ export const useNotificationsContext = () => {
 export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { showNotifications } = useComposedStore()
+  const showNotifications = useSettingsStore(state => state.showNotifications)
   const [hasPermissions, setHasPermissions] = React.useState<boolean>(true)
 
   useEffect(() => {

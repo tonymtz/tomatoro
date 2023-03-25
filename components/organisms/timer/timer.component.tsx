@@ -2,14 +2,14 @@ import { FC } from 'react'
 import { Text } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
-import { useComposedStore } from '~/store'
+import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
 import { Button, Container, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
   const { onStartTimer, onStopTimer, onResetTimer } = useTimerContext()
-  const { time, totalTime, isRunning, isStarted } = useComposedStore()
+  const { time, totalTime, isRunning, isStarted } = useTimerStore()
 
   const onToggleClick = () => {
     if (!isStarted) {
@@ -45,9 +45,9 @@ export const Timer: FC = () => {
         </Button>
       </Controls>
       <Donut
-        strokeWidth={ 2 / 2 }
+        strokeWidth={ 1 }
         size={ 400 }
-        title='progress made'
+        title={ `Progress made: ${ time / totalTime * 100 }%` }
         value={ time / totalTime }
       />
     </Container>

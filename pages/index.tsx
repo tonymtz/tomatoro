@@ -7,11 +7,11 @@ import { GetInTouch } from '~/components/templates/get-in-touch'
 import { HowItWorks } from '~/components/templates/how-it-works'
 import { Page } from '~/components/templates/page'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector'
-import { useComposedStore } from '~/store'
+import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
 export default function Home () {
-  const { time, isStarted } = useComposedStore()
+  const { time, isStarted } = useTimerStore()
   const title = isStarted ? formatTime(time) : undefined
 
   return (

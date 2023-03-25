@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useRef } from 'react'
 
 import { useNotificationsContext } from '~/contexts/notifications'
-import { useComposedStore } from '~/store'
+import { useTimerStore } from '~/stores/time'
 import { SegmentType } from '~/utils/config'
 
 export const TimerContext = React.createContext<{
@@ -25,7 +25,7 @@ export const useTimerContext = () => {
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { notify } = useNotificationsContext()
-  const { time, tick, start, stop, reset, setSegment } = useComposedStore()
+  const { time, tick, start, stop, reset, setSegment } = useTimerStore()
 
   const onTick = useCallback(() => {
     tick()

@@ -3,7 +3,7 @@ import { Flex, Grid, Heading, Label, Paragraph, Slider, Switch } from 'theme-ui'
 
 import { Modal } from '~/components/organisms/modal'
 import { useTimerContext } from '~/contexts/timer'
-import { SettingsStore, useComposedStore } from '~/store'
+import { SettingsStore, useSettingsStore } from '~/stores/settings'
 
 import { Badge } from './settings.styles'
 
@@ -13,7 +13,7 @@ interface Props {
 
 export const Settings: FC<Props> = ({ children }) => {
   const [showModal, setShowModal] = useState(false)
-  const { onStopTimer } = useTimerContext()
+  const { onStopTimer, onResetTimer } = useTimerContext()
   const {
     longLength,
     shortLength,
@@ -23,25 +23,24 @@ export const Settings: FC<Props> = ({ children }) => {
     playSound,
     updateAppSetting,
     updateTimerSetting,
-    reset,
-  } = useComposedStore()
+  } = useSettingsStore()
 
   const toggleModal = () => {
     onStopTimer()
     setShowModal(prevState => !prevState)
   }
 
-  const onAppSettingChange = (field: keyof SettingsStore, value: unknown) => {
+  const onAppSettingChange = (field: 'showTimer' | 'showNotifications' | 'playSound', value: unknown) => {
     updateAppSetting({ [field]: value })
-    reset()
+    onResetTimer()
   }
 
   const onTimeSettingChange = (field: keyof SettingsStore, value: number) => {
     updateTimerSetting({
       [field]: value * 60,
-      totalTime: value * 60,
     })
-    reset()
+    // update totalTime
+    onResetTimer()
   }
 
   return (

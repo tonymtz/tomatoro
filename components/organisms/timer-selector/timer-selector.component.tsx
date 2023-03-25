@@ -3,17 +3,17 @@ import { Button } from 'theme-ui'
 
 import { Settings } from '~/components/templates/settings'
 import { useTimerContext } from '~/contexts/timer'
-import { useComposedStore } from '~/store'
+import { useTimerStore } from '~/stores/time'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
 import { Container } from './timer-selector.styles'
 
 export const TimeSelector = () => {
-  const { currentSegment, stop } = useComposedStore()
-  const { onUpdateSegment } = useTimerContext()
+  const { currentSegment } = useTimerStore()
+  const { onUpdateSegment, onStopTimer } = useTimerContext()
 
   const onSelect = (newSegment: SegmentType) => {
-    stop()
+    onStopTimer()
     onUpdateSegment(newSegment)
   }
 
