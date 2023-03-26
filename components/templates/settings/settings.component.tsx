@@ -39,8 +39,6 @@ export const Settings: FC<Props> = ({ children }) => {
     updateTimerSetting({
       [field]: value * 60,
     })
-    // update totalTime
-    onResetTimer()
   }
 
   return (

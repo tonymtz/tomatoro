@@ -1,7 +1,5 @@
-import { SegmentType } from '~/utils/config'
-
 export interface TimerState {
-  currentSegment: SegmentType
+
   isRunning: boolean
   isStarted: boolean
   time: number
@@ -11,7 +9,7 @@ export interface TimerState {
 export interface TimerStore extends TimerState {
   reset(): void
 
-  setSegment(param: SegmentType): void
+  setTotalTime(param: number): void
 
   start(): void
 

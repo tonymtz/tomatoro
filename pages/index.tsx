@@ -11,7 +11,8 @@ import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
 export default function Home () {
-  const { time, isStarted } = useTimerStore()
+  const isStarted = useTimerStore(state => state.isStarted)
+  const time = useTimerStore(state => state.time)
   const title = isStarted ? formatTime(time) : undefined
 
   return (

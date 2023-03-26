@@ -1,14 +1,13 @@
 import React, { ReactNode, useCallback, useEffect, useRef } from 'react'
 
 import { useNotificationsContext } from '~/contexts/notifications'
+import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
-import { SegmentType } from '~/utils/config'
 
 export const TimerContext = React.createContext<{
   onStartTimer(): void;
   onStopTimer(): void;
   onResetTimer(): void;
-  onUpdateSegment(_: SegmentType): void;
 } | undefined>(undefined)
 
 export const useTimerContext = () => {
@@ -25,7 +24,13 @@ export const useTimerContext = () => {
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { notify } = useNotificationsContext()
-  const { time, tick, start, stop, reset, setSegment } = useTimerStore()
+  const { time, tick, start, stop, reset, setTotalTime } = useTimerStore()
+  const [currentSegment, workLength, shortLength, longLength] = useSettingsStore(state => [
+    state.currentSegment,
+    state.workLength,
+    state.shortLength,
+    state.longLength,
+  ])
 
   const onTick = useCallback(() => {
     tick()
@@ -46,17 +51,29 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     workerRef.current?.postMessage('stop')
   }, [reset])
 
-  const onUpdateSegment = useCallback((segmentType: SegmentType) => {
-    setSegment(segmentType)
-    workerRef.current?.postMessage('stop')
-  }, [setSegment])
-
   useEffect(() => {
     if (time < 1) {
       onStopTimer()
       notify({ title: 'Time is up!' })
     }
   }, [notify, onStopTimer, time])
+
+  const onSegmentChange = useCallback((totalTime: number) => {
+    setTotalTime(totalTime)
+    onResetTimer()
+  }, [onResetTimer, setTotalTime])
+
+  useEffect(() => {
+    if (currentSegment === 'WORK') {
+      onSegmentChange(workLength)
+    }
+    if (currentSegment === 'SHORT') {
+      onSegmentChange(shortLength)
+    }
+    if (currentSegment === 'LONG') {
+      onSegmentChange(longLength)
+    }
+  }, [currentSegment, longLength, onSegmentChange, shortLength, workLength])
 
   const workerRef = useRef<Worker>()
 
@@ -78,7 +95,6 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     onStartTimer,
     onStopTimer,
     onResetTimer,
-    onUpdateSegment,
   }
 
   return (

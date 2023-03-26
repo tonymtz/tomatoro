@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { SEGMENTS } from '~/utils/config'
+import { SEGMENTS, SegmentType } from '~/utils/config'
 
 import { SettingsState, SettingsStore } from './settings-store.types'
 
@@ -12,6 +12,7 @@ const initialState: SettingsState = {
   showTimer: true,
   showNotifications: true,
   playSound: true,
+  currentSegment: SEGMENTS.WORK.type,
 }
 
 export const useSettingsStore = create(
@@ -30,10 +31,23 @@ export const useSettingsStore = create(
         false,
         { type: 'settings/updateAppSetting', ...payload }
       ),
+
+      setSegment: (nextSegment: SegmentType) => set(
+        () => {
+          const { time, type } = SEGMENTS[nextSegment]
+
+          return ({
+            currentSegment: type,
+            totalTime: time,
+            time,
+          })
+        },
+        false,
+        { type: 'timer/setSegment', nextSegment }
+      ),
     }),
     {
       name: 'Settings',
-      serialize: true,
     }
   )
 )

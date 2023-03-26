@@ -8,7 +8,6 @@ import { TimerState, TimerStore } from './timer-store.types'
 const initialState: TimerState = {
   time: SEGMENTS.WORK.time,
   totalTime: SEGMENTS.WORK.time,
-  currentSegment: SEGMENTS.WORK.type,
   isRunning: false,
   isStarted: false,
 }
@@ -53,18 +52,10 @@ export const useTimerStore = create(
         'timer/reset'
       ),
 
-      setSegment: (nextSegment: SegmentType) => set(
-        () => {
-          const { time, type } = SEGMENTS[nextSegment]
-
-          return ({
-            currentSegment: type,
-            totalTime: time,
-            time,
-          })
-        },
+      setTotalTime: (totalTime: number) => set(
+        () => ({ totalTime }),
         false,
-        { type: 'timer/setSegment', nextSegment }
+        { type: 'timer/setTotalTime', totalTime }
       ),
     }),
     {
