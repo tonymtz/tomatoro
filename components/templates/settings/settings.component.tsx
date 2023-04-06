@@ -100,7 +100,8 @@ export const Settings: FC<Props> = ({ children }) => {
           <Switch
             label="Show notification when timer ends"
             defaultChecked={ showNotifications }
-            onChange={ (e) => onAppSettingChange('showNotifications', e.target.checked) }
+            onChange={ (e) =>
+              onAppSettingChange('showNotifications', e.target.checked) }
           />
         </Grid>
       </Modal>
