@@ -15,7 +15,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-const ModalComponent: FC<Props> = ({ isToggled, setToggled, data, children }) => {
+const ModalComponent: FC<Props> = ({ children, data, isToggled, setToggled }) => {
   return (
     <AnimatePresence>
       { isToggled && (

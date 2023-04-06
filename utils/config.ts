@@ -2,10 +2,18 @@
 // eslint-disable-next-line import/no-unresolved
 import pkgJson from '/package.json'
 
+import { NotificationPayload } from '~/contexts/notifications/notifications-context.types'
+
 export const VERSION = pkgJson.version
 
+export const NOTIFICATION: NotificationPayload = {
+  title: 'Tomatoro',
+  body: 'Time is up!',
+  icon: '/svg/logo-tomatoro.svg',
+}
+
 export const WORKER = {
-  tick: 1000,
+  tick: 100,
 }
 
 export type SegmentType = 'WORK' | 'SHORT' | 'LONG'

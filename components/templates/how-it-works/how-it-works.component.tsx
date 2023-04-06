@@ -20,7 +20,7 @@ export const HowItWorks: FC = () => (
     </Heading>
 
     <Grid columns={ 3 }>
-      { sections.map(({ title, graphic }) => (
+      { sections.map(({ graphic, title }) => (
         <Box key={ title } sx={ { textAlign: 'center' } }>
           <Image
             src={ graphic }

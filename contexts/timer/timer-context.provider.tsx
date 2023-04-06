@@ -3,6 +3,7 @@ import React, { ReactNode, useCallback, useEffect, useRef } from 'react'
 import { useNotificationsContext } from '~/contexts/notifications'
 import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
+import { NOTIFICATION } from '~/utils/config'
 
 export const TimerContext = React.createContext<{
   onStartTimer(): void;
@@ -24,7 +25,7 @@ export const useTimerContext = () => {
 
 export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { notify } = useNotificationsContext()
-  const { time, tick, start, stop, reset, setTotalTime } = useTimerStore()
+  const { reset, setTotalTime, start, stop, tick, time } = useTimerStore()
   const [currentSegment, workLength, shortLength, longLength] = useSettingsStore(state => [
     state.currentSegment,
     state.workLength,
@@ -54,7 +55,7 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   useEffect(() => {
     if (time < 1) {
       onStopTimer()
-      notify({ title: 'Time is up!' })
+      notify(NOTIFICATION)
     }
   }, [notify, onStopTimer, time])
 

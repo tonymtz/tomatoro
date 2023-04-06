@@ -1,13 +1,14 @@
 {
   "name": "tomatoro",
-  "version": "3.0.28",
+  "version": "3.0.29",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "echo 'ok'",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "eslint-plugin-adonis": "^2.1.1",
+    "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "husky": "^8.0.3"
   }
 }

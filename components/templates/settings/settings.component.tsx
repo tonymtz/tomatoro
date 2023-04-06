@@ -13,16 +13,15 @@ interface Props {
 
 export const Settings: FC<Props> = ({ children }) => {
   const [showModal, setShowModal] = useState(false)
-  const { onStopTimer, onResetTimer } = useTimerContext()
+  const { onResetTimer, onStopTimer } = useTimerContext()
   const {
     longLength,
     shortLength,
-    workLength,
     showNotifications,
     showTimer,
-    playSound,
     updateAppSetting,
     updateTimerSetting,
+    workLength,
   } = useSettingsStore()
 
   const toggleModal = () => {
@@ -94,20 +93,14 @@ export const Settings: FC<Props> = ({ children }) => {
 
           <Switch
             label="Show timer on title"
-            defaultChecked={ showNotifications }
-            onChange={ (e) => onAppSettingChange('showNotifications', e.target.checked) }
-          />
-
-          <Switch
-            label="Show notification when timer ends"
             defaultChecked={ showTimer }
             onChange={ (e) => onAppSettingChange('showTimer', e.target.checked) }
           />
 
           <Switch
-            label="Play a sound when timer ends"
-            defaultChecked={ playSound }
-            onChange={ (e) => onAppSettingChange('playSound', e.target.checked) }
+            label="Show notification when timer ends"
+            defaultChecked={ showNotifications }
+            onChange={ (e) => onAppSettingChange('showNotifications', e.target.checked) }
           />
         </Grid>
       </Modal>

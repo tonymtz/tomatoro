@@ -9,7 +9,7 @@ import { SEGMENTS, SegmentType } from '~/utils/config'
 import { Container } from './timer-selector.styles'
 
 export const TimeSelector = () => {
-  const { workLength, shortLength, longLength, currentSegment, setSegment } = useSettingsStore()
+  const { currentSegment, longLength, setSegment, shortLength, workLength } = useSettingsStore()
   const { onStopTimer } = useTimerContext()
 
   const composedSegments = useMemo(() => ({

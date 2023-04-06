@@ -7,13 +7,14 @@ import { GetInTouch } from '~/components/templates/get-in-touch'
 import { HowItWorks } from '~/components/templates/how-it-works'
 import { Page } from '~/components/templates/page'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector'
+import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
 export default function Home () {
-  const isStarted = useTimerStore(state => state.isStarted)
-  const time = useTimerStore(state => state.time)
-  const title = isStarted ? formatTime(time) : undefined
+  const [isStarted, time] = useTimerStore(state => [state.isStarted, state.time])
+  const showTimer = useSettingsStore(state => state.showTimer)
+  const title = showTimer && isStarted ? formatTime(time) : undefined
 
   return (
     <>

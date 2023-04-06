@@ -8,8 +8,8 @@ import { formatTime } from '~/utils/timer.utils'
 import { Button, Container, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
-  const { onStartTimer, onStopTimer, onResetTimer } = useTimerContext()
-  const { time, totalTime, isRunning, isStarted } = useTimerStore()
+  const { onResetTimer, onStartTimer, onStopTimer } = useTimerContext()
+  const { isRunning, isStarted, time, totalTime } = useTimerStore()
 
   const onToggleClick = () => {
     if (!isStarted) {

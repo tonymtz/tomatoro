@@ -14,7 +14,7 @@ export const Page: FC<PageProps> = ({ children, title }) => {
   const composedTitle = title ? `${ title } | ${ SEO.title }` : SEO.title
 
   return (
-    <div>
+    <>
       <Head>
         <title>{ composedTitle }</title>
         <meta name="description" content={ SEO.description }/>
@@ -27,6 +27,6 @@ export const Page: FC<PageProps> = ({ children, title }) => {
       { children }
 
       <Footer version={VERSION} />
-    </div>
+    </>
   )
 }
