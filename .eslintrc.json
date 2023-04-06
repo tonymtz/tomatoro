@@ -4,8 +4,6 @@
     "plugin:adonis/typescriptApp"
   ],
   "rules": {
-    //    "react/jsx-indent": [2, 2, { "checkAttributes": true }],
-    //    "react/jsx-indent-props": [2, 2],
     "react/jsx-wrap-multilines": [
       "error",
       {
