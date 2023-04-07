@@ -21,6 +21,21 @@ class App extends Component {
             <div className="app">
                 <TopNav/>
 
+                <div className="col-100" style={ {
+                    border: "4px solid tomato",
+                    backgroundColor: "#ffefdc",
+                    maxWidth: 600,
+                    margin: "0.5em auto",
+                    fontWeight: "bold",
+                } }>
+                    <p>
+                        We're testing our new version of Tomatoro. Want to try
+                        it out?
+                        <a href="https://next.tomatoro.com/?utm_source=tomatoro.com&utm_medium=home_invite">Tomatoro
+                            v3</a>
+                    </p>
+                </div>
+
                 <div className="tomato container">
                     <div className="col-60">
                         <TomatoTimer/>
