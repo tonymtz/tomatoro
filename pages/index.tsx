@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import React from 'react'
 import { Box, Divider } from 'theme-ui'
 
@@ -12,19 +11,6 @@ import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
-type TimerWithSelectorPropsType = JSX.LibraryManagedAttributes<
-  typeof TimerWithSelector,
-  React.ComponentProps<typeof TimerWithSelector>
->
-
-const DynamicTimerWithSelector = dynamic<TimerWithSelectorPropsType>(
-  () => import('~/components/templates/timer-with-selector')
-    .then(mod => mod.TimerWithSelector),
-  {
-    ssr: false,
-  },
-)
-
 export default function Home () {
   const [isStarted, time] = useTimerStore(state => [state.isStarted, state.time])
   const showTimer = useSettingsStore(state => state.showTimer)
@@ -35,7 +21,7 @@ export default function Home () {
       <Page title={ title }>
         <Box pt={ 4 } pb={ 5 }>
           <NotificationsWarn/>
-          <DynamicTimerWithSelector/>
+          <TimerWithSelector/>
         </Box>
 
         <Divider/>

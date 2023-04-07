@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-import { SEGMENTS, SegmentType } from '~/utils/config'
+import { SEGMENTS } from '~/utils/config'
 
 import { TimerState, TimerStore } from './timer-store.types'
 
@@ -22,7 +22,7 @@ export const useTimerStore = create(
           time: state.time - 1,
         }),
         false,
-        'timer/tick'
+        'timer/tick',
       ),
 
       start: () => set(
@@ -31,7 +31,7 @@ export const useTimerStore = create(
           isStarted: true,
         }),
         false,
-        'timer/start'
+        'timer/start',
       ),
 
       stop: () => set(
@@ -39,7 +39,7 @@ export const useTimerStore = create(
           isRunning: false,
         }),
         false,
-        'timer/stop'
+        'timer/stop',
       ),
 
       reset: () => set(
@@ -49,17 +49,17 @@ export const useTimerStore = create(
           time: state.totalTime,
         }),
         false,
-        'timer/reset'
+        'timer/reset',
       ),
 
       setTotalTime: (totalTime: number) => set(
         () => ({ totalTime }),
         false,
-        { type: 'timer/setTotalTime', totalTime }
+        { type: 'timer/setTotalTime', totalTime },
       ),
     }),
     {
       name: 'Timer',
-    }
-  )
+    },
+  ),
 )
