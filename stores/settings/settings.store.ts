@@ -1,5 +1,5 @@
-import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { create, useStore } from 'zustand'
+import { devtools, persist } from 'zustand/middleware'
 
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
@@ -15,39 +15,60 @@ const initialState: SettingsState = {
   currentSegment: SEGMENTS.WORK.type,
 }
 
-export const useSettingsStore = create(
-  devtools<SettingsStore>(
-    (set) => ({
-      ...initialState,
+const settingsStore = create<
+  SettingsStore,
+  [
+    ['zustand/devtools', never],
+    ['zustand/persist', SettingsState],
+  ]
+>(
+  devtools(
+    persist(
+      (set) => ({
+        ...initialState,
 
-      updateTimerSetting: (payload: Pick<SettingsStore, 'workLength' & 'shortLength' & 'longLength'>) => set(
-        () => ({ ...payload }),
-        false,
-        { type: 'settings/updateTimerSetting', ...payload }
-      ),
+        updateTimerSetting: (payload: Pick<SettingsStore, 'workLength' & 'shortLength' & 'longLength'>) => set(
+          () => ({ ...payload }),
+          false,
+          { type: 'settings/updateTimerSetting', ...payload },
+        ),
 
-      updateAppSetting: (payload: Pick<SettingsStore, 'showTimer' & 'showNotifications' & 'playSound'>) => set(
-        () => ({ ...payload }),
-        false,
-        { type: 'settings/updateAppSetting', ...payload }
-      ),
+        updateAppSetting: (payload: Pick<SettingsStore, 'showTimer' & 'showNotifications' & 'playSound'>) => set(
+          () => ({ ...payload }),
+          false,
+          { type: 'settings/updateAppSetting', ...payload },
+        ),
 
-      setSegment: (nextSegment: SegmentType) => set(
-        () => {
-          const { time, type } = SEGMENTS[nextSegment]
+        setSegment: (nextSegment: SegmentType) => set(
+          () => {
+            const { time, type } = SEGMENTS[nextSegment]
 
-          return ({
-            currentSegment: type,
-            totalTime: time,
-            time,
-          })
-        },
-        false,
-        { type: 'timer/setSegment', nextSegment }
-      ),
-    }),
-    {
-      name: 'Settings',
-    }
-  )
+            return ({
+              currentSegment: type,
+              totalTime: time,
+              time,
+            })
+          },
+          false,
+          { type: 'timer/setSegment', nextSegment },
+        ),
+      }),
+      {
+        name: 'settings',
+      },
+    ),
+  ),
 )
+
+// bounded stored
+export function useSettingsStore (): SettingsStore
+export function useSettingsStore<T> (
+  selector: (state: SettingsStore) => T,
+  equals?: (a: T, b: T) => boolean,
+): T
+export function useSettingsStore<T> (
+  selector?: (state: SettingsStore) => T,
+  equals?: (a: T, b: T) => boolean,
+) {
+  return useStore(settingsStore, selector!, equals)
+}

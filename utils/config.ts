@@ -2,7 +2,7 @@
 // eslint-disable-next-line import/no-unresolved
 import pkgJson from '/package.json'
 
-import { NotificationPayload } from '~/contexts/notifications/notifications-context.types'
+import { NotificationPayload } from '~/contexts/notifications'
 
 export const VERSION = pkgJson.version
 
@@ -13,7 +13,7 @@ export const NOTIFICATION: NotificationPayload = {
 }
 
 export const WORKER = {
-  tick: 100,
+  tick: 1000,
 }
 
 export type SegmentType = 'WORK' | 'SHORT' | 'LONG'

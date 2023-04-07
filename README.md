@@ -8,8 +8,8 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 
 - ⏳ Time accuracy
 - 🔔 Alerts/Notifications
-- ⚙️ ~~Customizable work/break time~~ (coming soon)
-- 🏕️ ~~Settings saved in your session~~ (coming soon)
+- ⚙️ Customizable work/break time
+- 🏕️ Settings saved in your session
 - 👀 Timer in menu bar
 - 🎨 Minimalistic design
 - ⚡️️ ~~Quick actions from your notifications~~ (coming soon)
