@@ -4,7 +4,8 @@
     "plugin:adonis/typescriptApp"
   ],
   "plugins": [
-    "sort-destructure-keys"
+    "sort-destructure-keys",
+    "unused-imports"
   ],
   "rules": {
     "react/jsx-wrap-multilines": [
@@ -52,6 +53,7 @@
       {
         "caseSensitive": false
       }
-    ]
+    ],
+    "unused-imports/no-unused-imports": "error"
   }
 }
