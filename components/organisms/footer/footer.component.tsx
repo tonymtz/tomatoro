@@ -11,31 +11,33 @@ interface Props {
 
 export const Footer: FC<Props> = ({ version }) => {
   return (
-    <Container as='footer'>
-      <Grid variant='contained' columns={ [4, '2fr 1fr 1fr 1fr'] }>
+    <Container as="footer">
+      <Grid variant="contained" columns={ [4, '2fr 1fr 1fr 1fr'] }>
         <Flex sx={ { flexDirection: 'column' } }>
-          <Heading as='h4' mb={ 3 }>Tomatoro</Heading>
-          <Text variant='small'>Work smarter, not harder.</Text>
+          <Heading as="h3" mb={ 3 }>Tomatoro</Heading>
+          <Text variant="small">Work smarter, not harder.</Text>
         </Flex>
 
         { footerData.links.map((linkGroup) => (
-          <Flex key={ linkGroup.title } sx={ { flexDirection: 'column', gap: 1 } }>
-            <Heading as='h4' mb={ 3 }>{ linkGroup.title }</Heading>
+          <Flex key={ linkGroup.title }
+            sx={ { flexDirection: 'column', gap: 1 } }>
+            <Heading as="h3" mb={ 3 }>{ linkGroup.title }</Heading>
             { linkGroup.items.map((item) => (
               <NavLink key={ item.name } as={ Link } href={ item.href }>
-                <Text variant='small'>{ item.name }</Text>
+                <Text variant="small">{ item.name }</Text>
               </NavLink>
             )) }
           </Flex>
         )) }
       </Grid>
-      <Grid variant='contained' columns={ 2 }>
-        <Text variant='small' as='span'>
-          &copy; 2017-{ new Date().getFullYear() } Tomatoro. All Rights Reserved.
+      <Grid variant="contained" columns={ 2 }>
+        <Text variant="small" as="span">
+          &copy; 2017-{ new Date().getFullYear() } Tomatoro. All Rights
+          Reserved.
         </Text>
 
         { version && (
-          <Text variant='small' sx={ { textAlign: 'right' } }>
+          <Text variant="small" sx={ { textAlign: 'right' } }>
             v{ version }
           </Text>
         ) }

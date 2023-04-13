@@ -3,11 +3,11 @@ import Script from 'next/script'
 
 export default function Document () {
   return (
-    <Html>
+    <Html lang="en">
       <Head/>
       <body>
         <Main/>
-        <div id='modal-portal' />
+        <div id="modal-portal"/>
         <NextScript/>
 
         {/* Global site tag (gtag.js) - Google Analytics */ }

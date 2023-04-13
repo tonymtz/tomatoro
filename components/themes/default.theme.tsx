@@ -47,9 +47,9 @@ export const defaultTheme: Theme = {
     textMediumEmphasis: rgba('#000', 0.6),
     textLowEmphasis: rgba('#000', 0.38),
     background: '#fff',
-    primary: '#f55e3c',
+    primary: '#DA3B1B',
     yellow: '#eab440',
-    green: '#81ab6a',
+    green: '#647C46',
   },
   buttons: {
     primary: {

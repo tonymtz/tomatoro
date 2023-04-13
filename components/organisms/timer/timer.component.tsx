@@ -27,7 +27,7 @@ export const Timer: FC = () => {
 
   return (
     <Container sx={ { height: 400 } }>
-      <Text variant='display'>
+      <Text variant="display">
         { formatTime(time) }
       </Text>
       <Controls>
@@ -49,6 +49,7 @@ export const Timer: FC = () => {
         size={ 400 }
         title={ `Progress made: ${ time / totalTime * 100 }%` }
         value={ time / totalTime }
+        role="progressbar"
       />
     </Container>
   )
