@@ -27,13 +27,13 @@ const settingsStore = create<
       (set) => ({
         ...initialState,
 
-        updateTimerSetting: (payload: Pick<SettingsStore, 'workLength' & 'shortLength' & 'longLength'>) => set(
+        updateTimerSetting: (payload: Pick<SettingsStore, 'workLength' | 'shortLength' | 'longLength'>) => set(
           () => ({ ...payload }),
           false,
           { type: 'settings/updateTimerSetting', ...payload },
         ),
 
-        updateAppSetting: (payload: Pick<SettingsStore, 'showTimer' & 'showNotifications' & 'playSound'>) => set(
+        updateAppSetting: (payload: Pick<SettingsStore, 'showTimer' | 'showNotifications' | 'playSound'>) => set(
           () => ({ ...payload }),
           false,
           { type: 'settings/updateAppSetting', ...payload },
@@ -51,6 +51,12 @@ const settingsStore = create<
           },
           false,
           { type: 'timer/setSegment', nextSegment },
+        ),
+
+        resetSetting: () => set(
+          () => ({ ...initialState }),
+          false,
+          { type: 'settings/resetSetting' },
         ),
       }),
       {

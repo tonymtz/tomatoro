@@ -1,9 +1,18 @@
 import React, { FC, useState } from 'react'
-import { Flex, Grid, Heading, Label, Paragraph, Slider, Switch } from 'theme-ui'
+import {
+  Button, Divider,
+  Flex,
+  Grid,
+  Heading,
+  Label,
+  Paragraph,
+  Slider,
+  Switch,
+} from 'theme-ui'
 
 import { Modal } from '~/components/organisms/modal'
 import { useTimerContext } from '~/contexts/timer'
-import { SettingsStore, useSettingsStore } from '~/stores/settings'
+import { useSettingsStore } from '~/stores/settings'
 
 import { Badge } from './settings.styles'
 
@@ -16,6 +25,7 @@ export const Settings: FC<Props> = ({ children }) => {
   const { onResetTimer, onStopTimer } = useTimerContext()
   const {
     longLength,
+    resetSetting,
     shortLength,
     showNotifications,
     showTimer,
@@ -34,7 +44,7 @@ export const Settings: FC<Props> = ({ children }) => {
     onResetTimer()
   }
 
-  const onTimeSettingChange = (field: keyof SettingsStore, value: number) => {
+  const onTimeSettingChange = (field: 'workLength' | 'shortLength' | 'longLength', value: number) => {
     updateTimerSetting({
       [field]: value * 60,
     })
@@ -43,22 +53,23 @@ export const Settings: FC<Props> = ({ children }) => {
   return (
     <>
       { children?.(toggleModal) }
-      <Modal isToggled={ showModal } setToggled={ toggleModal }>
-        <Heading as='h2' variant='text.title' sx={ { textAlign: 'center' } }>
-          Settings
-        </Heading>
+      <Modal show={ showModal } setToggled={ toggleModal }>
+        <Flex sx={ { flexDirection: 'column', gap: 2 } }>
+          <Heading as="h2" variant="text.title"
+            sx={ { textAlign: 'center' } }>
+            Settings
+          </Heading>
 
-        <Paragraph>Customize your Tomatoro.</Paragraph>
-
+          <Paragraph>Customize your Tomatoro.</Paragraph>
+        </Flex>
         <Grid sx={ { gap: 3, my: 4, width: '100%' } }>
-
           <Flex sx={ { flexDirection: 'column' } }>
             <Label>Work session length:</Label>
             <Flex sx={ { gap: 4, mt: 2 } }>
               <Slider
                 min={ 1 }
                 max={ 60 }
-                defaultValue={ workLength / 60 }
+                value={ workLength / 60 }
                 onChange={ (e) => onTimeSettingChange('workLength', Number(e.target.value)) }
               />
               <Badge>{ workLength / 60 } min</Badge>
@@ -71,7 +82,7 @@ export const Settings: FC<Props> = ({ children }) => {
               <Slider
                 min={ 1 }
                 max={ 15 }
-                defaultValue={ shortLength / 60 }
+                value={ shortLength / 60 }
                 onChange={ (e) => onTimeSettingChange('shortLength', Number(e.target.value)) }
               />
               <Badge>{ shortLength / 60 } min</Badge>
@@ -84,7 +95,7 @@ export const Settings: FC<Props> = ({ children }) => {
               <Slider
                 min={ 1 }
                 max={ 30 }
-                defaultValue={ longLength / 60 }
+                value={ longLength / 60 }
                 onChange={ (e) => onTimeSettingChange('longLength', Number(e.target.value)) }
               />
               <Badge>{ longLength / 60 } min</Badge>
@@ -93,16 +104,23 @@ export const Settings: FC<Props> = ({ children }) => {
 
           <Switch
             label="Show timer on title"
-            defaultChecked={ showTimer }
+            checked={ showTimer }
             onChange={ (e) => onAppSettingChange('showTimer', e.target.checked) }
           />
 
           <Switch
             label="Show notification when timer ends"
-            defaultChecked={ showNotifications }
+            checked={ showNotifications }
             onChange={ (e) =>
               onAppSettingChange('showNotifications', e.target.checked) }
           />
+
+          <Divider sx={ { my: 1, width: '100%' } }/>
+
+          <Flex sx={ { gap: 3 } }>
+            <Button onClick={ resetSetting }>Reset settings</Button>
+            <Button onClick={ toggleModal }>Close</Button>
+          </Flex>
         </Grid>
       </Modal>
     </>

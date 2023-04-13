@@ -1,12 +1,17 @@
 import { AnimatePresence } from 'framer-motion'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Heading, Paragraph } from 'theme-ui'
+import { useEventListener, useLockedBody, useOnClickOutside } from 'usehooks-ts'
 
-import { Backdrop, CloseButton, MotionModal } from '~/components/organisms/modal/modal.styles'
+import {
+  Backdrop,
+  CloseButton,
+  MotionModal,
+} from '~/components/organisms/modal/modal.styles'
 
 interface Props {
-  isToggled: boolean
+  show: boolean
   setToggled: () => void
   data?: {
     title: string
@@ -15,18 +20,40 @@ interface Props {
   children?: React.ReactNode
 }
 
-const ModalComponent: FC<Props> = ({ children, data, isToggled, setToggled }) => {
+const ModalComponent: FC<Props> = ({
+  children,
+  data,
+  setToggled,
+  show,
+}) => {
+  const modalRef = useRef(null)
+
+  const onEscKey = (event: { key: string }) => {
+    if (event.key === 'Escape') {
+      setToggled()
+    }
+  }
+
+  useEventListener('keyup', onEscKey, modalRef)
+
+  useLockedBody(show, 'root')
+
+  useOnClickOutside(modalRef, () => {
+    setToggled()
+  })
+
   return (
     <AnimatePresence>
-      { isToggled && (
+      { show && (
         <>
           <Backdrop/>
           <MotionModal
+            ref={ modalRef }
             initial={ { y: 10, x: '-50%', opacity: 0 } }
             animate={ { y: 50, opacity: 1 } }
             exit={ { y: 100, opacity: 0 } }
           >
-            <CloseButton onClick={ setToggled } />
+            <CloseButton onClick={ setToggled }/>
             { data?.title && <Heading>{ data.title }</Heading> }
             { data?.message && <Paragraph>{ data.message }</Paragraph> }
             { children }
@@ -49,7 +76,7 @@ export const Modal: FC<Props> = (props) => {
   return mounted
     ? createPortal(
       <ModalComponent { ...props } />,
-      document.querySelector('#modal-portal')!
+      document.querySelector('#modal-portal')!,
     )
     : null
 }

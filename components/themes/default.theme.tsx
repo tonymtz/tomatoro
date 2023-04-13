@@ -1,5 +1,6 @@
 import { darken } from '@theme-ui/color'
 import { IBM_Plex_Mono, Open_Sans } from 'next/font/google'
+import { rgba } from 'polished'
 import type { Theme } from 'theme-ui'
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -37,12 +38,14 @@ export const defaultTheme: Theme = {
       fontFamily: 'heading',
     },
     paragraph: {
-      color: '#666',
+      color: 'textMediumEmphasis',
       textAlign: 'justify',
     },
   },
   colors: {
-    text: '#333',
+    textHighEmphasis: rgba('#000', 0.87),
+    textMediumEmphasis: rgba('#000', 0.6),
+    textLowEmphasis: rgba('#000', 0.38),
     background: '#fff',
     primary: '#f55e3c',
     yellow: '#eab440',
@@ -79,7 +82,13 @@ export const defaultTheme: Theme = {
   },
   forms: {
     label: {
-      color: 'text',
+      color: 'textMediumEmphasis',
+      fontFamily: 'body',
+    },
+    slider: {
+      backgroundColor: rgba('#000', 0.15),
+      color: 'primary',
+      height: 8,
     },
   },
   styles: {

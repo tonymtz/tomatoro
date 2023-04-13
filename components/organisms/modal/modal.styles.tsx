@@ -23,9 +23,9 @@ export const MotionModal = styled(motion.div)`
   justify-content: center;
   align-items: center;
   width: 80%;
-  max-width: 380px;
+  max-width: 420px;
   height: auto;
-  padding: 1em 3em;
+  padding: 2em 3em;
   border: 1px solid #ddd;
   background: #fff;
 `

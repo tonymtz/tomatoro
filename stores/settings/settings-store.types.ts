@@ -16,4 +16,6 @@ export interface SettingsStore extends SettingsState {
   updateAppSetting(payload: Pick<SettingsStore, 'showTimer' & 'showNotifications' & 'playSound'>): void
 
   setSegment(param: SegmentType): void
+
+  resetSetting(): void
 }
