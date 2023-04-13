@@ -40,6 +40,7 @@ export const defaultTheme: Theme = {
     paragraph: {
       color: 'textMediumEmphasis',
       textAlign: 'justify',
+      lineHeight: '1.75em',
     },
   },
   colors: {
@@ -92,6 +93,16 @@ export const defaultTheme: Theme = {
     },
   },
   styles: {
+    a: {
+      borderBottom: '1px solid',
+      color: 'primary',
+      py: 1,
+      textDecoration: 'none',
+      '&:hover, &:focus, &:active': {
+        color: 'white',
+        backgroundColor: 'primary',
+      },
+    },
     hr: {
       borderColor: '#eee',
       maxWidth,
