@@ -9,14 +9,14 @@ interface Props {
 export const BlogRenderer: FC<Props> = ({ blog }) => {
   return (
     <ReactMarkdown components={ {
-      h1: (props) => <Heading as='h1'>{ props.children }</Heading>,
-      h2: (props) => <Heading as='h2'>{ props.children }</Heading>,
+      h1: (props) => <Heading as="h1">{ props.children }</Heading>,
+      h2: (props) => <Heading as="h2">{ props.children }</Heading>,
       p: (props) => <Paragraph>{ props.children }</Paragraph>,
       li: (props) => <li><Paragraph>{ props.children }</Paragraph></li>,
       a: (props) => <Link href={ props.href }>{ props.children }</Link>,
       hr: () => <Divider sx={ { my: 4, width: '100%' } }/>,
     } }>
-      { blog.content }
+      { blog.attributes.content }
     </ReactMarkdown>
   )
 }

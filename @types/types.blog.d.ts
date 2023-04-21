@@ -1,11 +1,24 @@
 type Blog = {
   id: number
-  title: string
-  content: string
+  attributes: {
+    title: string
+    content: string
+    locale: string
+    publishedAt: string
+    createdAt: string
+    updatedAt: string
+    slug: string
+  }
 }
 
 type Update = {
   id: number
-  title: string
-  content: string
+  attributes: {
+    title: string
+    content: string
+    locale: string
+    publishedAt: string
+    createdAt: string
+    updatedAt: string
+  }
 }

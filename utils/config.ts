@@ -37,6 +37,8 @@ export const SEO = {
   title: 'Tomatoro',
   // eslint-disable-next-line max-len
   description: 'Tomatoro will help you power through distractions, hyper-focus, and get things done in short bursts, while taking frequent breaks to get some air and relax.',
+  // eslint-disable-next-line max-len
+  keywords: 'tomatoro, avoid distractions, focus, get things done, break, time management, avoid burnout, productivity, pomodoro, timer, tomato',
 }
 
 export const LINKS = {
@@ -55,3 +57,12 @@ export const LINKS = {
   SONGBOX: 'https://songbox.io',
   GATOLINERO: 'https://t.me/GatolineroBot',
 }
+
+export const PAGES = {
+  TERMS: 'terms-of-service',
+  PRIVACY: 'privacy-notice',
+  FAQ: 'faq',
+  HOW_IT_WORKS: 'how-it-works',
+}
+
+export const CMS_URL = 'https://cms-tomatoro.tepache.dev/api'
