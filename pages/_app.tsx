@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import posthog from 'posthog-js'
+import Posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 import { ThemeProvider } from 'theme-ui'
 import { useEffectOnce, useIsClient, useLocalStorage } from 'usehooks-ts'
@@ -16,14 +16,16 @@ export default function App ({ Component, pageProps }: AppProps) {
 
   useEffectOnce(() => {
     if (isClient) {
-      posthog.init(
+      Posthog.init(
         process.env.NEXT_PUBLIC_POSTHOG_KEY as string,
         {
           api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
-          // Enable debug mode in development
+          autocapture: process.env.NODE_ENV !== 'development',
           loaded: (posthog) => {
+            // Enable debug mode in development
             if (process.env.NODE_ENV === 'development') {
               posthog.debug()
+              posthog.opt_out_capturing()
             }
           },
         },
@@ -35,8 +37,7 @@ export default function App ({ Component, pageProps }: AppProps) {
     <PostHogProvider>
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
-          <TimerProvider>
-            { globalStyles }
+          <TimerProvider>{ globalStyles }
             <Component { ...pageProps } />
           </TimerProvider>
         </NotificationsProvider>
