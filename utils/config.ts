@@ -41,11 +41,20 @@ export const SEO = {
   keywords: 'tomatoro, avoid distractions, focus, get things done, break, time management, avoid burnout, productivity, pomodoro, timer, tomato',
 }
 
+export const PAGES = {
+  TERMS: 'terms-of-service',
+  PRIVACY: 'privacy-notice',
+  FAQ: 'faq',
+  HOW_IT_WORKS: 'how-it-works',
+  CONTACT: 'contact',
+}
+
 export const LINKS = {
-  TERMS: '/terms',
-  PRIVACY: '/privacy',
-  FAQ: '/faq',
-  HOW_IT_WORKS: '/how-it-works',
+  TERMS: `/${ PAGES.TERMS }`,
+  PRIVACY: `/${ PAGES.PRIVACY }`,
+  FAQ: `/${ PAGES.FAQ }`,
+  HOW_IT_WORKS: `/${ PAGES.HOW_IT_WORKS }`,
+  CONTACT: `/${ PAGES.CONTACT }`,
   NEWS: '/news',
   SUPPORT: 'mailto:hello@tomatoro.com',
   GITHUB: 'https://github.com/tonymtz/tomatoro',
@@ -56,13 +65,6 @@ export const LINKS = {
   CLIPPS: 'https://clipps.io',
   SONGBOX: 'https://songbox.io',
   GATOLINERO: 'https://t.me/GatolineroBot',
-}
-
-export const PAGES = {
-  TERMS: 'terms-of-service',
-  PRIVACY: 'privacy-notice',
-  FAQ: 'faq',
-  HOW_IT_WORKS: 'how-it-works',
 }
 
 export const CMS_URL = 'https://blog.tomatoro.com/api'

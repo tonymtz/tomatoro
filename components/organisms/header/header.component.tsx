@@ -3,19 +3,20 @@ import Link from 'next/link'
 import { Grid, NavLink, Text } from 'theme-ui'
 
 import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
+import { LINKS } from '~/utils/config'
 
 import { Container, Nav } from './header.styles'
 
 const menuItems = [
-  { name: 'How it works', href: '#how-it-works' },
-  { name: 'Contact', href: '#get-in-touch' },
+  { name: 'How it works', href: LINKS.HOW_IT_WORKS },
+  { name: 'Contact', href: LINKS.CONTACT },
 ]
 
 export const Header = () => {
   return (
-    <Container as='header'>
-      <Grid variant='contained' columns={ 2 } sx={ { alignItems: 'center' } }>
-        <Link href='/'>
+    <Container as="header">
+      <Grid variant="contained" columns={ 2 } sx={ { alignItems: 'center' } }>
+        <Link href="/">
           <Image
             src={ logoTomatoro }
             alt="Tomatoro's logo"
@@ -23,7 +24,7 @@ export const Header = () => {
             height={ 30 }
           />
         </Link>
-        <Nav as='nav'>
+        <Nav as="nav">
           { menuItems.map((item) => (
             <NavLink key={ item.name } as={ Link } href={ item.href }>
               <Text>
