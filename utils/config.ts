@@ -9,7 +9,7 @@ export const VERSION = pkgJson.version
 export const NOTIFICATION: NotificationPayload = {
   title: 'Tomatoro',
   body: 'Time is up!',
-  icon: '/svg/logo-tomatoro.svg',
+  icon: '/svg/tomato.svg',
 }
 
 export const WORKER = {
