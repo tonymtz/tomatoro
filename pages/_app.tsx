@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 import Posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 import { ThemeProvider } from 'theme-ui'
-import { useEffectOnce, useIsClient, useLocalStorage } from 'usehooks-ts'
+import { useEffectOnce, useLocalStorage } from 'usehooks-ts'
 
 import { getTheme, globalStyles } from '~/components/themes'
 import {
@@ -10,31 +11,37 @@ import {
 } from '~/contexts/notifications/notifications-context.provider'
 import { TimerProvider } from '~/contexts/timer'
 
+if (typeof window !== 'undefined') {
+  Posthog.init(
+    process.env.NEXT_PUBLIC_POSTHOG_KEY as string,
+    {
+      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
+      loaded: (posthog) => {
+        // Enable debug mode in development
+        if (process.env.NODE_ENV === 'development') {
+          posthog.debug()
+        }
+      },
+    },
+  )
+}
+
 export default function App ({ Component, pageProps }: AppProps) {
-  const isClient = useIsClient()
+  const router = useRouter()
   const [theme] = useLocalStorage('theme', 'light')
 
   useEffectOnce(() => {
-    if (isClient) {
-      Posthog.init(
-        process.env.NEXT_PUBLIC_POSTHOG_KEY as string,
-        {
-          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
-          autocapture: process.env.NODE_ENV !== 'development',
-          loaded: (posthog) => {
-            // Enable debug mode in development
-            if (process.env.NODE_ENV === 'development') {
-              posthog.debug()
-              posthog.opt_out_capturing()
-            }
-          },
-        },
-      )
+    // Track page views
+    const handleRouteChange = () => Posthog?.capture('$pageview')
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   })
 
   return (
-    <PostHogProvider>
+    <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
           <TimerProvider>{ globalStyles }
