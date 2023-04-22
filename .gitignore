@@ -37,3 +37,9 @@ next-env.d.ts
 
 # editors and IDEs
 .idea
+
+# Sentry
+.sentryclirc
+
+# Sentry
+next.config.original.js
