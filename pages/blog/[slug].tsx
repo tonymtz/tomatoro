@@ -12,10 +12,19 @@ export const getServerSideProps: GetServerSideProps<
   { slug: string }
 > = async ({ params }) => {
   const blog = await getBlogBySlug(params?.slug || '')
+
+  if (!blog) {
+    return { notFound: true }
+  }
+
   return { props: { blog } }
 }
 
 export default function BlogBySlug ({ blog }: { blog: Blog }) {
+  if (!blog) {
+    return null
+  }
+
   return (
     <Page title={ blog.attributes.title }>
       <Screen>

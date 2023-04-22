@@ -24,10 +24,19 @@ export const getStaticProps: GetStaticProps<
   { slug: string }
 > = async ({ params }) => {
   const blog = await getBlogBySlug(params?.slug || '')
+
+  if (!blog) {
+    return { notFound: true }
+  }
+
   return { props: { blog } }
 }
 
 export default function PageBySlug ({ blog }: { blog: Blog }) {
+  if (!blog) {
+    return null
+  }
+
   return (
     <Page title={ blog.attributes.title }>
       <Screen>
