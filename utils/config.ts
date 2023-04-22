@@ -65,4 +65,4 @@ export const PAGES = {
   HOW_IT_WORKS: 'how-it-works',
 }
 
-export const CMS_URL = 'https://cms-tomatoro.tepache.dev/api'
+export const CMS_URL = 'https://blog.tomatoro.com/api'
