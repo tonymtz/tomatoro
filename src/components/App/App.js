@@ -28,9 +28,13 @@ class App extends Component {
                     margin: "0.5em auto",
                     fontWeight: "bold",
                 } }>
-                    <p>
-                        We're testing our new version of Tomatoro. Want to try
-                        it out?
+                    <p style={ {
+                        padding: "0.5em",
+                    } }>
+                        The next version of Tomatoro is coming this May 1st with
+                        a new design, lots of bug fixes and more accurate timer!
+                        <br/><br/>
+                        You can try it out now at:
                         <a href="https://next.tomatoro.com/?utm_source=tomatoro.com&utm_medium=home_invite">Tomatoro
                             v3</a>
                     </p>
