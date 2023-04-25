@@ -1,7 +1,8 @@
 import React from 'react'
-import { Grid, Heading, Paragraph } from 'theme-ui'
+import { Grid, Heading } from 'theme-ui'
 
 import { Screen } from '~/components/atoms/screen'
+import { UpdatesList } from '~/components/molecules/updates-list'
 import { Page } from '~/components/templates/page'
 import { getUpdates } from '~/utils/cms.api'
 
@@ -18,16 +19,7 @@ export default function Terms ({ updates }: { updates: Update[] }) {
         <Grid variant="contained">
           <Heading as="h1">News</Heading>
 
-          { updates.map((update) => (
-            <div key={ update.id }>
-              <Heading as="h4">
-                { update.attributes.title }
-              </Heading>
-              <Paragraph>
-                { update.attributes.content }
-              </Paragraph>
-            </div>
-          )) }
+          <UpdatesList updates={ updates }/>
         </Grid>
       </Screen>
     </Page>
