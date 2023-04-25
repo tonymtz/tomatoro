@@ -56,6 +56,8 @@ export const defaultTheme: Theme = {
     primary: {
       color: 'white',
       fontFamily: 'body',
+      transition: 'background-color 0.15s ease-in-out, opacity 0.15s ease-in-out',
+      willChange: 'background-color, opacity',
       '&:hover, &:focus, &:active': {
         bg: darken('primary', 0.2),
       },
@@ -98,6 +100,8 @@ export const defaultTheme: Theme = {
       color: 'primary',
       py: 1,
       textDecoration: 'none',
+      transition: 'background-color 0.15s ease-in-out, color 0.1s ease-in-out',
+      willChange: 'background-color, color',
       '&:hover, &:focus, &:active': {
         color: 'white',
         backgroundColor: 'primary',
