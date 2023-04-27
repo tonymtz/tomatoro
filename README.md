@@ -31,10 +31,24 @@ If you want to skip it, use `git commit --no-verify`. We recommend you to not do
 
 ## Roadmap
 
+What's next? These are the items we're working on.
 This schedule is not final and will change in time:
 
-- **v3.0** (in progress...) - Complete rework
-- **v3.1** (2023) - Dark theme
-- **v3.2** (2023) - Multi-language support (ES, EN)
-- **v3.3** (2023) - User accounts
-- **v3.4** (2023) - Tasks
+#### May 1st
+
+- **v3.0** (may 1st!) - Complete rework
+
+#### Summer 2023
+
+- **v3.1** - Multi-language support (ES, EN)
+- **v3.2** - Dark theme
+
+#### Somewhere in 2023
+
+- **v3.x** - Quick actions from notifications (when supported by the browser)
+- **v3.x** - Better support: knowledge database with guides and solutions for common issues
+- **v3.x** - Better support: new channels for faster support response (replacement of GitHub issues)
+- **v3.x** - Onboarding guide: learn how to use Tomatoro by doing instead of reading
+- **v3.x** - Better time accuracy: rely more on timestamps
+- **v3.x** - Less energy consumption: fewer updates when the timer runs in the background
+- **v3.x** - User accounts: store customizations in API, as well as usage data
