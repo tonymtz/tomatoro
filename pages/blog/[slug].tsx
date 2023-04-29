@@ -26,7 +26,7 @@ export default function BlogBySlug ({ blog }: { blog: Blog }) {
   }
 
   return (
-    <Page title={ blog.attributes.title }>
+    <Page subtitle={ blog.attributes.title }>
       <Screen>
         <Grid variant="contained">
           <Heading as="h1">{ blog.attributes.title }</Heading>

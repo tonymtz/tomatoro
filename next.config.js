@@ -13,6 +13,7 @@ const nextConfig = {
   images: {
     domains: ['placehold.co'],
   },
+  poweredByHeader: false,
 }
 
 module.exports = withSentryConfig(

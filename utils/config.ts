@@ -9,7 +9,7 @@ export const VERSION = pkgJson.version
 export const NOTIFICATION: NotificationPayload = {
   title: 'Tomatoro',
   body: 'Time is up!',
-  icon: '/svg/tomato.svg',
+  icon: 'https://tomatoro.com/svg/tomato.svg',
 }
 
 export const WORKER = {
@@ -35,10 +35,13 @@ export const SEGMENTS: Record<SegmentType, Segment> = {
  */
 export const SEO = {
   title: 'Tomatoro',
+  subtitle: 'Unleash Productivity, One Tomatoro at a Time! 🍅🎯',
   // eslint-disable-next-line max-len
   description: 'Tomatoro will help you power through distractions, hyper-focus, and get things done in short bursts, while taking frequent breaks to get some air and relax.',
   // eslint-disable-next-line max-len
-  keywords: 'tomatoro, avoid distractions, focus, get things done, break, time management, avoid burnout, productivity, pomodoro, timer, tomato',
+  keywords: 'tomatoro, unleash productivity, avoid distractions, focus, get things done, break, time management, avoid burnout, productivity, pomodoro, timer, tomato, work-life balance, efficiency, breaks, work intervals, study, task management',
+  image: 'https://tomatoro.com/tomatoro-social-cover.jpg',
+  url: 'https://tomatoro.com',
 }
 
 export const PAGES = {

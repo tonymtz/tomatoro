@@ -14,7 +14,7 @@ export async function getServerSideProps () {
 
 export default function Terms ({ updates }: { updates: Update[] }) {
   return (
-    <Page title="News">
+    <Page subtitle="News">
       <Screen>
         <Grid variant="contained">
           <Heading as="h1">News</Heading>

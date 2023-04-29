@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/*
+Disallow: /user/*
+Disallow: /api/*
+
+User-agent: *
+Allow: /
+
+Sitemap: http://tomatoro.com/sitemap.xml

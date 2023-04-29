@@ -13,7 +13,7 @@ export const getServerSideProps = async () => {
 
 export default function AllBlogs ({ blogs }: { blogs: Blog[] }) {
   return (
-    <Page title="Articles">
+    <Page subtitle="Articles">
       <Screen>
         <Grid variant="contained">
           <Heading as="h1">Articles</Heading>

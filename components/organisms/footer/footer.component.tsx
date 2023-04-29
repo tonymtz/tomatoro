@@ -14,14 +14,20 @@ export const Footer: FC<Props> = ({ version }) => {
     <Container as="footer">
       <Grid variant="contained" columns={ [4, '2fr 1fr 1fr 1fr'] }>
         <Flex sx={ { flexDirection: 'column' } }>
-          <Heading as="h3" mb={ 3 }>Tomatoro</Heading>
-          <Text variant="small">Work smarter, not harder.</Text>
+          <NavLink href="/">
+            <Heading as="h3" mb={ 3 }>Tomatoro</Heading>
+          </NavLink>
+          <Text variant="small">
+            Unleash Productivity,
+            <br/>
+            One Tomatoro at a Time! 🍅🎯
+          </Text>
         </Flex>
 
         { footerData.links.map((linkGroup) => (
           <Flex key={ linkGroup.title }
             sx={ { flexDirection: 'column', gap: 1 } }>
-            <Heading as="h3" mb={ 3 }>{ linkGroup.title }</Heading>
+            <Heading as="h4" mb={ 3 }>{ linkGroup.title }</Heading>
             { linkGroup.items.map((item) => (
               <NavLink key={ item.name } as={ Link } href={ item.href }>
                 <Text variant="small">{ item.name }</Text>
