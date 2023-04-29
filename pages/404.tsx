@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Flex, Grid, Heading } from 'theme-ui'
 
+import { BackCta } from '~/components/atoms/backCta'
 import { Screen } from '~/components/atoms/screen'
 import { BlogRenderer } from '~/components/organisms/blog-renderer'
 import { Page } from '~/components/templates/page'
@@ -41,11 +42,12 @@ export default function Custom404 ({ page }: { page: Blog }) {
     <Page subtitle={ page.attributes.title }>
       <Screen>
         <Grid variant="contained" columns={ 2 }>
-          <Grid gap={ 3 }>
+          <Grid gap={ 3 } sx={ { justifyItems: 'start' } }>
             <Heading as="h1">{ page.attributes.title }</Heading>
             <div>
               <BlogRenderer blog={ page }/>
             </div>
+            <BackCta/>
           </Grid>
           <Flex sx={ { justifyContent: 'center' } }>
             <Image

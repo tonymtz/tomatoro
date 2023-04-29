@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import React from 'react'
-import { Grid, Heading } from 'theme-ui'
+import { Box, Grid, Heading, Link as TuiLink } from 'theme-ui'
 
 import { Screen } from '~/components/atoms/screen'
 import { BlogRenderer } from '~/components/organisms/blog-renderer'
@@ -43,6 +44,9 @@ export default function PageBySlug ({ blog }: { blog: Blog }) {
         <Grid variant="contained">
           <Heading as="h1">{ blog.attributes.title }</Heading>
           <BlogRenderer blog={ blog }/>
+          <Box mt={ 3 }>
+            <TuiLink as={ Link } href="/">Return to Tomatoro Home</TuiLink>
+          </Box>
         </Grid>
       </Screen>
     </Page>

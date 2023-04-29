@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Heading } from 'theme-ui'
 
+import { BackCta } from '~/components/atoms/backCta'
 import { Screen } from '~/components/atoms/screen'
 import { UpdatesList } from '~/components/molecules/updates-list'
 import { Page } from '~/components/templates/page'
@@ -16,10 +17,12 @@ export default function Terms ({ updates }: { updates: Update[] }) {
   return (
     <Page subtitle="News">
       <Screen>
-        <Grid variant="contained">
+        <Grid variant="contained" sx={ { justifyItems: 'start' } }>
           <Heading as="h1">News</Heading>
 
           <UpdatesList updates={ updates }/>
+
+          <BackCta/>
         </Grid>
       </Screen>
     </Page>

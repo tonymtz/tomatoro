@@ -1,6 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { FC } from 'react'
-import { Box, Grid, Heading, Link, Paragraph } from 'theme-ui'
+import { Box, Grid, Heading, Link as TuiLink, Paragraph } from 'theme-ui'
 
 import graphicRepeat from '~/public/svg/graphic-repeat.svg'
 import graphicSetTime from '~/public/svg/graphic-set-time.svg'
@@ -47,8 +48,9 @@ export const HowItWorks: FC = () => (
     </Box>
 
     <Box mx="auto">
-      <Link href={ LINKS.HOW_IT_WORKS } target="_blank">Read more about this
-        technique</Link>
+      <TuiLink as={ Link } href={ LINKS.HOW_IT_WORKS }>
+        Read more about this technique
+      </TuiLink>
     </Box>
   </Grid>
 )
