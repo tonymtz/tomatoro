@@ -16,7 +16,7 @@ export const Header = () => {
   return (
     <Container as="header">
       <Grid variant="contained" columns={ 2 } sx={ { alignItems: 'center' } }>
-        <Link href="/">
+        <Link href="/" title="Go to Tomatoro Home">
           <Image
             src={ logoTomatoro }
             alt="Tomatoro's logo"

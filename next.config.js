@@ -14,6 +14,14 @@ const nextConfig = {
     domains: ['placehold.co'],
   },
   poweredByHeader: false,
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/sitemap',
+      },
+    ]
+  },
 }
 
 module.exports = withSentryConfig(
