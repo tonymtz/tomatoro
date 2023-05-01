@@ -40,6 +40,16 @@ export default function App ({ Component, pageProps }: AppProps) {
     }
   })
 
+  useEffectOnce((() => {
+    // Temporal fix for uninstalling previous worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        registration.unregister()
+        console.log('unregistered!')
+      })
+    }
+  }))
+
   return (
     <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
