@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Heading } from 'theme-ui'
 
-import { BackCta } from '~/components/atoms/backCta'
+import { BackCta } from '~/components/atoms/back-cta'
 import { Screen } from '~/components/atoms/screen'
 import { UpdatesList } from '~/components/molecules/updates-list'
 import { Page } from '~/components/templates/page'

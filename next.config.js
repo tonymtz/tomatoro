@@ -11,7 +11,7 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ['placehold.co'],
+    domains: ['res.cloudinary.com'],
   },
   poweredByHeader: false,
   async rewrites() {

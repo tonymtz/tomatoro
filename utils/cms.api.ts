@@ -7,13 +7,23 @@ interface CmsResponse<T> {
   meta: never;
 }
 
-export const getBlogBySlug = async (slug: string) => {
-  const { data: obj } = await axios.get<CmsResponse<Blog>>(`${ CMS_URL }/blogs?filters[slug][$eq]=${ slug }`)
+interface CmsSingleEntryResponse<T> {
+  data: T;
+  meta: never;
+}
+
+export const getStaticPage = async (slug: string) => {
+  const { data: obj } = await axios.get<CmsSingleEntryResponse<StaticPage>>(`${ CMS_URL }/${ slug }?populate[0]=seo&populate[1]=seo.image`)
+  return obj.data
+}
+
+export const getPostBySlug = async (slug: string) => {
+  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[slug][$eq]=${ slug }&populate[1]=hero&populate[2]=seo&populate[3]=seo.image`)
   return obj.data[0]
 }
 
-export const getAllBlogs = async () => {
-  const { data: obj } = await axios.get<CmsResponse<Blog>>(`${ CMS_URL }/blogs?filters[category][title][$eq]=Blogs`)
+export const getAllPosts = async () => {
+  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[category][title][$eq]=Blog`)
   return obj.data
 }
 

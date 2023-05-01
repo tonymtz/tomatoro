@@ -1,15 +1,15 @@
 import { GetServerSideProps } from 'next'
 
-import { getAllBlogs } from '~/utils/cms.api'
+import { getAllPosts } from '~/utils/cms.api'
 import { getAllStaticPages } from '~/utils/data.api'
 
 interface SiteMapData {
-  blogs: Blog[]
+  posts: Post[]
   domain: string
   staticPages: Array<{ slug: string }>
 }
 
-function generateSiteMap ({ blogs, domain, staticPages }: SiteMapData) {
+function generateSiteMap ({ domain, posts, staticPages }: SiteMapData) {
   return `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
@@ -25,9 +25,9 @@ function generateSiteMap ({ blogs, domain, staticPages }: SiteMapData) {
             <changefreq>monthly</changefreq>
             <priority>1.0</priority>
         </url>`).join('') }
-     ${ blogs.map(({ attributes: { slug, updatedAt } }) => `
+     ${ posts.map(({ attributes: { slug, updatedAt } }) => `
         <url>
-            <loc>${ `${ domain }/blog/${ slug }` }</loc>
+            <loc>${ `${ domain }/post/${ slug }` }</loc>
             <lastmod>${ updatedAt }</lastmod>
             <changefreq>monthly</changefreq>
             <priority>1.0</priority>
@@ -38,9 +38,9 @@ function generateSiteMap ({ blogs, domain, staticPages }: SiteMapData) {
 
 export const getServerSideProps: GetServerSideProps<{}> = async ({ res }) => {
   const staticPages = getAllStaticPages()
-  const blogs = await getAllBlogs()
+  const posts = await getAllPosts()
   const sitemap = generateSiteMap({
-    blogs,
+    posts,
     domain: 'https://tomatoro.com',
     staticPages,
   })

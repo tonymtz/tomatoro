@@ -3,10 +3,10 @@ import ReactMarkdown from 'react-markdown'
 import { Divider, Heading, Link, Paragraph } from 'theme-ui'
 
 interface Props {
-  blog: Blog
+  content: Post['attributes']['content']
 }
 
-export const BlogRenderer: FC<Props> = ({ blog }) => {
+export const RichTextRenderer: FC<Props> = ({ content }) => {
   return (
     <ReactMarkdown components={ {
       h1: (props) => <Heading as="h1">{ props.children }</Heading>,
@@ -16,7 +16,7 @@ export const BlogRenderer: FC<Props> = ({ blog }) => {
       a: (props) => <Link href={ props.href }>{ props.children }</Link>,
       hr: () => <Divider sx={ { my: 4, width: '100%' } }/>,
     } }>
-      { blog.attributes.content }
+      { content }
     </ReactMarkdown>
   )
 }

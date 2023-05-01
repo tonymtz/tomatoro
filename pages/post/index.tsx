@@ -2,23 +2,23 @@ import React from 'react'
 import { Grid, Heading } from 'theme-ui'
 
 import { Screen } from '~/components/atoms/screen'
-import { BlogsList } from '~/components/molecules/blogs-list'
+import { PostsList } from '~/components/molecules/posts-list'
 import { Page } from '~/components/templates/page'
-import { getAllBlogs } from '~/utils/cms.api'
+import { getAllPosts } from '~/utils/cms.api'
 
 export const getServerSideProps = async () => {
-  const blogs = await getAllBlogs()
-  return { props: { blogs } }
+  const posts = await getAllPosts()
+  return { props: { posts } }
 }
 
-export default function AllBlogs ({ blogs }: { blogs: Blog[] }) {
+export default function AllPosts ({ posts }: { posts: Post[] }) {
   return (
     <Page subtitle="Articles">
       <Screen>
         <Grid variant="contained">
-          <Heading as="h1">Articles</Heading>
+          <Heading as="h1">Posts</Heading>
 
-          <BlogsList blogs={ blogs }/>
+          <PostsList posts={ posts }/>
         </Grid>
       </Screen>
     </Page>

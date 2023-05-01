@@ -1,30 +1,19 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import React from 'react'
 import { Grid, Heading } from 'theme-ui'
 
 import { BackCta } from '~/components/atoms/back-cta'
+import { Hero } from '~/components/atoms/hero'
 import { Screen } from '~/components/atoms/screen'
 import { RichTextRenderer } from '~/components/organisms/rich-text-renderer'
 import { Page } from '~/components/templates/page'
-import { getStaticPage } from '~/utils/cms.api'
-import { PAGES } from '~/utils/config'
+import { getPostBySlug } from '~/utils/cms.api'
 
-export const getStaticPaths = async () => {
-  const paths = Object.keys(PAGES).map((key) => ({
-    params: { slug: PAGES[key as keyof typeof PAGES] },
-  }))
-
-  return {
-    paths,
-    fallback: true,
-  }
-}
-
-export const getStaticProps: GetStaticProps<
-  { post: StaticPage },
+export const getServerSideProps: GetServerSideProps<
+  { post: Post },
   { slug: string }
 > = async ({ params }) => {
-  const post = await getStaticPage(params?.slug || '')
+  const post = await getPostBySlug(params?.slug || '')
 
   if (!post) {
     return { notFound: true }
@@ -33,19 +22,29 @@ export const getStaticProps: GetStaticProps<
   return { props: { post } }
 }
 
-export default function PageBySlug ({ post }: { post: StaticPage }) {
+export default function PostBySlug ({ post }: { post: Post }) {
   if (!post) {
     return null
   }
 
+  const showHero = !!post.attributes.hero.data
+
   return (
     <Page subtitle={ post.attributes.title }>
-      <Screen>
+      <Screen pt={ showHero && 'inherit !important' }>
+        { showHero && (
+          <Hero
+            sx={ { backgroundImage: `url(${ post.attributes.hero.data!.attributes.url })` } }
+            role="img"
+            aria-label={ post.attributes.hero.data!.attributes.caption }
+          />
+        ) }
         <Grid variant="contained"
           sx={ {
-            gap: 3,
+            gap: 4,
             lineHeight: 2,
             justifyItems: 'start',
+            paddingTop: showHero && 5,
           } }>
           <Heading as="h1">{ post.attributes.title }</Heading>
           <RichTextRenderer content={ post.attributes.content }/>

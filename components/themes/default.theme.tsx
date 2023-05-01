@@ -94,6 +94,13 @@ export const defaultTheme: Theme = {
       height: 8,
     },
   },
+  images: {
+    hero: {
+      backgroundSize: 'cover',
+      height: '50vh',
+      width: '100%',
+    },
+  },
   styles: {
     a: {
       borderBottom: '1px solid',
