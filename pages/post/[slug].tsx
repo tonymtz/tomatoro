@@ -13,13 +13,17 @@ export const getServerSideProps: GetServerSideProps<
   { post: Post },
   { slug: string }
 > = async ({ params }) => {
-  const post = await getPostBySlug(params?.slug || '')
+  try {
+    const post = await getPostBySlug(params?.slug || '')
 
-  if (!post) {
+    if (!post) {
+      return { notFound: true }
+    }
+
+    return { props: { post } }
+  } catch (e) {
     return { notFound: true }
   }
-
-  return { props: { post } }
 }
 
 export default function PostBySlug ({ post }: { post: Post }) {

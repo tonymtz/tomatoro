@@ -24,13 +24,17 @@ export const getStaticProps: GetStaticProps<
   { post: StaticPage },
   { slug: string }
 > = async ({ params }) => {
-  const post = await getStaticPage(params?.slug || '')
+  try {
+    const post = await getStaticPage(params?.slug || '')
 
-  if (!post) {
+    if (!post) {
+      return { notFound: true }
+    }
+
+    return { props: { post } }
+  } catch (e) {
     return { notFound: true }
   }
-
-  return { props: { post } }
 }
 
 export default function PageBySlug ({ post }: { post: StaticPage }) {
