@@ -1,0 +1,59 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:adonis/typescriptApp"
+  ],
+  "plugins": [
+    "sort-destructure-keys",
+    "unused-imports"
+  ],
+  "rules": {
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "parens-new-line",
+        "assignment": "parens-new-line",
+        "return": "parens-new-line",
+        "arrow": "parens-new-line",
+        "condition": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "parens-new-line"
+      }
+    ],
+    "import/no-unresolved": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          // Built-in imports (come from NodeJS native) go first,
+          "builtin",
+          // External imports,
+          "external",
+          // Absolute imports,
+          "internal",
+          // Relative imports, the sibling and parent types they can be mingled together,
+          [
+            "sibling",
+            "parent"
+          ],
+          // index imports,
+          "index",
+          // everything else I guess,
+          "unknown"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "sort-destructure-keys/sort-destructure-keys": [
+      2,
+      {
+        "caseSensitive": false
+      }
+    ],
+    "unused-imports/no-unused-imports": "error"
+  }
+}

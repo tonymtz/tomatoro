@@ -1,31 +1,54 @@
 # Tomatoro
 
-[![Codeship](https://img.shields.io/codeship/e33e1500-f333-0135-0806-42c9fc202b29.svg)](https://app.codeship.com/projects/272196)
-[![Codacy](https://img.shields.io/codacy/grade/a3cecfe1fc0840d89fd00aa3fee0e96e.svg)](https://www.codacy.com/app/tonymtz/tomatoro)
-[![Codacy](https://img.shields.io/codacy/coverage/a3cecfe1fc0840d89fd00aa3fee0e96e.svg)](https://www.codacy.com/app/tonymtz/tomatoro)
-[![David](https://img.shields.io/david/tonymtz/tomatoro.svg)](https://david-dm.org/tonymtz/tomatoro)
-
 Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
-![tomatoro app screenshot](media/screenshot.png)
+![tomatoro app screenshot](public/screenshot.png)
 
 ## Features
 
-- Alerts/Notifications
-- Customizable work/break time
-- Settings saved in your session
-- Minimalistic design
-- Timer in menu bar
+- ⏳ Time accuracy
+- 🔔 Alerts/Notifications
+- ⚙️ Customizable work/break time
+- 🏕️ Settings saved in your session
+- 👀 Timer in menu bar
+- 🎨 Minimalistic design
+- ⚡️️ ~~Quick actions from your notifications~~ (coming soon)
 
 ## Development
 
-This app uses [Create React App](https://github.com/facebook/create-react-app). The most used commands are:
+This is a [Next.js](https://nextjs.org/) project bootstrapped
+with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+The most used commands are:
 
-* `yarn start` - Build and start the app in dev mode at http://localhost:3000
-* `yarn test` - Run the tests
+* `npm run dev` - Build and start the app in dev mode at http://localhost:3000
+* `npm run test` - Run the tests
+* `npm run lint` - Lint the code
 
-If you want to  contribute, please run all tests before creating a PR.
+Husky is used to run lint and tests before commit, so you don't need to worry about it. It also increases the version
+number in `package.json` and `package-lock.json` automatically.
 
-## License
+If you want to skip it, use `git commit --no-verify`. We recommend you to not do it.
 
-MIT © [Tony Mtz](http://tonymtz.com)
+## Roadmap
+
+What's next? These are the items we're working on.
+This schedule is not final and will change in time:
+
+#### May 1st
+
+- **v3.0** (may 1st!) - Complete rework
+
+#### Summer 2023
+
+- **v3.1** - Multi-language support (ES, EN)
+- **v3.2** - Dark theme
+
+#### Somewhere in 2023
+
+- **v3.x** - Quick actions from notifications (when supported by the browser)
+- **v3.x** - Better support: knowledge database with guides and solutions for common issues
+- **v3.x** - Better support: new channels for faster support response (replacement of GitHub issues)
+- **v3.x** - Onboarding guide: learn how to use Tomatoro by doing instead of reading
+- **v3.x** - Better time accuracy: rely more on timestamps
+- **v3.x** - Less energy consumption: fewer updates when the timer runs in the background
+- **v3.x** - User accounts: store customizations in API, as well as usage data
