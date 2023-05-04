@@ -29,6 +29,15 @@ number in `package.json` and `package-lock.json` automatically.
 
 If you want to skip it, use `git commit --no-verify`. We recommend you to not do it.
 
+### Tech stack:
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Theme UI](https://theme-ui.com/)
+- [@emotion/styled](https://emotion.sh/docs/styled)
+- [Zustand](https://zustand-demo.pmnd.rs)
+
 ## Roadmap
 
 What's next? These are the items we're working on.
@@ -36,12 +45,12 @@ This schedule is not final and will change in time:
 
 #### May 1st
 
-- **v3.0** (may 1st!) - Complete rework
+- ~~**v3.0** (may 1st!) - Complete rework~~ (🚀 done!)
 
 #### Summer 2023
 
-- **v3.1** - Multi-language support (ES, EN)
-- **v3.2** - Dark theme
+- **v3.0.x** - Multi-language support (ES, EN)
+- **v3.0.x** - Dark theme
 
 #### Somewhere in 2023
 
