@@ -17,9 +17,7 @@ const fallbackBlog: StaticPage = {
     // eslint-disable-next-line max-len
     content: 'We couldn\'t find the page you\'re looking for.\n\nLet\'s get you back on track!\n\n[Return to Tomatoro Home](/)',
     excerpt: '',
-    seo: {
-      data: null,
-    },
+    keywords: '',
     createdAt: '2023-04-29T00:35:43.151Z',
     updatedAt: '2023-04-29T00:40:25.617Z',
     locale: 'en',
