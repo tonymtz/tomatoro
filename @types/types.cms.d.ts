@@ -78,8 +78,9 @@ type StaticPage = {
     title: string
     content: string
     excerpt: string
-    seo: {
-      data: Seo | null
+    keywords: string
+    thumbnail?: {
+      data: Image | null
     }
     locale: string
     createdAt: string
@@ -94,14 +95,15 @@ type Post = {
     slug: string
     content: string
     excerpt: string
+    keywords: string
     category: {
       data: Category | null
     }
-    hero: {
+    hero?: {
       data: Image | null
     }
-    seo: {
-      data: Seo | null
+    thumbnail?: {
+      data: Image | null
     }
     locale: string
     publishedAt: string

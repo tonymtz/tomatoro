@@ -42,8 +42,15 @@ export default function PageBySlug ({ post }: { post: StaticPage }) {
     return null
   }
 
+  const seo = {
+    title: post.attributes.title,
+    description: post.attributes.excerpt,
+    keywords: post.attributes.keywords,
+    image: post.attributes.thumbnail?.data?.attributes.url,
+  }
+
   return (
-    <Page subtitle={ post.attributes.title }>
+    <Page subtitle={ post.attributes.title } seo={ seo }>
       <Screen>
         <Grid variant="contained"
           sx={ {

@@ -31,16 +31,22 @@ export default function PostBySlug ({ post }: { post: Post }) {
     return null
   }
 
-  const showHero = !!post.attributes.hero.data
+  const showHero = !!post.attributes.hero?.data
+  const seo = {
+    title: post.attributes.title,
+    description: post.attributes.excerpt,
+    keywords: post.attributes.keywords,
+    image: post.attributes.thumbnail?.data?.attributes.url,
+  }
 
   return (
-    <Page subtitle={ post.attributes.title }>
+    <Page subtitle={ post.attributes.title } seo={ seo }>
       <Screen pt={ showHero && 'inherit !important' }>
         { showHero && (
           <Hero
-            sx={ { backgroundImage: `url(${ post.attributes.hero.data!.attributes.url })` } }
+            sx={ { backgroundImage: `url(${ post.attributes.hero!.data!.attributes.url })` } }
             role="img"
-            aria-label={ post.attributes.hero.data!.attributes.caption }
+            aria-label={ post.attributes.hero!.data!.attributes.caption }
           />
         ) }
         <Grid variant="contained"
