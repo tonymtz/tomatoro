@@ -31,7 +31,7 @@ jobs:
           command: c
           cwd: "./"
           files: |
-            dist/
+            .next/
             captain-definition
             public/
             Dockerfile
