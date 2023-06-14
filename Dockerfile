@@ -2,6 +2,8 @@ FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN ls -las
+RUN pwd
 COPY package.json package-lock.json ./
 RUN  npm install
 
