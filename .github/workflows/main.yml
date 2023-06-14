@@ -35,7 +35,6 @@ jobs:
             captain-definition
             public/
             Dockerfile
-            deploy/
           outPath: deploy.tar
 
       - name: Deploy App to CapRover
