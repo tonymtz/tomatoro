@@ -55,6 +55,7 @@ export default function App ({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
           <TimerProvider>{ globalStyles }
+            {/* @ts-ignore */}
             <Component { ...pageProps } />
           </TimerProvider>
         </NotificationsProvider>
