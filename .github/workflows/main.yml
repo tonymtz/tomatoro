@@ -32,8 +32,10 @@ jobs:
           cwd: "./"
           files: |
             .next/
-            captain-definition
+            node_modules/
+            package.json
             public/
+            captain-definition
             Dockerfile
           outPath: deploy.tar
 
