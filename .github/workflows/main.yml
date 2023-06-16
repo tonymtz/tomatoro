@@ -39,6 +39,8 @@ jobs:
           build-args: |
             NEXT_PUBLIC_POSTHOG_KEY=${{ vars.NEXT_PUBLIC_POSTHOG_KEY }}
             NEXT_PUBLIC_POSTHOG_HOST=${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ vars.NEXT_PUBLIC_SENTRY_DSN }}
+            SENTRY_DSN=${{ vars.SENTRY_DSN }}
 
       # Deploy to CapRover
       - name: Deploy Image to CapRover
