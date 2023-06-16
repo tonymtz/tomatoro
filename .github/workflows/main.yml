@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
-      NEXT_PUBLIC_POSTHOG_HOST: ${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
+      NEXT_PUBLIC_POSTHOG_KEY: ${{ env.NEXT_PUBLIC_POSTHOG_KEY }}
+      NEXT_PUBLIC_POSTHOG_HOST: ${{ env.NEXT_PUBLIC_POSTHOG_HOST }}
 
     steps:
       # Checkout the repo
@@ -38,8 +38,8 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_URL }}
           build-args: |
-            NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
-            NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}
+            NEXT_PUBLIC_POSTHOG_KEY=${{ env.NEXT_PUBLIC_POSTHOG_KEY }}
+            NEXT_PUBLIC_POSTHOG_HOST=${{ env.NEXT_PUBLIC_POSTHOG_HOST }}
 
       # Deploy to CapRover
       - name: Deploy Image to CapRover
