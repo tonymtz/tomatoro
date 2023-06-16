@@ -5,7 +5,7 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 ![tomatoro app screenshot](public/screenshot.png)
 
 ## Features
-
+ 
 - ⏳ Time accuracy
 - 🔔 Alerts/Notifications
 - ⚙️ Customizable work/break time
