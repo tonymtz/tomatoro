@@ -1,6 +1,6 @@
 {
   "name": "tomatoro",
-  "version": "3.0.98",
+  "version": "3.0.99",
   "private": true,
   "scripts": {
     "dev": "next dev",
