@@ -12,7 +12,6 @@ import {
 import { TimerProvider } from '~/contexts/timer'
 
 if (typeof window !== 'undefined') {
-  console.log('Initializing PostHog with key: ', process.env.NEXT_PUBLIC_POSTHOG_KEY)
   Posthog.init(
     process.env.NEXT_PUBLIC_POSTHOG_KEY as string,
     {
