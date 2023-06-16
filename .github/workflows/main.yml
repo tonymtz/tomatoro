@@ -13,11 +13,7 @@ jobs:
 
       # Setup Docker Buildx
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-        with:
-          build-args: |
-            "NEXT_PUBLIC_POSTHOG_KEY=${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}"
-            "NEXT_PUBLIC_POSTHOG_HOST=${{ secrets.NEXT_PUBLIC_POSTHOG_HOST }}"
+        uses: docker/setup-buildx-action@v2
 
       # Build and push Docker Image
       - name: Login to Container Registry
@@ -39,7 +35,7 @@ jobs:
           tags: ${{ env.IMAGE_URL }}
 
       # Deploy to CapRover
-      - name: Deploy Image to CapRrover
+      - name: Deploy Image to CapRover
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: "${{ secrets.CAPROVER_SERVER }}"
