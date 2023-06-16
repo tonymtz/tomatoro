@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: next
 
     steps:
       # Checkout the repo
