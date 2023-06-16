@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment:
-      name: next
+      name: ${{ github.ref_name }}
 
     steps:
       # Checkout the repo
