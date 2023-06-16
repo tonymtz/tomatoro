@@ -16,6 +16,7 @@ const DynamicTimeSelector = dynamic(
 
 export const TimerWithSelector: FC = () => (
   <Grid variant="contained" gap={ 3 } sx={ { justifyContent: 'center' } }>
+    {/* @ts-ignore */}
     <DynamicTimeSelector/>
     <Timer/>
   </Grid>
