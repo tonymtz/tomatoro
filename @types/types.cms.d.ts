@@ -123,3 +123,17 @@ type Update = {
     date: string
   }
 }
+
+type Banner = {
+  id: number
+  attributes: {
+    content: string
+    start: string
+    end: string
+    location: string
+    locale: string
+    publishedAt: string
+    createdAt: string
+    updatedAt: string
+  }
+}

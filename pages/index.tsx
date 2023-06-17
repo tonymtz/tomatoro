@@ -9,16 +9,22 @@ import { Page } from '~/components/templates/page'
 import { TimerWithSelector } from '~/components/templates/timer-with-selector'
 import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
+import { getBanners } from '~/utils/cms.api'
 import { formatTime } from '~/utils/timer.utils'
 
-export default function Home () {
+export async function getServerSideProps () {
+  const banners = await getBanners('home')
+  return { props: { banners } }
+}
+
+export default function Home ({ banners }: { banners: Banner[] }) {
   const [isStarted, time] = useTimerStore(state => [state.isStarted, state.time])
   const showTimer = useSettingsStore(state => state.showTimer)
   const title = showTimer && isStarted ? formatTime(time) : undefined
 
   return (
     <>
-      <Page subtitle={ title }>
+      <Page subtitle={ title } banners={ banners }>
         <Box pt={ 4 } pb={ 5 }>
           <NotificationsWarn/>
           <TimerWithSelector/>

@@ -6,7 +6,7 @@ import { BackCta } from '~/components/atoms/back-cta'
 import { Screen } from '~/components/atoms/screen'
 import { RichTextRenderer } from '~/components/organisms/rich-text-renderer'
 import { Page } from '~/components/templates/page'
-import { getStaticPage } from '~/utils/cms.api'
+import { getBanners, getStaticPage } from '~/utils/cms.api'
 import { PAGES } from '~/utils/config'
 
 export const getStaticPaths = async () => {
@@ -25,19 +25,23 @@ export const getStaticProps: GetStaticProps<
   { slug: string }
 > = async ({ params }) => {
   try {
-    const post = await getStaticPage(params?.slug || '')
+    const slug = params?.slug || ''
+    const [post, banners] = await Promise.all([
+      getStaticPage(slug),
+      getBanners(slug),
+    ])
 
     if (!post) {
       return { notFound: true }
     }
 
-    return { props: { post } }
+    return { props: { post, banners } }
   } catch (e) {
     return { notFound: true }
   }
 }
 
-export default function PageBySlug ({ post }: { post: StaticPage }) {
+export default function PageBySlug ({ banners, post }: { post: StaticPage, banners: Banner[] }) {
   if (!post) {
     return null
   }
@@ -50,7 +54,11 @@ export default function PageBySlug ({ post }: { post: StaticPage }) {
   }
 
   return (
-    <Page subtitle={ post.attributes.title } seo={ seo }>
+    <Page
+      banners={ banners }
+      subtitle={ post.attributes.title }
+      seo={ seo }
+    >
       <Screen>
         <Grid variant="contained"
           sx={ {

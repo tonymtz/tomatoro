@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
+import { useIsClient } from 'usehooks-ts'
 
+import { Banners } from '~/components/organisms/banners'
 import { Footer } from '~/components/organisms/footer'
 import { Header } from '~/components/organisms/header'
 import { SEO, VERSION } from '~/utils/config'
@@ -14,6 +16,7 @@ interface Seo {
 }
 
 interface PageProps {
+  banners?: Banner[]
   children: React.ReactNode
   subtitle?: string
   seo?: Partial<Seo>
@@ -21,7 +24,8 @@ interface PageProps {
 
 const defaultTitle = `${ SEO.title } | ${ SEO.subtitle }`
 
-export const Page: FC<PageProps> = ({ children, seo, subtitle }) => {
+export const Page: FC<PageProps> = ({ banners, children, seo, subtitle }) => {
+  const isClient = useIsClient()
   const { asPath } = useRouter()
   const cleanPath = asPath.split('#')[0].split('?')[0]
 
@@ -60,6 +64,7 @@ export const Page: FC<PageProps> = ({ children, seo, subtitle }) => {
       </Head>
 
       <Header/>
+      { isClient && banners && <Banners banners={ banners }/> }
 
       { children }
 
