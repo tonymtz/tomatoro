@@ -29,13 +29,13 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [hasPermissions, setHasPermissions] = React.useState<boolean>(true)
 
   useEffect(() => {
-    showNotifications && setHasPermissions(Notification.permission === 'granted')
+    showNotifications && setHasPermissions(Notification?.permission === 'granted')
   }, [showNotifications])
 
   const requestPermission = () => {
-    Notification.requestPermission()
+    Notification?.requestPermission()
       .then(() => {
-        setHasPermissions(Notification.permission === 'granted')
+        setHasPermissions(Notification?.permission === 'granted')
       })
   }
 
