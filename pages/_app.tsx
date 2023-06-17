@@ -19,7 +19,7 @@ if (typeof window !== 'undefined') {
       loaded: (posthog) => {
         // Enable debug mode in development
         if (process.env.NODE_ENV === 'development') {
-          posthog.debug()
+          posthog.opt_out_capturing()
         }
       },
     },
