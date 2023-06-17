@@ -33,7 +33,7 @@ export const getUpdates = async () => {
 }
 
 export const getBanners = async (location?: string) => {
-  const additionalLocation = location ? `&filters[location][$in][1]=${ location }` : ''
+  const additionalLocation = location ? `filters[location][$in][1]=${ location }&` : ''
   const query = `filters[location][$in][0]=all&${ additionalLocation }sort=createdAt:desc&pagination[start]=0&pagination[limit]=1`
   const { data: obj } = await axios.get<CmsResponse<Banner>>(`${ CMS_URL }/banners?${ query }`)
   return obj.data
