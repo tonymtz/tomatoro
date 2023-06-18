@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
+import { useEffect } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import { useEffectOnce, useLocalStorage } from 'usehooks-ts'
 
@@ -50,7 +51,7 @@ export default function App ({ Component, pageProps }: AppProps) {
     }
   }))
 
-  useEffectOnce(() => {
+  useEffect(() => {
     // extract the value from the query params
     const { code, ...updatedQuery } = router.query
 
@@ -65,7 +66,7 @@ export default function App ({ Component, pageProps }: AppProps) {
 
     // update the URL, without re-triggering data fetching
     router.push(newPathObject, undefined, { shallow: true }).then()
-  })
+  },[router])
 
   return (
     <PostHogProvider client={ Posthog }>
