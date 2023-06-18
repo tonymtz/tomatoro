@@ -47,13 +47,20 @@ export default function App ({ Component, pageProps }: AppProps) {
       navigator.serviceWorker.ready.then(registration => {
         registration.unregister()
         console.log('unregistered!')
+        Posthog?.capture('legacy_worker_uninstalled')
       })
     }
   }))
 
   useEffect(() => {
     const query = router.query
-    const url = { query: { slug: query.slug } }
+    const { slug, ...currentQuery } = query
+
+    if (Object.keys(currentQuery).length === 0) {
+      return
+    }
+
+    const url = slug ? { query: { slug } } : {}
 
     if (router.isReady) {
       router.push(url, undefined, { shallow: true }).then()
