@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import { Flex, Link as TuiLink, Paragraph } from 'theme-ui'
 
 const stable = 'https://tomatoro.com'
-const learn = '/post/exploring-the-unstable-branch-of-tomatoro'
+const learn = '/post/exploring-the-unstable-branch-of-tomatoro?utm_source=banner&utm_medium=link&utm_campaign=unstable'
 
 const Frame = styled(Flex)`
   align-items: center;
