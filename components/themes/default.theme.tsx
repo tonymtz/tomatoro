@@ -42,8 +42,14 @@ export const defaultTheme: Theme = {
       textAlign: 'justify',
       lineHeight: '1.75em',
     },
+    invertedParagraph: {
+      color: 'contrastText',
+      textAlign: 'justify',
+      lineHeight: '1.75em',
+    },
   },
   colors: {
+    contrastText: '#fff',
     textHighEmphasis: rgba('#000', 0.87),
     textMediumEmphasis: rgba('#000', 0.6),
     textLowEmphasis: rgba('#000', 0.38),
@@ -99,6 +105,14 @@ export const defaultTheme: Theme = {
       backgroundSize: 'cover',
       height: '50vh',
       width: '100%',
+    },
+  },
+  alerts: {
+    primary: {
+      color: 'background',
+      bg: 'primary',
+      margin: '1em auto 0',
+      maxWidth,
     },
   },
   styles: {

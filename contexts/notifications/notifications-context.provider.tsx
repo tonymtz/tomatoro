@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useSettingsStore } from '~/stores/settings'
+import { isIOS } from '~/utils/is-ios'
 
 import { NotificationPayload } from './notifications-context.types'
 
@@ -29,10 +30,16 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [hasPermissions, setHasPermissions] = React.useState<boolean>(true)
 
   useEffect(() => {
+    if (isIOS()) {
+      return
+    }
     showNotifications && setHasPermissions(Notification.permission === 'granted')
   }, [showNotifications])
 
   const requestPermission = () => {
+    if (isIOS()) {
+      return
+    }
     Notification.requestPermission()
       .then(() => {
         setHasPermissions(Notification.permission === 'granted')
@@ -40,6 +47,9 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   const notify = useCallback(({ title, ...options }: NotificationPayload) => {
+    if (isIOS()) {
+      return
+    }
     if (showNotifications && hasPermissions) {
       new Notification(title, options).onclick = (event) => {
         window.focus()

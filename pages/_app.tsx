@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import Posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
+import { useEffect } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import { useEffectOnce, useLocalStorage } from 'usehooks-ts'
 
@@ -19,7 +20,7 @@ if (typeof window !== 'undefined') {
       loaded: (posthog) => {
         // Enable debug mode in development
         if (process.env.NODE_ENV === 'development') {
-          posthog.debug()
+          posthog.opt_out_capturing()
         }
       },
     },
@@ -46,16 +47,38 @@ export default function App ({ Component, pageProps }: AppProps) {
       navigator.serviceWorker.ready.then(registration => {
         registration.unregister()
         console.log('unregistered!')
+        Posthog?.capture('legacy_worker_uninstalled')
       })
     }
   }))
+
+  useEffect(() => {
+    const query = router.query
+    const { slug, ...currentQuery } = query
+
+    if (Object.keys(currentQuery).length === 0) {
+      return
+    }
+
+    const url = slug ? { query: { slug } } : {}
+
+    if (router.isReady) {
+      router.push(url, undefined, { shallow: true }).then()
+
+      // const utmSource = query.utm_source
+      // if (utmSource) {
+      //   console.log(utmSource)
+      // }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady])
 
   return (
     <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
           <TimerProvider>{ globalStyles }
-            {/* @ts-ignore */}
+            {/* @ts-ignore */ }
             <Component { ...pageProps } />
           </TimerProvider>
         </NotificationsProvider>

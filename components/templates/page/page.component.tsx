@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
+import { useIsClient } from 'usehooks-ts'
 
+import { UnstableWarning } from '~/components/atoms/unstable-warning'
+import { Banners } from '~/components/organisms/banners'
 import { Footer } from '~/components/organisms/footer'
 import { Header } from '~/components/organisms/header'
 import { SEO, VERSION } from '~/utils/config'
@@ -14,6 +17,7 @@ interface Seo {
 }
 
 interface PageProps {
+  banners?: Banner[]
   children: React.ReactNode
   subtitle?: string
   seo?: Partial<Seo>
@@ -21,7 +25,12 @@ interface PageProps {
 
 const defaultTitle = `${ SEO.title } | ${ SEO.subtitle }`
 
-export const Page: FC<PageProps> = ({ children, seo, subtitle }) => {
+const shouldShowUnstableWarning = (origin: string) => {
+  return process.env.NODE_ENV === 'production' && origin.includes('next')
+}
+
+export const Page: FC<PageProps> = ({ banners, children, seo, subtitle }) => {
+  const isClient = useIsClient()
   const { asPath } = useRouter()
   const cleanPath = asPath.split('#')[0].split('?')[0]
 
@@ -39,6 +48,11 @@ export const Page: FC<PageProps> = ({ children, seo, subtitle }) => {
   if (seo?.title) {
     composedTitle = seo.title
   }
+
+  const origin =
+    typeof window !== 'undefined' && window.location.origin
+      ? window.location.origin
+      : ''
 
   return (
     <>
@@ -58,8 +72,10 @@ export const Page: FC<PageProps> = ({ children, seo, subtitle }) => {
         <meta name="twitter:description" content={ description }/>
         <meta name="twitter:image" content={ image }/>
       </Head>
+      { isClient && shouldShowUnstableWarning(origin) && (<UnstableWarning/>) }
 
       <Header/>
+      { isClient && banners && <Banners banners={ banners }/> }
 
       { children }
 

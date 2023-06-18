@@ -38,9 +38,12 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }, [tick])
 
   const onStartTimer = useCallback(() => {
+    if (time < 1) {
+      reset()
+    }
     start()
     workerRef.current?.postMessage('start')
-  }, [start])
+  }, [reset, start, time])
 
   const onStopTimer = useCallback(() => {
     stop()

@@ -23,11 +23,18 @@ export const getPostBySlug = async (slug: string) => {
 }
 
 export const getAllPosts = async () => {
-  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[category][title][$eq]=Blog`)
+  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[category][title][$eq]=blogs`)
   return obj.data
 }
 
 export const getUpdates = async () => {
   const { data: obj } = await axios.get<CmsResponse<Update>>(`${ CMS_URL }/updates`)
+  return obj.data
+}
+
+export const getBanners = async (location?: string) => {
+  const additionalLocation = location ? `filters[location][$in][1]=${ location }&` : ''
+  const query = `filters[location][$in][0]=all&${ additionalLocation }sort=createdAt:desc&pagination[start]=0&pagination[limit]=1`
+  const { data: obj } = await axios.get<CmsResponse<Banner>>(`${ CMS_URL }/banners?${ query }`)
   return obj.data
 }
