@@ -23,7 +23,7 @@ export const getPostBySlug = async (slug: string) => {
 }
 
 export const getAllPosts = async () => {
-  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[category][title][$eq]=Blog`)
+  const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[category][title][$eq]=blogs`)
   return obj.data
 }
 

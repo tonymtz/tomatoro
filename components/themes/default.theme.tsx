@@ -42,6 +42,11 @@ export const defaultTheme: Theme = {
       textAlign: 'justify',
       lineHeight: '1.75em',
     },
+    invertedParagraph: {
+      color: 'contrastText',
+      textAlign: 'justify',
+      lineHeight: '1.75em',
+    },
   },
   colors: {
     contrastText: '#fff',
