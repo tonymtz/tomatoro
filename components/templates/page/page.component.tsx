@@ -72,7 +72,7 @@ export const Page: FC<PageProps> = ({ banners, children, seo, subtitle }) => {
         <meta name="twitter:description" content={ description }/>
         <meta name="twitter:image" content={ image }/>
       </Head>
-      { shouldShowUnstableWarning(origin) && (<UnstableWarning/>) }
+      { isClient && shouldShowUnstableWarning(origin) && (<UnstableWarning/>) }
 
       <Header/>
       { isClient && banners && <Banners banners={ banners }/> }
