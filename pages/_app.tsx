@@ -50,6 +50,23 @@ export default function App ({ Component, pageProps }: AppProps) {
     }
   }))
 
+  useEffectOnce(() => {
+    // extract the value from the query params
+    const { code, ...updatedQuery } = router.query
+
+    if (Object.keys(updatedQuery).length === 0) {
+      return
+    }
+
+    // create an updated router path object
+    const newPathObject = {
+      pathname: router.pathname,
+    }
+
+    // update the URL, without re-triggering data fetching
+    router.push(newPathObject, undefined, { shallow: true }).then()
+  })
+
   return (
     <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
