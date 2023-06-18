@@ -53,15 +53,20 @@ export default function App ({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     // extract the value from the query params
-    const { code, ...updatedQuery } = router.query
+    const { code, ...currentQuery } = router.query
 
-    if (Object.keys(updatedQuery).length === 0) {
+    // @ts-ignore
+    const {slug} = currentQuery
+
+    if (Object.keys(currentQuery).length === 0) {
       return
     }
 
+    const pathWithoutQueryParams = router.asPath.replace(/\?.*/, '')
+
     // create an updated router path object
     const newPathObject = {
-      pathname: router.pathname,
+      pathname: pathWithoutQueryParams,
     }
 
     // update the URL, without re-triggering data fetching
