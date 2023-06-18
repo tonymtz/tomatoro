@@ -52,33 +52,26 @@ export default function App ({ Component, pageProps }: AppProps) {
   }))
 
   useEffect(() => {
-    // extract the value from the query params
-    const { code, ...currentQuery } = router.query
+    const query = router.query
+    const url = { query: { slug: query.slug } }
 
-    // @ts-ignore
-    const {slug} = currentQuery
+    if (router.isReady) {
+      router.push(url, undefined, { shallow: true }).then()
 
-    if (Object.keys(currentQuery).length === 0) {
-      return
+      // const utmSource = query.utm_source
+      // if (utmSource) {
+      //   console.log(utmSource)
+      // }
     }
-
-    const pathWithoutQueryParams = router.asPath.replace(/\?.*/, '')
-
-    // create an updated router path object
-    const newPathObject = {
-      pathname: pathWithoutQueryParams,
-    }
-
-    // update the URL, without re-triggering data fetching
-    router.push(newPathObject, undefined, { shallow: true }).then()
-  },[router])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady])
 
   return (
     <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
           <TimerProvider>{ globalStyles }
-            {/* @ts-ignore */}
+            {/* @ts-ignore */ }
             <Component { ...pageProps } />
           </TimerProvider>
         </NotificationsProvider>
