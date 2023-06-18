@@ -40,7 +40,7 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   const notify = useCallback(({ title, ...options }: NotificationPayload) => {
-    if (showNotifications && hasPermissions) {
+    if (showNotifications && hasPermissions && Notification) {
       new Notification(title, options).onclick = (event) => {
         window.focus()
         // @ts-ignore
