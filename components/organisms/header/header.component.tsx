@@ -37,6 +37,8 @@ export const Header = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '1rem',
+        margin: '0 auto',
+        maxWidth: '768px',
         width: '100%',
       } }>
         <TomatoroLogo />
@@ -55,7 +57,9 @@ export const Header = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '1rem',
-          borderBottom: '1px solid #eee',
+          margin: '0 auto',
+          maxWidth: '768px',
+          width: '100%',
         }}>
           <TomatoroLogo />
           <Close onClick={ () => setFalse() }/>
@@ -67,6 +71,7 @@ export const Header = () => {
           flexDirection: 'column',
           padding: '1.5rem 0',
           borderBottom: '1px solid #eee',
+          borderTop: '1px solid #eee',
         }}>
           { menuItems.map((item) => (
             <NavLink key={ item.name } as={ Link } href={ item.href } onClick={ () => setFalse() }>
