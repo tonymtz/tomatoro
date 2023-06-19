@@ -24,6 +24,9 @@ export const defaultTheme: Theme = {
     default: {
       fontFamily: 'body',
     },
+    heading: {
+      marginBottom: '0.5em',
+    },
     small: {
       fontSize: '0.8em',
       fontFamily: 'body',

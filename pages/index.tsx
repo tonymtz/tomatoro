@@ -23,25 +23,23 @@ export default function Home ({ banners }: { banners: Banner[] }) {
   const title = showTimer && isStarted ? formatTime(time) : undefined
 
   return (
-    <>
-      <Page subtitle={ title } banners={ banners }>
-        <Box pt={ 4 } pb={ 5 }>
-          <NotificationsWarn/>
-          <TimerWithSelector/>
-        </Box>
+    <Page subtitle={ title } banners={ banners }>
+      <Box pt={ 4 } pb={ 5 }>
+        <NotificationsWarn/>
+        <TimerWithSelector/>
+      </Box>
 
-        <Divider/>
+      <Divider/>
 
-        <Screen id="how-it-works">
-          <HowItWorks/>
-        </Screen>
+      <Screen id="how-it-works">
+        <HowItWorks/>
+      </Screen>
 
-        <Divider/>
+      <Divider/>
 
-        <Screen id="get-in-touch">
-          <GetInTouch/>
-        </Screen>
-      </Page>
-    </>
+      <Screen id="get-in-touch">
+        <GetInTouch/>
+      </Screen>
+    </Page>
   )
 }

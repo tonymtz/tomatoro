@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import React, { FC } from 'react'
-import { Flex, Grid, Heading, NavLink, Text } from 'theme-ui'
+import { Flex, Heading, NavLink, Text } from 'theme-ui'
 
 import { footerData } from './footer.config'
-import { Container } from './footer.styles'
+import { Container, section, Section } from './footer.styles'
 
 interface Props {
   version?: string
@@ -12,42 +12,41 @@ interface Props {
 export const Footer: FC<Props> = ({ version }) => {
   return (
     <Container as="footer">
-      <Grid variant="contained" columns={ [4, '2fr 1fr 1fr 1fr'] }>
-        <Flex sx={ { flexDirection: 'column' } }>
+      <Flex sx={ section }>
+        <Section>
           <NavLink href="/">
-            <Heading as="h3" mb={ 3 }>Tomatoro</Heading>
+            <Heading as="h3">Tomatoro</Heading>
           </NavLink>
           <Text variant="small">
             Unleash Productivity,
             <br/>
             One Tomatoro at a Time! 🍅🎯
           </Text>
-        </Flex>
+        </Section>
 
         { footerData.links.map((linkGroup) => (
-          <Flex key={ linkGroup.title }
-            sx={ { flexDirection: 'column', gap: 1 } }>
-            <Heading as="h4" mb={ 3 }>{ linkGroup.title }</Heading>
+          <Section key={ linkGroup.title }>
+            <Heading as="h4">{ linkGroup.title }</Heading>
             { linkGroup.items.map((item) => (
-              <NavLink key={ item.name } as={ Link } href={ item.href }>
+              <NavLink key={ item.name } as={ Link } href={ item.href } variant="footer">
                 <Text variant="small">{ item.name }</Text>
               </NavLink>
             )) }
-          </Flex>
+          </Section>
         )) }
-      </Grid>
-      <Grid variant="contained" columns={ 2 }>
+      </Flex>
+      <Flex sx={ section }>
         <Text variant="small" as="span">
           &copy; 2017-{ new Date().getFullYear() } Tomatoro. All Rights
           Reserved.
         </Text>
 
         { version && (
-          <Text variant="small" sx={ { textAlign: 'right' } }>
+          <Text variant="small" sx={ { textAlign: ['left', 'right'] } }>
             v{ version }
           </Text>
         ) }
-      </Grid>
+      </Flex>
     </Container>
   )
 }

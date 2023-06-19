@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useIsClient } from 'usehooks-ts'
 
 import { UnstableWarning } from '~/components/atoms/unstable-warning'
@@ -39,15 +39,19 @@ export const Page: FC<PageProps> = ({ banners, children, seo, subtitle }) => {
   const image = seo?.image || SEO.image
   const url = SEO.url + cleanPath
 
-  let composedTitle = defaultTitle
+  const composedTitle = useMemo(() => {
+    let result = defaultTitle
 
-  if (subtitle) {
-    composedTitle = `${ subtitle } | ${ SEO.title }`
-  }
+    if (subtitle) {
+      result = `${ subtitle } | ${ SEO.title }`
+    }
 
-  if (seo?.title) {
-    composedTitle = seo.title
-  }
+    if (seo?.title) {
+      result = seo.title
+    }
+
+    return result
+  }, [seo?.title, subtitle])
 
   const origin =
     typeof window !== 'undefined' && window.location.origin
@@ -72,9 +76,13 @@ export const Page: FC<PageProps> = ({ banners, children, seo, subtitle }) => {
         <meta name="twitter:description" content={ description }/>
         <meta name="twitter:image" content={ image }/>
       </Head>
+
+      {/* Warning appears only in client. It might cause issues with SSR */}
       { isClient && shouldShowUnstableWarning(origin) && (<UnstableWarning/>) }
 
       <Header/>
+
+      {/* Banners appears only in client. It might cause issues with SSR */}
       { isClient && banners && <Banners banners={ banners }/> }
 
       { children }

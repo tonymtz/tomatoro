@@ -1,11 +1,11 @@
 import { FC } from 'react'
-import { Text } from 'theme-ui'
+import { Flex, Text } from 'theme-ui'
 
 import { useTimerContext } from '~/contexts/timer'
 import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
 
-import { Button, Container, Controls, Donut } from './timer.styles'
+import { Button, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
   const { onResetTimer, onStartTimer, onStopTimer } = useTimerContext()
@@ -26,7 +26,16 @@ export const Timer: FC = () => {
   }
 
   return (
-    <Container sx={ { height: 400 } }>
+    <Flex sx={ {
+      alignItems: 'center',
+      flexDirection: 'column',
+      gap: '1em',
+      height: 400,
+      justifyContent: 'center',
+      maxWidth: 768,
+      position: 'relative',
+      width: ['calc(100vw - 2rem)', 'auto'],
+    } }>
       <Text variant="display">
         { formatTime(time) }
       </Text>
@@ -46,11 +55,11 @@ export const Timer: FC = () => {
       </Controls>
       <Donut
         strokeWidth={ 1 }
-        size={ 400 }
+        size={ '100%' }
         title={ `Progress made: ${ time / totalTime * 100 }%` }
         value={ time / totalTime }
         role="progressbar"
       />
-    </Container>
+    </Flex>
   )
 }

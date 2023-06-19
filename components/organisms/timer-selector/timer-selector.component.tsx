@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react'
-import { Button } from 'theme-ui'
+import { Button, Grid } from 'theme-ui'
 
 import { Settings } from '~/components/templates/settings'
 import { useTimerContext } from '~/contexts/timer'
 import { useSettingsStore } from '~/stores/settings'
 import { SEGMENTS, SegmentType } from '~/utils/config'
-
-import { Container } from './timer-selector.styles'
 
 export const TimeSelector = () => {
   const { currentSegment, longLength, setSegment, shortLength, workLength } = useSettingsStore()
@@ -24,7 +22,7 @@ export const TimeSelector = () => {
   }
 
   return (
-    <Container>
+    <Grid columns={ [2, 4] } gap={[2,2]}>
       { Object.entries(composedSegments).map(([key, value]) => (
         <Button
           key={ key }
@@ -37,6 +35,6 @@ export const TimeSelector = () => {
       <Settings>
         { (openSettings) => (<Button onClick={ openSettings }>Settings</Button>) }
       </Settings>
-    </Container>
+    </Grid>
   )
 }
