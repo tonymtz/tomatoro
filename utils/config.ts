@@ -53,6 +53,7 @@ export const PAGES = {
 }
 
 export const LINKS = {
+  HOME: '/',
   TERMS: `/${ PAGES.TERMS }`,
   PRIVACY: `/${ PAGES.PRIVACY }`,
   FAQ: `/${ PAGES.FAQ }`,

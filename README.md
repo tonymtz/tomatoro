@@ -61,3 +61,5 @@ This schedule is not final and will change in time:
 - **v3.x** - Better time accuracy: rely more on timestamps
 - **v3.x** - Less energy consumption: fewer updates when the timer runs in the background
 - **v3.x** - User accounts: store customizations in API, as well as usage data
+
+This is our public trello board: https://trello.com/b/LH0sgrrZ/tomatoro-2023

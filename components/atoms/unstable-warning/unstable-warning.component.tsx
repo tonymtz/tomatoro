@@ -1,10 +1,15 @@
 import styled from '@emotion/styled'
-import Link from 'next/link'
 import React, { FC } from 'react'
-import { Flex, Link as TuiLink, Paragraph } from 'theme-ui'
+import { Flex } from 'theme-ui'
 
-const stable = 'https://tomatoro.com?utm_source=banner&utm_medium=link&utm_campaign=unstable'
-const learn = '/post/exploring-the-unstable-branch-of-tomatoro?utm_source=banner&utm_medium=link&utm_campaign=unstable'
+import { RichTextRenderer } from '~/components/organisms/rich-text-renderer'
+
+const stableLink = 'https://tomatoro.com?utm_source=banner&utm_medium=link&utm_campaign=unstable'
+// eslint-disable-next-line max-len
+const learnMoreLink = '/post/exploring-the-unstable-branch-of-tomatoro?utm_source=banner&utm_medium=link&utm_campaign=unstable'
+const warning = `
+⚠️ This is an unstable version. [Click here to go back to the stable version](${stableLink}) or [learn more](${learnMoreLink}).
+`
 
 const Frame = styled(Flex)`
   align-items: center;
@@ -20,10 +25,23 @@ const Frame = styled(Flex)`
 `
 
 export const UnstableWarning: FC = () => (
-  <Frame>
-    <Paragraph variant="invertedParagraph">⚠️ This is an unstable version.</Paragraph>
-    <TuiLink as={ Link } href={ stable }>Click here to go back to the stable version</TuiLink>
-    <Paragraph variant="invertedParagraph">or</Paragraph>
-    <TuiLink as={ Link } href={ learn }>learn more.</TuiLink>
+  <Frame sx={{
+    flexDirection: ['column', 'row'],
+  }}>
+    <RichTextRenderer
+      content={warning}
+      overrides={ {
+        a: {
+          color: 'contrastText',
+          '&:hover, &:focus, &:active': {
+            color: 'primary',
+            backgroundColor: 'white',
+          },
+        },
+        p: {
+          color: 'contrastText',
+        },
+      } }
+    />
   </Frame>
 )

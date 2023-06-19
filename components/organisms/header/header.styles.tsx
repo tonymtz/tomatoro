@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 import { Flex, Heading as _Heading } from 'theme-ui'
 
 export const Container = styled(Flex)`
@@ -9,12 +10,17 @@ export const Container = styled(Flex)`
   z-index: 1;
 `
 
-export const Nav = styled(Flex)`
-  align-items: center;
-  gap: 1.5em;
-  justify-content: flex-end;
-`
-
 export const Heading = styled(_Heading)`
   display: none;
+`
+
+export const MotionNav = styled(motion.nav)`
+  background-color: white;
+  height: 200px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: auto;
 `
