@@ -24,9 +24,9 @@ const nextConfig = {
     ]
   },
 }
-// module.exports = nextTranslate()
+
 module.exports = nextTranslate(
-    withSentryConfig(
+  withSentryConfig(
     nextConfig,
     {
       silent: true,
@@ -52,5 +52,5 @@ module.exports = nextTranslate(
       // Automatically tree-shake Sentry logger statements to reduce bundle size
       disableLogger: true,
     },
-  )
+  ),
 );
