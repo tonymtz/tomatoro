@@ -1,0 +1,12 @@
+{
+  "done": "Listo",
+  "pause": "Pausa",
+  "start": "Empieza",
+  "progress": "Progreso hecho: {{progress}}",
+  "settings": "Configuración",
+  "segment" : {
+    "work": "Trabajo",
+    "shortBreak": "Descanso corto",
+    "longBreak": "Descanso largo"
+  }
+}

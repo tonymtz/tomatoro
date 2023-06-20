@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { Close, Flex, MenuButton, NavLink, Text } from 'theme-ui'
 import { useBoolean } from 'usehooks-ts'
 
+import { LanguageSelector } from '~/components/molecules/language-selector'
 import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
 import { LINKS } from '~/utils/config'
 
@@ -42,6 +43,7 @@ export const Header = () => {
         width: '100%',
       } }>
         <TomatoroLogo />
+        <LanguageSelector />
         <MenuButton
           aria-label="Toggle Menu"
           onClick={ () => setTrue() }

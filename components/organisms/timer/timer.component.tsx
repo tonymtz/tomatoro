@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import { FC } from 'react'
 import { Flex, Text } from 'theme-ui'
 
@@ -8,6 +9,7 @@ import { formatTime } from '~/utils/timer.utils'
 import { Button, Controls, Donut } from './timer.styles'
 
 export const Timer: FC = () => {
+  const { t } = useTranslation('common')
   const { onResetTimer, onStartTimer, onStopTimer } = useTimerContext()
   const { isRunning, isStarted, time, totalTime } = useTimerStore()
 
@@ -44,19 +46,19 @@ export const Timer: FC = () => {
           onClick={ onStopClick }
           disabled={ !isStarted }
         >
-          Done
+          { t('done') }
         </Button>
         <Button
           onClick={ onToggleClick }
           bg={ isRunning ? 'yellow' : 'green' }
         >
-          { isRunning ? 'Pause' : 'Start' }
+          { isRunning ? t('pause') : t('start') }
         </Button>
       </Controls>
       <Donut
         strokeWidth={ 1 }
         size={ '100%' }
-        title={ `Progress made: ${ time / totalTime * 100 }%` }
+        title={ t('progress', { progress: time / totalTime * 100 }) }
         value={ time / totalTime }
         role="progressbar"
       />
