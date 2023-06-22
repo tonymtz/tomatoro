@@ -4,10 +4,17 @@
   "start": "Start",
   "progress": "Progress made: {{progress}}",
   "settings": "Settings",
-  "segment" : {
+  "segment": {
     "work": "Work",
     "shortBreak": "Short break",
     "longBreak": "Long break"
   },
-  "backCta": "Return to Tomatoro Home"
+  "backCta": "Return to Tomatoro Home",
+  "unstableWarning": "This is an unstable version. [Click here to go back to the stable version]({{ stableLink }}) or [learn more]({{ learnMoreLink }}).",
+  "header": {
+    "toggle": "Toggle Menu",
+    "close": "Close Menu",
+    "logoAlt": "Tomatoro Logo",
+    "title": "Tomatoro"
+  }
 }

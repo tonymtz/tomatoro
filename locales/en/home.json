@@ -1,3 +1,13 @@
 {
-  "title": "Tomatoro"
+  "howItWorks": {
+    "title": "How to be more productive",
+    "contentOne": "To boost your productivity use the Pomodoro technique. Just alternate cycles of hyper-focus on work with short breaks of relaxation.",
+    "contentTwo": "For each 25 mins of work or Tomatoros, take a 5 mins break. After completing 3 Tomatoros, take a longer 15 mins break. Repeat this cycle!",
+    "cta": "Read more about this technique"
+  },
+  "getInTouch": {
+    "title": "Get in touch",
+    "content": "Tomatoro is an open source code project. You may play around with the code source and apply it for your own projects. If you have any questions or suggestions, feel free to contact us!. We are always happy to hear from you! :)",
+    "cta": "Leave your feedback"
+  }
 }

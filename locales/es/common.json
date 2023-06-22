@@ -4,10 +4,17 @@
   "start": "Empieza",
   "progress": "Progreso hecho: {{progress}}",
   "settings": "Configuración",
-  "segment" : {
+  "segment": {
     "work": "Trabajo",
     "shortBreak": "Descanso breve",
     "longBreak": "Descanso largo"
   },
-  "backCta": "Volver al inicio"
+  "backCta": "Volver al inicio",
+  "unstableWarning": "Ésta es una versión inestable. [Presiona aquí para ir a la versión estable]({{ stableLink }}) o [ver más]({{ learnMoreLink }}).",
+  "header": {
+    "toggle": "Botón del menú",
+    "close": "Cerrar Menú",
+    "logoAlt": "Logo de Tomatoro",
+    "title": "Tomatoro"
+  }
 }

@@ -35,7 +35,7 @@ export const TimeSelector = () => {
         </Button>
       )) }
       <Settings>
-        { (openSettings) => (<Button onClick={ openSettings }>Settings</Button>) }
+        { (openSettings) => (<Button onClick={ openSettings }>{ t('settings') }</Button>) }
       </Settings>
     </Grid>
   )

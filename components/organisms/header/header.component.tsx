@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
 import { FC } from 'react'
 import { Close, Flex, MenuButton, NavLink, Text } from 'theme-ui'
 import { useBoolean } from 'usehooks-ts'
@@ -30,6 +31,7 @@ const menuVariants = {
 }
 
 export const Header = () => {
+  const { t } = useTranslation('common')
   const { setFalse, setTrue, value } = useBoolean(false)
 
   return (
@@ -45,7 +47,7 @@ export const Header = () => {
         <TomatoroLogo />
         <LanguageSelector />
         <MenuButton
-          aria-label="Toggle Menu"
+          aria-label={ t('header.toggle') }
           onClick={ () => setTrue() }
         />
       </Flex>
@@ -82,22 +84,26 @@ export const Header = () => {
               </Text>
             </NavLink>
           )) }
-          <Text sx={ { fontWeight: 'bold' } } onClick={ () => setFalse() }>Close Menu</Text>
+          <Text sx={ { fontWeight: 'bold' } } onClick={ () => setFalse() }>{ t('header.close') }</Text>
         </Flex>
       </MotionNav>
     </Container>
   )
 }
 
-const TomatoroLogo: FC = () => (
-  <Link href="/" title="Go to Tomatoro Home">
-    <Image
-      src={ logoTomatoro }
-      alt="Tomatoro's logo"
-      width={ 150 }
-      height={ 30 }
-      aria-hidden
-    />
-    <Heading as="h1">Tomatoro</Heading>
-  </Link>
-)
+const TomatoroLogo: FC = () => {
+  const { t } = useTranslation('common')
+
+  return (
+    <Link href="/" title="Go to Tomatoro Home">
+      <Image
+        src={ logoTomatoro }
+        alt={ t('header.logoAlt') }
+        width={ 150 }
+        height={ 30 }
+        aria-hidden
+      />
+      <Heading as="h1">{ t('header.title') }</Heading>
+    </Link>
+  )
+}
