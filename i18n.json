@@ -3,6 +3,7 @@
   "defaultLocale": "en",
   "pages": {
     "*": ["common"],
+    "/news": ["pages"],
     "/": ["home", "example"],
     "/about": ["about"]
   }

@@ -1,4 +1,17 @@
 {
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Customize your Tomatoro",
+    "work": "Work session length:",
+    "short": "Short break length:",
+    "long": "Long break length:",
+    "timerOnTitle": "Show timer on title",
+    "showNotifications": "Show notification when timer ends",
+    "cta": {
+      "reset": "Reset settings",
+      "close": "Close"
+    }
+  },
   "howItWorks": {
     "title": "How to be more productive",
     "contentOne": "To boost your productivity use the Pomodoro technique. Just alternate cycles of hyper-focus on work with short breaks of relaxation.",

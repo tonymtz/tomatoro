@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import React, { FC, useState } from 'react'
 import {
   Button, Divider,
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export const Settings: FC<Props> = ({ children }) => {
+  const { t } = useTranslation('home')
   const [showModal, setShowModal] = useState(false)
   const { onResetTimer, onStopTimer } = useTimerContext()
   const {
@@ -54,17 +56,16 @@ export const Settings: FC<Props> = ({ children }) => {
     <>
       { children?.(toggleModal) }
       <Modal show={ showModal } setToggled={ toggleModal }>
-        <Flex sx={ { flexDirection: 'column', gap: 2 } }>
-          <Heading as="h2" variant="text.title"
-            sx={ { textAlign: 'center' } }>
-            Settings
+        <Flex sx={ { alignItems: 'center', flexDirection: 'column', gap: 2 } }>
+          <Heading as="h2" variant="text.title" sx={ { textAlign: 'center' } }>
+            { t('settings.title') }
           </Heading>
 
-          <Paragraph>Customize your Tomatoro.</Paragraph>
+          <Paragraph>{ t('settings.subtitle') }</Paragraph>
         </Flex>
         <Grid sx={ { gap: 3, my: 4, width: '100%' } }>
           <Flex sx={ { flexDirection: 'column' } }>
-            <Label>Work session length:</Label>
+            <Label>{ t('settings.work') }</Label>
             <Flex sx={ { gap: 4, mt: 2 } }>
               <Slider
                 min={ 1 }
@@ -77,7 +78,7 @@ export const Settings: FC<Props> = ({ children }) => {
           </Flex>
 
           <Flex sx={ { flexDirection: 'column' } }>
-            <Label>Short break length:</Label>
+            <Label>{ t('settings.short') }</Label>
             <Flex sx={ { gap: 4, mt: 2 } }>
               <Slider
                 min={ 1 }
@@ -90,7 +91,7 @@ export const Settings: FC<Props> = ({ children }) => {
           </Flex>
 
           <Flex sx={ { flexDirection: 'column' } }>
-            <Label>Long break length:</Label>
+            <Label>{ t('settings.long') }</Label>
             <Flex sx={ { gap: 4, mt: 2 } }>
               <Slider
                 min={ 1 }
@@ -103,13 +104,13 @@ export const Settings: FC<Props> = ({ children }) => {
           </Flex>
 
           <Switch
-            label="Show timer on title"
+            label={ t('settings.timerOnTitle') }
             checked={ showTimer }
             onChange={ (e) => onAppSettingChange('showTimer', e.target.checked) }
           />
 
           <Switch
-            label="Show notification when timer ends"
+            label={ t('settings.showNotifications') }
             checked={ showNotifications }
             onChange={ (e) =>
               onAppSettingChange('showNotifications', e.target.checked) }
@@ -118,8 +119,8 @@ export const Settings: FC<Props> = ({ children }) => {
           <Divider sx={ { my: 1, width: '100%' } }/>
 
           <Flex sx={ { gap: 3 } }>
-            <Button onClick={ resetSetting }>Reset settings</Button>
-            <Button onClick={ toggleModal }>Close</Button>
+            <Button onClick={ resetSetting }>{ t('settings.cta.reset') }</Button>
+            <Button onClick={ toggleModal }>{ t('settings.cta.close') }</Button>
           </Flex>
         </Grid>
       </Modal>

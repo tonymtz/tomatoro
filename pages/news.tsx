@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import { Grid, Heading } from 'theme-ui'
 
@@ -14,11 +15,13 @@ export async function getServerSideProps () {
 }
 
 export default function Terms ({ updates }: { updates: Update[] }) {
+  const { t } = useTranslation('pages')
+
   return (
-    <Page subtitle="News">
+    <Page subtitle={ t('news.title') }>
       <Screen>
         <Grid variant="contained" sx={ { justifyItems: 'start' } }>
-          <Heading as="h1">News</Heading>
+          <Heading as="h1">{ t('news.title') }</Heading>
 
           <UpdatesList updates={ updates }/>
 
