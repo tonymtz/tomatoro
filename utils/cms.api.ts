@@ -12,8 +12,9 @@ interface CmsSingleEntryResponse<T> {
   meta: never;
 }
 
-export const getStaticPage = async (slug: string) => {
-  const { data: obj } = await axios.get<CmsSingleEntryResponse<StaticPage>>(`${ CMS_URL }/${ slug }?populate[0]=seo&populate[1]=seo.image`)
+export const getStaticPage = async (slug: string, locale?: string) => {
+  const localeParam = locale ? `&locale=${ locale }` : ''
+  const { data: obj } = await axios.get<CmsSingleEntryResponse<StaticPage>>(`${ CMS_URL }/${ slug }?populate[0]=seo&populate[1]=seo.image${ localeParam }`)
   return obj.data
 }
 
@@ -32,9 +33,10 @@ export const getUpdates = async () => {
   return obj.data
 }
 
-export const getBanners = async (location?: string) => {
+export const getBanners = async (location?: string, locale?: string) => {
   const additionalLocation = location ? `filters[location][$in][1]=${ location }&` : ''
   const query = `filters[location][$in][0]=all&${ additionalLocation }sort=createdAt:desc&pagination[start]=0&pagination[limit]=1`
-  const { data: obj } = await axios.get<CmsResponse<Banner>>(`${ CMS_URL }/banners?${ query }`)
+  const localeParam = locale ? `&locale=${ locale }` : ''
+  const { data: obj } = await axios.get<CmsResponse<Banner>>(`${ CMS_URL }/banners?${ query }${ localeParam }`)
   return obj.data
 }
