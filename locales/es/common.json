@@ -6,7 +6,7 @@
   "settings": "Configuración",
   "segment" : {
     "work": "Trabajo",
-    "shortBreak": "Descanso corto",
+    "shortBreak": "Descanso breve",
     "longBreak": "Descanso largo"
   },
   "backCta": "Volver al inicio"

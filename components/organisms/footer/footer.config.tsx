@@ -23,7 +23,7 @@ const toolItems: FooterLink[] = [
   { name: 'Dolar en Bancos', href: LINKS.DOLAR },
   { name: 'Clipps', href: LINKS.CLIPPS },
   { name: 'Gatolinero', href: LINKS.GATOLINERO },
-  { name: 'Songbox', href: LINKS.SONGBOX },
+  // { name: 'Songbox', href: LINKS.SONGBOX },
 ]
 
 export const footerData = {
