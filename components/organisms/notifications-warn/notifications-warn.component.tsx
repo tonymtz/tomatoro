@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import { Button, Text } from 'theme-ui'
 
 import { useNotificationsContext } from '~/contexts/notifications'
@@ -5,6 +6,7 @@ import { useNotificationsContext } from '~/contexts/notifications'
 import { Frame } from './notifications-warn.styles'
 
 export const NotificationsWarn = () => {
+  const { t } = useTranslation('common')
   const { hasPermissions, requestPermission } = useNotificationsContext()
 
   if (hasPermissions) {
@@ -12,16 +14,18 @@ export const NotificationsWarn = () => {
   }
 
   return (
-    <Frame variant='warn'>
+    <Frame variant="warn">
       <Text>
-        Can we send you notifications?<br />
-        We&apos;ll let you know when your cycle finishes.
+        { t('notifications.lineOne') }<br/>
+        { t('notifications.lineTwo') }
       </Text>
       <Button
         sx={ {
           height: 'fit-content',
         } }
-        onClick={ () => requestPermission() }>Fix</Button>
+        onClick={ () => requestPermission() }>
+        { t('notifications.cta') }
+      </Button>
     </Frame>
   )
 }

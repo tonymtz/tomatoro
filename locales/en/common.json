@@ -12,6 +12,11 @@
   "backCta": "Return to Tomatoro Home",
   "unstableWarning": "This is an unstable version. [Click here to go back to the stable version]({{ stableLink }}) or [learn more]({{ learnMoreLink }}).",
   "loadingLanguage": "Updating the language...",
+  "notifications": {
+    "lineOne": "Can we send you notifications?",
+    "lineTwo": "We'll let you know when your cycle finishes.",
+    "cta": "Enable"
+  },
   "header": {
     "title": "Tomatoro",
     "toggle": "Toggle Menu",
