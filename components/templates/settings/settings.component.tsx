@@ -11,6 +11,7 @@ import {
   Switch,
 } from 'theme-ui'
 
+import { LanguageSelector } from '~/components/molecules/language-selector'
 import { Modal } from '~/components/organisms/modal'
 import { useTimerContext } from '~/contexts/timer'
 import { useSettingsStore } from '~/stores/settings'
@@ -115,6 +116,11 @@ export const Settings: FC<Props> = ({ children }) => {
             onChange={ (e) =>
               onAppSettingChange('showNotifications', e.target.checked) }
           />
+
+          <Flex sx={ { alignItems: 'center', gap: 3 } }>
+            <Label sx={ { width: 'auto' } }>{ t('settings.language') }</Label>
+            <LanguageSelector/>
+          </Flex>
 
           <Divider sx={ { my: 1, width: '100%' } }/>
 

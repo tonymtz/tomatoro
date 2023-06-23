@@ -7,6 +7,7 @@
     "long": "Long break length:",
     "timerOnTitle": "Show timer on title",
     "showNotifications": "Show notification when timer ends",
+    "language": "Language of the site",
     "cta": {
       "reset": "Reset settings",
       "close": "Close"

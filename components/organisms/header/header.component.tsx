@@ -44,9 +44,8 @@ export const Header = () => {
         maxWidth: '768px',
         width: '100%',
       } }>
-        <Grid sx={{ gridTemplateColumns: ['1fr auto auto', '1fr auto auto'], width: '100%' }}>
+        <Grid sx={{ gridTemplateColumns: ['1fr auto', '1fr auto'], width: '100%' }}>
           <TomatoroLogo />
-          <LanguageSelector />
           <MenuButton
             aria-label={ t('header.toggle') }
             onClick={ () => setTrue() }
@@ -67,9 +66,8 @@ export const Header = () => {
           maxWidth: '768px',
           width: '100%',
         }}>
-          <Grid sx={{ gridTemplateColumns: ['1fr auto auto', '1fr auto auto'], width: '100%' }}>
+          <Grid sx={{ gridTemplateColumns: ['1fr auto', '1fr auto'], width: '100%' }}>
             <TomatoroLogo />
-            <LanguageSelector />
             <Close onClick={ () => setFalse() }/>
           </Grid>
         </Flex>
@@ -92,6 +90,7 @@ export const Header = () => {
           <Text sx={ { cursor: 'pointer', fontWeight: 'bold' } } onClick={ () => setFalse() }>
             { t('header.items.close') }
           </Text>
+          <LanguageSelector />
         </Flex>
       </MotionNav>
     </Container>
