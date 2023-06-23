@@ -33,16 +33,16 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
     if (isIOS()) {
       return
     }
-    showNotifications && setHasPermissions(Notification.permission === 'granted')
+    showNotifications && setHasPermissions(Notification?.permission === 'granted')
   }, [showNotifications])
 
   const requestPermission = () => {
     if (isIOS()) {
       return
     }
-    Notification.requestPermission()
+    Notification?.requestPermission()
       .then(() => {
-        setHasPermissions(Notification.permission === 'granted')
+        setHasPermissions(Notification?.permission === 'granted')
       })
   }
 
@@ -50,7 +50,7 @@ export const NotificationsProvider: React.FC<{ children: React.ReactNode }> = ({
     if (isIOS()) {
       return
     }
-    if (showNotifications && hasPermissions) {
+    if (showNotifications && !!Notification && hasPermissions) {
       new Notification(title, options).onclick = (event) => {
         window.focus()
         // @ts-ignore

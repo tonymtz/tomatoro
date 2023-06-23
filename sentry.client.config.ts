@@ -26,6 +26,7 @@ Sentry.init({
     new Sentry.Replay({
       // Additional Replay configuration goes in here, for example:
       blockAllMedia: true,
+      maskAllText: false,
     }),
   ],
 })
