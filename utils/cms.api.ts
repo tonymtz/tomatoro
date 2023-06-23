@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { isCleanInput } from '~/utils/clean-input'
 import { CMS_URL } from '~/utils/config'
 
 interface CmsResponse<T> {
@@ -13,12 +14,20 @@ interface CmsSingleEntryResponse<T> {
 }
 
 export const getStaticPage = async (slug: string, locale?: string) => {
+  if (!isCleanInput(slug)) {
+    throw new Error('Invalid slug')
+  }
+
   const localeParam = locale ? `&locale=${ locale }` : ''
   const { data: obj } = await axios.get<CmsSingleEntryResponse<StaticPage>>(`${ CMS_URL }/${ slug }?populate[0]=seo&populate[1]=seo.image${ localeParam }`)
   return obj.data
 }
 
 export const getPostBySlug = async (slug: string) => {
+  if (!isCleanInput(slug)) {
+    throw new Error('Invalid slug')
+  }
+
   const { data: obj } = await axios.get<CmsResponse<Post>>(`${ CMS_URL }/posts?filters[slug][$eq]=${ slug }&populate[1]=hero&populate[2]=seo&populate[3]=seo.image`)
   return obj.data[0]
 }
