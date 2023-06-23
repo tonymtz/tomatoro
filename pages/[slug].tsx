@@ -23,12 +23,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<
   { post: StaticPage },
   { slug: string }
-> = async ({ params }) => {
+> = async ({ locale, params }) => {
   try {
     const slug = params?.slug || ''
     const [post, banners] = await Promise.all([
-      getStaticPage(slug),
-      getBanners(slug),
+      getStaticPage(slug, locale),
+      getBanners(slug, locale),
     ])
 
     if (!post) {

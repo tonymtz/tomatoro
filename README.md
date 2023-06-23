@@ -1,6 +1,13 @@
 # Tomatoro
 
-Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+![GitHub deployments - master](https://img.shields.io/github/deployments/tonymtz/tomatoro/master?label=master)
+![GitHub deployments - next](https://img.shields.io/github/deployments/tonymtz/tomatoro/next?label=next)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/tonymtz/tomatoro)
+![Tomatoro.com status](https://img.shields.io/website.svg?url=https://tomatoro.com&label=tomatoro.com&labelColor=7d8da8)
+![Tomatoro.app status](https://img.shields.io/website.svg?url=https://tomatoro.app&label=tomatoro.app&labelColor=7d8da8)
+![Next.tomatoro.com status](https://img.shields.io/website.svg?url=https://next.tomatoro.com&label=next.tomatoro.com&labelColor=7d8da8)
+
+Time management tool based on the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 
 ![tomatoro app screenshot](public/screenshot.png)
 
@@ -12,6 +19,7 @@ Time management tool based on [Pomodoro Technique](https://en.wikipedia.org/wiki
 - 🏕️ Settings saved in your session
 - 👀 Timer in menu bar
 - 🎨 Minimalistic design
+- 🌎 Multi-language support (EN, ES)
 - ⚡️️ ~~Quick actions from your notifications~~ (coming soon)
 
 ## Development
@@ -49,7 +57,7 @@ This schedule is not final and will change in time:
 
 #### Summer 2023
 
-- **v3.0.x** - Multi-language support (ES, EN)
+- ~~**v3.0.144** - Multi-language support (ES, EN)~~ (🚀 done!)
 - **v3.0.x** - Dark theme
 
 #### Somewhere in 2023
@@ -58,7 +66,7 @@ This schedule is not final and will change in time:
 - **v3.x** - Better support: knowledge database with guides and solutions for common issues
 - **v3.x** - Better support: new channels for faster support response (replacement of GitHub issues)
 - **v3.x** - Onboarding guide: learn how to use Tomatoro by doing instead of reading
-- **v3.x** - Better time accuracy: rely more on timestamps
+- **v3.x** - Better time accuracy: rely on timestamps
 - **v3.x** - Less energy consumption: fewer updates when the timer runs in the background
 - **v3.x** - User accounts: store customizations in API, as well as usage data
 

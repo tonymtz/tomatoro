@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import React, { useMemo } from 'react'
 import { Button, Grid } from 'theme-ui'
 
@@ -7,6 +8,7 @@ import { useSettingsStore } from '~/stores/settings'
 import { SEGMENTS, SegmentType } from '~/utils/config'
 
 export const TimeSelector = () => {
+  const { t } = useTranslation('common')
   const { currentSegment, longLength, setSegment, shortLength, workLength } = useSettingsStore()
   const { onStopTimer } = useTimerContext()
 
@@ -29,11 +31,11 @@ export const TimeSelector = () => {
           onClick={ () => onSelect(key as SegmentType) }
           disabled={ currentSegment === key }
         >
-          { value.name } ({ value.time / 60 })
+          { t(value.name) } ({ value.time / 60 })
         </Button>
       )) }
       <Settings>
-        { (openSettings) => (<Button onClick={ openSettings }>Settings</Button>) }
+        { (openSettings) => (<Button onClick={ openSettings }>{ t('settings') }</Button>) }
       </Settings>
     </Grid>
   )

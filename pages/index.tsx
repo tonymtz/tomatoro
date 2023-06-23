@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import React from 'react'
 import { Box, Divider } from 'theme-ui'
 
@@ -12,7 +13,7 @@ import { useTimerStore } from '~/stores/time'
 import { getBanners } from '~/utils/cms.api'
 import { formatTime } from '~/utils/timer.utils'
 
-export async function getServerSideProps () {
+export const getServerSideProps: GetServerSideProps<{}> = async () => {
   const banners = await getBanners('home')
   return { props: { banners } }
 }

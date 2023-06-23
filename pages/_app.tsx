@@ -77,7 +77,8 @@ export default function App ({ Component, pageProps }: AppProps) {
     <PostHogProvider client={ Posthog }>
       <ThemeProvider theme={ getTheme(theme) }>
         <NotificationsProvider>
-          <TimerProvider>{ globalStyles }
+          <TimerProvider>
+            { globalStyles }
             {/* @ts-ignore */ }
             <Component { ...pageProps } />
           </TimerProvider>

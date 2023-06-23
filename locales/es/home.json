@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Personaliza tu Tomatoro",
+    "work": "Duración de la sesión de trabajo:",
+    "short": "Duración del descanso corto:",
+    "long": "Duración del descanso largo:",
+    "timerOnTitle": "Mostrar temporizador en el título",
+    "showNotifications": "Mostrar notificación cuando el temporizador termine",
+    "language": "Idioma de la página",
+    "cta": {
+      "reset": "Restablecer configuración",
+      "close": "Cerrar"
+    }
+  },
+  "howItWorks": {
+    "title": "Como ser más productivo",
+    "sections": {
+      "work": "Configura el contador",
+      "short": "Toma un descanso",
+      "long": "Repite"
+    },
+    "contentOne": "Para aumentar tu productividad, utiliza la técnica Pomodoro. Simplemente alterna ciclos de concentración en tu trabajo con descansos cortos.",
+    "contentTwo": "Por cada 25 minutos de trabajo o Tomatoros, toma un descanso de 5 minutos. Después de completar 3 Tomatoros, toma un descanso más largo de 15 minutos. ¡Repite este ciclo!",
+    "cta": "Aprende más acerca de ésta técnica"
+  },
+  "getInTouch": {
+    "title": "Mantente en contacto",
+    "content": "Tomatoro es un proyecto de código abierto. Puedes experimentar con el código fuente y aplicarlo en tus propios proyectos. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos. ¡Nos alegra conocer tus opiniones! :)",
+    "cta": "Deja tus comentarios"
+  }
+}

@@ -25,9 +25,9 @@ export interface Segment {
 }
 
 export const SEGMENTS: Record<SegmentType, Segment> = {
-  WORK: { time: 25 * 60, type: 'WORK', name: 'Work' },
-  SHORT: { time: 5 * 60, type: 'SHORT', name: 'Short Break' },
-  LONG: { time: 15 * 60, type: 'LONG', name: 'Long Break' },
+  WORK: { time: 25 * 60, type: 'WORK', name: 'segment.work' },
+  SHORT: { time: 5 * 60, type: 'SHORT', name: 'segment.shortBreak' },
+  LONG: { time: 15 * 60, type: 'LONG', name: 'segment.longBreak' },
 }
 
 /**

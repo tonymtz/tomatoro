@@ -1,27 +1,30 @@
+import useTranslation from 'next-translate/useTranslation'
 import { FC } from 'react'
 import { Box, Grid, Heading, Link, Paragraph } from 'theme-ui'
 
 import { LINKS } from '~/utils/config'
 
-export const GetInTouch: FC = () => (
-  <Grid variant="contained" gap={ 5 }>
-    <Heading as="h2" variant="text.title" sx={ { textAlign: 'center' } }>
-      Get in touch
-    </Heading>
+export const GetInTouch: FC = () => {
+  const { t } = useTranslation('home')
 
-    <Box>
-      <Paragraph mb={ 3 }>
-        Tomatoro is an open source code project. You may play around with the
-        code source and apply it for your own
-        projects. If you have any questions or suggestions, feel free to contact
-        us!. We are always happy to hear from you! :)
-      </Paragraph>
-    </Box>
+  return (
+    <Grid variant="contained" gap={ 5 }>
+      <Heading as="h2" variant="text.title" sx={ { textAlign: 'center' } }>
+        { t('getInTouch.title') }
+      </Heading>
 
-    <Box sx={ { textAlign: 'center' } }>
-      <p><Link href={ LINKS.GITHUB } target="_blank">Github</Link></p>
-      <p><Link href={ LINKS.FEEDBACK } target="_blank">Leave your
-        feedback</Link></p>
-    </Box>
-  </Grid>
-)
+      <Box>
+        <Paragraph mb={ 3 }>
+          { t('getInTouch.content') }
+        </Paragraph>
+      </Box>
+
+      <Box sx={ { textAlign: 'center' } }>
+        <p><Link href={ LINKS.GITHUB } target="_blank">Github</Link></p>
+        <p><Link href={ LINKS.FEEDBACK } target="_blank">
+          { t('getInTouch.cta') }
+        </Link></p>
+      </Box>
+    </Grid>
+  )
+}

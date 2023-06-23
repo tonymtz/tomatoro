@@ -102,6 +102,9 @@ export const defaultTheme: Theme = {
       color: 'primary',
       height: 8,
     },
+    select: {
+      borderColor: '#ccc',
+    },
   },
   images: {
     hero: {
