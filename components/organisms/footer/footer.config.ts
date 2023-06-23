@@ -15,7 +15,7 @@ const siteItems: FooterLink[] = [
 const supportItems: FooterLink[] = [
   { key: 'faq', href: LINKS.FAQ },
   { key: 'status', href: LINKS.STATUS },
-  { key: 'contact', href: LINKS.SUPPORT },
+  { key: 'contact', href: LINKS.CONTACT },
 ]
 
 const toolItems: FooterLink[] = [
