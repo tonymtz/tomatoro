@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 import { FC } from 'react'
-import { Close, Flex, MenuButton, NavLink, Text } from 'theme-ui'
+import { Close, Flex, Grid, MenuButton, NavLink, Text } from 'theme-ui'
 import { useBoolean } from 'usehooks-ts'
 
 import { LanguageSelector } from '~/components/molecules/language-selector'
@@ -44,12 +44,14 @@ export const Header = () => {
         maxWidth: '768px',
         width: '100%',
       } }>
-        <TomatoroLogo />
-        <LanguageSelector />
-        <MenuButton
-          aria-label={ t('header.toggle') }
-          onClick={ () => setTrue() }
-        />
+        <Grid sx={{ gridTemplateColumns: ['1fr auto auto', '1fr auto auto'], width: '100%' }}>
+          <TomatoroLogo />
+          <LanguageSelector />
+          <MenuButton
+            aria-label={ t('header.toggle') }
+            onClick={ () => setTrue() }
+          />
+        </Grid>
       </Flex>
 
       <MotionNav
@@ -65,8 +67,11 @@ export const Header = () => {
           maxWidth: '768px',
           width: '100%',
         }}>
-          <TomatoroLogo />
-          <Close onClick={ () => setFalse() }/>
+          <Grid sx={{ gridTemplateColumns: ['1fr auto auto', '1fr auto auto'], width: '100%' }}>
+            <TomatoroLogo />
+            <LanguageSelector />
+            <Close onClick={ () => setFalse() }/>
+          </Grid>
         </Flex>
         <Flex sx={{
           alignItems: 'center',

@@ -11,6 +11,7 @@
   },
   "backCta": "Volver al inicio",
   "unstableWarning": "Ésta es una versión inestable. [Presiona aquí para ir a la versión estable]({{ stableLink }}) o [ver más]({{ learnMoreLink }}).",
+  "loadingLanguage": "Cambiando el idioma...",
   "header": {
     "title": "Tomatoro",
     "toggle": "Botón del menú",
