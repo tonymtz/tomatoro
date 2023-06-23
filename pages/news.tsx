@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import { Grid, Heading } from 'theme-ui'
@@ -8,8 +9,8 @@ import { UpdatesList } from '~/components/molecules/updates-list'
 import { Page } from '~/components/templates/page'
 import { getUpdates } from '~/utils/cms.api'
 
-export async function getServerSideProps () {
-  const updates = await getUpdates()
+export const getServerSideProps: GetServerSideProps<{}> = async ({ locale }) => {
+  const updates = await getUpdates(locale)
   const sortedUpdates = updates.sort((a, b) => b.id - a.id)
   return { props: { updates: sortedUpdates } }
 }

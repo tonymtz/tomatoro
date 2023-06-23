@@ -28,8 +28,9 @@ export const getAllPosts = async () => {
   return obj.data
 }
 
-export const getUpdates = async () => {
-  const { data: obj } = await axios.get<CmsResponse<Update>>(`${ CMS_URL }/updates`)
+export const getUpdates = async (locale?: string) => {
+  const localeParam = locale ? `?locale=${ locale }` : ''
+  const { data: obj } = await axios.get<CmsResponse<Update>>(`${ CMS_URL }/updates${ localeParam }`)
   return obj.data
 }
 
