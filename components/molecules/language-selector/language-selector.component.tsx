@@ -27,7 +27,7 @@ export const LanguageSelector = () => {
     (
       <Select value={ lang } onChange={ ({ target }) => onChange(target.value) }>
         <option value="en">English 🇺🇸</option>
-        <option value="es">Español { showMxFlag ? '🇲🇽' : '🇪🇸' } </option>
+        <option value="es">Español { showMxFlag ? '🇲🇽' : '🇪🇸' }&nbsp;</option>
       </Select>
     )
 }
