@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
 import React, { FC } from 'react'
 import { Flex, Heading, NavLink, Text } from 'theme-ui'
 
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const Footer: FC<Props> = ({ version }) => {
+  const { t } = useTranslation('common')
+
   return (
     <Container as="footer">
       <Flex sx={ section }>
@@ -18,18 +21,18 @@ export const Footer: FC<Props> = ({ version }) => {
             <Heading as="h3">Tomatoro</Heading>
           </NavLink>
           <Text variant="small">
-            Unleash Productivity,
+            { t('footer.lineOne') }
             <br/>
-            One Tomatoro at a Time! 🍅🎯
+            { t('footer.lineTwo') }
           </Text>
         </Section>
 
         { footerData.links.map((linkGroup) => (
-          <Section key={ linkGroup.title }>
-            <Heading as="h4">{ linkGroup.title }</Heading>
+          <Section key={ linkGroup.key }>
+            <Heading as="h4">{ t(`footer.groups.${ linkGroup.key }.title`) }</Heading>
             { linkGroup.items.map((item) => (
-              <NavLink key={ item.name } as={ Link } href={ item.href } variant="footer">
-                <Text variant="small">{ item.name }</Text>
+              <NavLink key={ item.key } as={ Link } href={ item.href } variant="footer">
+                <Text variant="small">{ t(`footer.groups.${ linkGroup.key }.items.${ item.key }`) }</Text>
               </NavLink>
             )) }
           </Section>
@@ -37,8 +40,7 @@ export const Footer: FC<Props> = ({ version }) => {
       </Flex>
       <Flex sx={ section }>
         <Text variant="small" as="span">
-          &copy; 2017-{ new Date().getFullYear() } Tomatoro. All Rights
-          Reserved.
+          { t('footer.copyright', { currentYear: footerData.currentYear }) }
         </Text>
 
         { version && (

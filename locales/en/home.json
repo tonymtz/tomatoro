@@ -14,6 +14,11 @@
   },
   "howItWorks": {
     "title": "How to be more productive",
+    "sections": {
+      "work": "Set the timer",
+      "short": "Take a break",
+      "long": "Repeat"
+    },
     "contentOne": "To boost your productivity use the Pomodoro technique. Just alternate cycles of hyper-focus on work with short breaks of relaxation.",
     "contentTwo": "For each 25 mins of work or Tomatoros, take a 5 mins break. After completing 3 Tomatoros, take a longer 15 mins break. Repeat this cycle!",
     "cta": "Read more about this technique"

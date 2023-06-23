@@ -12,9 +12,47 @@
   "backCta": "Volver al inicio",
   "unstableWarning": "Ésta es una versión inestable. [Presiona aquí para ir a la versión estable]({{ stableLink }}) o [ver más]({{ learnMoreLink }}).",
   "header": {
+    "title": "Tomatoro",
     "toggle": "Botón del menú",
-    "close": "Cerrar Menú",
     "logoAlt": "Logo de Tomatoro",
-    "title": "Tomatoro"
+    "items": {
+      "home": "Inicio",
+      "howItWorks": "Cómo Funciona",
+      "contact": "Contacto",
+      "close": "Cerrar Menú"
+    }
+  },
+  "footer": {
+    "lineOne": "Desata la productividad,",
+    "lineTwo": "Un Tomatoro a la vez! 🍅🎯",
+    "copyright": "© 2017-{{currentYear}} Tomatoro. Todos los derechos reservados.",
+    "groups": {
+      "site": {
+        "title": "Sitio",
+        "items": {
+          "news": "Actualizaciones",
+          "terms": "Términos de uso",
+          "privacy": "Aviso de privacidad",
+          "github": "Github"
+        }
+      },
+      "support": {
+        "title": "Soporte",
+        "items": {
+          "faq": "Preguntas frecuentes",
+          "status": "Estado del servicio",
+          "contact": "Contacto"
+        }
+      },
+      "moreTools": {
+        "title": "Otros servicios",
+        "items": {
+          "tomatoro": "Tomatoro",
+          "dolar": "Dólar en Bancos",
+          "clipps": "Clipps",
+          "gatolinero": "Gatolinero"
+        }
+      }
+    }
   }
 }

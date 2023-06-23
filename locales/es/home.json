@@ -14,6 +14,11 @@
   },
   "howItWorks": {
     "title": "Como ser más productivo",
+    "sections": {
+      "work": "Configura el contador",
+      "short": "Toma un descanso",
+      "long": "Repite"
+    },
     "contentOne": "Para aumentar tu productividad, utiliza la técnica Pomodoro. Simplemente alterna ciclos de concentración en tu trabajo con descansos cortos.",
     "contentTwo": "Por cada 25 minutos de trabajo o Tomatoros, toma un descanso de 5 minutos. Después de completar 3 Tomatoros, toma un descanso más largo de 15 minutos. ¡Repite este ciclo!",
     "cta": "Aprende más acerca de ésta técnica"

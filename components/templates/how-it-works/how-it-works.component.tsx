@@ -10,9 +10,9 @@ import graphicTakeBreak from '~/public/svg/graphic-take-break.svg'
 import { LINKS } from '~/utils/config'
 
 const sections = [
-  { title: 'Set the Time', graphic: graphicSetTime },
-  { title: 'Take a Break', graphic: graphicTakeBreak },
-  { title: 'Repeat', graphic: graphicRepeat },
+  { key: 'work', graphic: graphicSetTime },
+  { key: 'short', graphic: graphicTakeBreak },
+  { key: 'long', graphic: graphicRepeat },
 ]
 
 export const HowItWorks: FC = () => {
@@ -25,15 +25,15 @@ export const HowItWorks: FC = () => {
       </Heading>
 
       <Grid columns={ [2, 3] }>
-        { sections.map(({ graphic, title }) => (
-          <Box key={ title } sx={ { textAlign: 'center' } }>
+        { sections.map(({ graphic, key }) => (
+          <Box key={ key } sx={ { textAlign: 'center' } }>
             <Image
               src={ graphic }
-              alt="Set the time"
+              alt={ t(`howItWorks.sections.${ key }`) }
               width={ 150 }
               height={ 150 }
             />
-            <Heading as="h3">{ title }</Heading>
+            <Heading as="h3">{ t(`howItWorks.sections.${ key }`) }</Heading>
           </Box>
         )) }
       </Grid>

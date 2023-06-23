@@ -12,9 +12,9 @@ import { LINKS } from '~/utils/config'
 import { Container, Heading, MotionNav } from './header.styles'
 
 const menuItems = [
-  { name: 'Home', href: LINKS.HOME },
-  { name: 'How it works', href: LINKS.HOW_IT_WORKS },
-  { name: 'Contact', href: LINKS.CONTACT },
+  { key: 'home', href: LINKS.HOME },
+  { key: 'howItWorks', href: LINKS.HOW_IT_WORKS },
+  { key: 'contact', href: LINKS.CONTACT },
 ]
 
 const menuVariants = {
@@ -78,13 +78,15 @@ export const Header = () => {
           borderTop: '1px solid #eee',
         }}>
           { menuItems.map((item) => (
-            <NavLink key={ item.name } as={ Link } href={ item.href } onClick={ () => setFalse() }>
+            <NavLink key={ item.key } as={ Link } href={ item.href } onClick={ () => setFalse() }>
               <Text>
-                { item.name }
+                { t(`header.items.${ item.key }`) }
               </Text>
             </NavLink>
           )) }
-          <Text sx={ { fontWeight: 'bold' } } onClick={ () => setFalse() }>{ t('header.close') }</Text>
+          <Text sx={ { cursor: 'pointer', fontWeight: 'bold' } } onClick={ () => setFalse() }>
+            { t('header.items.close') }
+          </Text>
         </Flex>
       </MotionNav>
     </Container>
