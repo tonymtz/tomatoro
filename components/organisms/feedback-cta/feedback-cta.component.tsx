@@ -27,6 +27,7 @@ export const FeedbackCta = () => {
 
     try {
       await postFeedback(feedback)
+      setError(false)
       setState('subscribe')
     } catch (error) {
       setError(true)
@@ -39,6 +40,7 @@ export const FeedbackCta = () => {
 
     try {
       await postSubscription(subscription)
+      setError(false)
       setState('success')
     } catch (error) {
       setError(true)
@@ -114,6 +116,7 @@ const FeedbackForm: FC<
         value={ content }
         placeholder={ t('feedback.placeholder') }
         onChange={ (e) => setContent(e.target.value) }
+        maxLength={420}
         autoFocus
       />
       <Label sx={ { justifyContent: 'flex-end' } }>
