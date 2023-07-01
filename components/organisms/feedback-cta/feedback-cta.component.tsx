@@ -5,6 +5,7 @@ import { Button, Flex, Heading, Label, Textarea, Text, Input, Card } from 'theme
 import { useBoolean } from 'usehooks-ts'
 
 import { postFeedback, postSubscription } from '~/utils/cms.api'
+import { track } from '~/utils/tracking.utils'
 
 type FeedbackStatus = 'feedback' | 'subscribe' | 'success'
 
@@ -22,7 +23,13 @@ export const FeedbackCta = () => {
   const { setValue: setIsBusy, value: isBusy } = useBoolean(false)
   const { setValue: setError, value: isError } = useBoolean(false)
 
+  const onCtaClick = () => {
+    toggleModal()
+    track('$feedback_cta_clicked')
+  }
+
   const onFeedbackSubmit = async (feedback: Feedback) => {
+    track('$feedback_submitted')
     setIsBusy(true)
 
     try {
@@ -36,6 +43,7 @@ export const FeedbackCta = () => {
   }
 
   const onSubscribeSubmit = async (subscription: Subscription) => {
+    track('$subscription_submitted')
     setIsBusy(true)
 
     try {
@@ -54,7 +62,7 @@ export const FeedbackCta = () => {
     <>
       <Button
         onClick={ () => {
-          toggleModal()
+          onCtaClick()
         } }
         sx={ fixedStyles }
       >
@@ -116,7 +124,7 @@ const FeedbackForm: FC<
         value={ content }
         placeholder={ t('feedback.placeholder') }
         onChange={ (e) => setContent(e.target.value) }
-        maxLength={420}
+        maxLength={ 420 }
         autoFocus
       />
       <Label sx={ { justifyContent: 'flex-end' } }>
@@ -189,6 +197,10 @@ const SubscriptionForm: FC<
 
 const FinalScreen: FC = () => {
   const { t } = useTranslation('common')
+
+  useState(() => {
+    track('$thank_you_screen')
+  })
 
   return (
     <>
