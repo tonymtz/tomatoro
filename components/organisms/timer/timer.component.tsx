@@ -5,6 +5,7 @@ import { Flex, Text } from 'theme-ui'
 import { useTimerContext } from '~/contexts/timer'
 import { useTimerStore } from '~/stores/time'
 import { formatTime } from '~/utils/timer.utils'
+import { track } from '~/utils/tracking.utils'
 
 import { Button, Controls, Donut } from './timer.styles'
 
@@ -16,15 +17,19 @@ export const Timer: FC = () => {
   const onToggleClick = () => {
     if (!isStarted) {
       onStartTimer()
+      track('$start')
     } else if (isRunning) {
       onStopTimer()
+      track('$pause')
     } else {
       onStartTimer()
+      track('$start')
     }
   }
 
   const onStopClick = () => {
     onResetTimer()
+    track('$done', { time: formatTime(time) })
   }
 
   return (

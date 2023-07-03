@@ -140,4 +140,16 @@ export const defaultTheme: Theme = {
       mx: 'auto',
     },
   },
+  cards: {
+    primary: {
+      backgroundColor: 'background',
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '1rem',
+      borderRadius: 4,
+      boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
+      border: '1px solid',
+      borderColor: 'textLowEmphasis',
+    },
+  },
 }

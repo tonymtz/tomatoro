@@ -1,3 +1,13 @@
+interface CmsResponse<T> {
+  data: T[];
+  meta: never;
+}
+
+interface CmsSingleEntryResponse<T> {
+  data: T;
+  meta: never;
+}
+
 type Locale = 'en' | 'es'
 
 type Blog = {
@@ -136,4 +146,14 @@ type Banner = {
     createdAt: string
     updatedAt: string
   }
+}
+
+type Feedback = {
+  content: string
+  liked: boolean
+}
+
+type Subscription = {
+  email: string
+  marketing: boolean
 }

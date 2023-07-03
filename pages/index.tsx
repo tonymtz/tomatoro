@@ -3,6 +3,7 @@ import React from 'react'
 import { Box, Divider } from 'theme-ui'
 
 import { Screen } from '~/components/atoms/screen'
+import { FeedbackCta } from '~/components/organisms/feedback-cta'
 import { NotificationsWarn } from '~/components/organisms/notifications-warn'
 import { GetInTouch } from '~/components/templates/get-in-touch'
 import { HowItWorks } from '~/components/templates/how-it-works'
@@ -41,6 +42,8 @@ export default function Home ({ banners }: { banners: Banner[] }) {
       <Screen id="get-in-touch">
         <GetInTouch/>
       </Screen>
+
+      <FeedbackCta />
     </Page>
   )
 }

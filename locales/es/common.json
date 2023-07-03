@@ -60,5 +60,26 @@
         }
       }
     }
+  },
+  "feedbackCta": "Deja tus comentarios 💬",
+  "feedback": {
+    "title": "¡Nos encantaría saber de ti!",
+    "rating": "¿Te gusta Tomatoro?",
+    "placeholder": "Dinos qué piensas o simplemente califícanos...",
+    "errorLineOne": "Hubo un error,",
+    "errorLineTwo": "por favor, inténtalo de nuevo.",
+    "like": "¡Me gusta!",
+    "dislike": "¡No me gusta!"
+  },
+  "subscribe": {
+    "title": "¡Muchas gracias! 🤙",
+    "content": "Tus comentarios mejoran Tomatoro 🍅. ¿Te gustaría mantenerte al día con nuestras últimas actualizaciones?",
+    "errorLabel": "Hubo un error, por favor inténtalo de nuevo.",
+    "placeholder": "Tu correo electrónico",
+    "cta": "Sí"
+  },
+  "subscribeSuccess": {
+    "title": "¡Suscrito! 🎊",
+    "content": "Puedes esperar un correo electrónico por mes. Puedes darte de baja en cualquier momento."
   }
 }
