@@ -4,6 +4,7 @@ import { useNotificationsContext } from '~/contexts/notifications'
 import { useSettingsStore } from '~/stores/settings'
 import { useTimerStore } from '~/stores/time'
 import { NOTIFICATION } from '~/utils/config'
+import { track } from '~/utils/tracking.utils'
 
 export const TimerContext = React.createContext<{
   onStartTimer(): void;
@@ -43,38 +44,41 @@ export const TimerProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
     start()
     workerRef.current?.postMessage('start')
-  }, [reset, start, time])
+    track('$timer_start', { segment: currentSegment, time })
+  }, [currentSegment, reset, start, time])
 
   const onStopTimer = useCallback(() => {
     stop()
     workerRef.current?.postMessage('stop')
-  }, [stop])
+    track('$timer_stop', { segment: currentSegment, time })
+  }, [currentSegment, stop, time])
 
   const onResetTimer = useCallback(() => {
     reset()
     workerRef.current?.postMessage('stop')
-  }, [reset])
+    track('$timer_reset', { segment: currentSegment, time })
+  }, [currentSegment, reset, time])
 
   useEffect(() => {
     if (time < 1) {
       onStopTimer()
       notify(NOTIFICATION)
+      track('$timer_end', { segment: currentSegment, time })
     }
-  }, [notify, onStopTimer, time])
+  }, [currentSegment, notify, onStopTimer, time])
 
   const onSegmentChange = useCallback((totalTime: number) => {
     setTotalTime(totalTime)
     onResetTimer()
-  }, [onResetTimer, setTotalTime])
+    track('$segment_change', { segment: currentSegment, time })
+  }, [currentSegment, onResetTimer, setTotalTime, time])
 
   useEffect(() => {
     if (currentSegment === 'WORK') {
       onSegmentChange(workLength)
-    }
-    if (currentSegment === 'SHORT') {
+    } else if (currentSegment === 'SHORT') {
       onSegmentChange(shortLength)
-    }
-    if (currentSegment === 'LONG') {
+    } else if (currentSegment === 'LONG') {
       onSegmentChange(longLength)
     }
   }, [currentSegment, longLength, onSegmentChange, shortLength, workLength])
