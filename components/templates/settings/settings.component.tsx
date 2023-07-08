@@ -15,6 +15,7 @@ import { LanguageSelector } from '~/components/molecules/language-selector'
 import { Modal } from '~/components/organisms/modal'
 import { useTimerContext } from '~/contexts/timer'
 import { useSettingsStore } from '~/stores/settings'
+import { track } from '~/utils/tracking.utils'
 
 import { Badge } from './settings.styles'
 
@@ -39,18 +40,23 @@ export const Settings: FC<Props> = ({ children }) => {
 
   const toggleModal = () => {
     onStopTimer()
-    setShowModal(prevState => !prevState)
+    setShowModal(prevState => {
+      prevState ? track('$settings_closed') : track('$settings_opened')
+      return !prevState
+    })
   }
 
   const onAppSettingChange = (field: 'showTimer' | 'showNotifications' | 'playSound', value: unknown) => {
     updateAppSetting({ [field]: value })
     onResetTimer()
+    track('$settings_changed', { field, value })
   }
 
   const onTimeSettingChange = (field: 'workLength' | 'shortLength' | 'longLength', value: number) => {
     updateTimerSetting({
       [field]: value * 60,
     })
+    track('$timer_changed', { field, value })
   }
 
   return (

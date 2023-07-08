@@ -2,6 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { Button, Text } from 'theme-ui'
 
 import { useNotificationsContext } from '~/contexts/notifications'
+import { track } from '~/utils/tracking.utils'
 
 import { Frame } from './notifications-warn.styles'
 
@@ -11,6 +12,11 @@ export const NotificationsWarn = () => {
 
   if (hasPermissions) {
     return null
+  }
+
+  const onClick = () => {
+    track('$notifications_requested')
+    requestPermission()
   }
 
   return (
@@ -25,7 +31,7 @@ export const NotificationsWarn = () => {
         sx={ {
           height: 'fit-content',
         } }
-        onClick={ () => requestPermission() }>
+        onClick={ onClick }>
         { t('notifications.cta') }
       </Button>
     </Frame>

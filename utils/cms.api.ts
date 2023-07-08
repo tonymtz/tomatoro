@@ -3,16 +3,6 @@ import axios from 'axios'
 import { isCleanInput } from '~/utils/clean-input'
 import { CMS_URL } from '~/utils/config'
 
-interface CmsResponse<T> {
-  data: T[];
-  meta: never;
-}
-
-interface CmsSingleEntryResponse<T> {
-  data: T;
-  meta: never;
-}
-
 export const getStaticPage = async (slug: string, locale?: string) => {
   if (!isCleanInput(slug)) {
     throw new Error('Invalid slug')
@@ -48,5 +38,15 @@ export const getBanners = async (location?: string, locale?: string) => {
   const query = `filters[location][$in][0]=all&${ additionalLocation }sort=createdAt:desc&pagination[start]=0&pagination[limit]=1`
   const localeParam = locale ? `&locale=${ locale }` : ''
   const { data: obj } = await axios.get<CmsResponse<Banner>>(`${ CMS_URL }/banners?${ query }${ localeParam }`)
+  return obj.data
+}
+
+export const postFeedback = async (data: Feedback) => {
+  const { data: obj } = await axios.post<CmsSingleEntryResponse<Feedback>>('/api/feedback', { data })
+  return obj.data
+}
+
+export const postSubscription = async (data: Subscription) => {
+  const { data: obj } = await axios.post<CmsSingleEntryResponse<Subscription>>('/api/subscribe', { data })
   return obj.data
 }
