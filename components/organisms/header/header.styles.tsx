@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { Flex, Heading as _Heading } from 'theme-ui'
 
 export const Container = styled(Flex)`
-  background-color: styles.background;
-  border-bottom: 1px solid styles.background;
+  background-color: background;
+  border-bottom: 1px solid background;
   position: sticky;
   align-items: center;
   top: 0;

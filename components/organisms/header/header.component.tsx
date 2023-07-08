@@ -46,7 +46,7 @@ export const Header = () => {
         margin: '0 auto',
         maxWidth: '768px',
         width: '100%',
-        backgroundColor: 'styles.background',
+        backgroundColor: 'background',
       } }>
         <Grid sx={{ gridTemplateColumns: ['1fr auto', '1fr auto'], width: '100%' }}>
           <TomatoroLogo />
