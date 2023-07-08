@@ -11,6 +11,7 @@ import {
   NotificationsProvider,
 } from '~/contexts/notifications/notifications-context.provider'
 import { TimerProvider } from '~/contexts/timer'
+import { useSettingsStore } from '~/stores/settings'
 
 if (typeof window !== 'undefined') {
   Posthog.init(
@@ -29,7 +30,7 @@ if (typeof window !== 'undefined') {
 
 export default function App ({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const [theme] = useLocalStorage('theme', 'light')
+  const [theme] = useSettingsStore(state => [state.themePreference]);
 
   useEffectOnce(() => {
     // Track page views

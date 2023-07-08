@@ -7,9 +7,12 @@ import { useBoolean } from 'usehooks-ts'
 
 import { LanguageSelector } from '~/components/molecules/language-selector'
 import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
+import logoTomatoroDark from '~/public/svg/logo-tomatoro-dark.svg'
 import { LINKS } from '~/utils/config'
 
 import { Container, Heading, MotionNav } from './header.styles'
+import { ThemeSelector } from '~/components/molecules/theme-selector'
+import { useSettingsStore } from '~/stores/settings'
 
 const menuItems = [
   { key: 'home', href: LINKS.HOME },
@@ -43,6 +46,7 @@ export const Header = () => {
         margin: '0 auto',
         maxWidth: '768px',
         width: '100%',
+        backgroundColor: 'styles.background',
       } }>
         <Grid sx={{ gridTemplateColumns: ['1fr auto', '1fr auto'], width: '100%' }}>
           <TomatoroLogo />
@@ -57,6 +61,9 @@ export const Header = () => {
         initial={ false }
         variants={ menuVariants }
         animate={ value ? 'opened' : 'closed' }
+        sx={{
+          backgroundColor: 'background',
+        }}
       >
         <Flex sx={{
           alignItems: 'center',
@@ -65,6 +72,7 @@ export const Header = () => {
           margin: '0 auto',
           maxWidth: '768px',
           width: '100%',
+          backgroundColor: 'background',
         }}>
           <Grid sx={{ gridTemplateColumns: ['1fr auto', '1fr auto'], width: '100%' }}>
             <TomatoroLogo />
@@ -73,12 +81,13 @@ export const Header = () => {
         </Flex>
         <Flex sx={{
           alignItems: 'center',
-          backgroundColor: 'white',
+          backgroundColor: 'background',
           gap: '1rem',
           flexDirection: 'column',
           padding: '1.5rem 0',
-          borderBottom: '1px solid #eee',
-          borderTop: '1px solid #eee',
+          borderBottom: '1px solid',
+          borderTop: '1px solid',
+          borderColor: 'textLowEmphasis',
         }}>
           { menuItems.map((item) => (
             <NavLink key={ item.key } as={ Link } href={ item.href } onClick={ () => setFalse() }>
@@ -93,17 +102,19 @@ export const Header = () => {
           <LanguageSelector />
         </Flex>
       </MotionNav>
+      <ThemeSelector />
     </Container>
   )
 }
 
 const TomatoroLogo: FC = () => {
   const { t } = useTranslation('common')
+  const [theme] = useSettingsStore((state) => [state.themePreference])
 
   return (
     <Link href="/" title="Go to Tomatoro Home">
       <Image
-        src={ logoTomatoro }
+        src={ theme === 'dark' ? logoTomatoroDark : logoTomatoro }
         alt={ t('header.logoAlt') }
         width={ 150 }
         height={ 30 }
