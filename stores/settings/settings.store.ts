@@ -13,6 +13,7 @@ const initialState: SettingsState = {
   showNotifications: true,
   playSound: true,
   currentSegment: SEGMENTS.WORK.type,
+  themePreference: 'light',
 }
 
 const settingsStore = create<
@@ -39,6 +40,17 @@ const settingsStore = create<
           { type: 'settings/updateAppSetting', ...payload },
         ),
 
+        setThemePreference: (themePreference: string) => set(
+          () => {
+            const nextThemePreference = themePreference === 'light' ? 'light' : 'dark'
+
+            return ({
+              themePreference: nextThemePreference,
+            })
+          },
+          false,
+          { type: 'settings/setThemePreference', themePreference}
+        ),
         setSegment: (nextSegment: SegmentType) => set(
           () => {
             const { time, type } = SEGMENTS[nextSegment]

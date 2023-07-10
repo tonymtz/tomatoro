@@ -3,9 +3,10 @@ import { motion } from 'framer-motion'
 import { Flex, Heading as _Heading } from 'theme-ui'
 
 export const Container = styled(Flex)`
-  background-color: white;
-  border-bottom: 1px solid #eee;
+  background-color: background;
+  border-bottom: 1px solid background;
   position: sticky;
+  align-items: center;
   top: 0;
   z-index: 1;
 `
@@ -15,7 +16,6 @@ export const Heading = styled(_Heading)`
 `
 
 export const MotionNav = styled(motion.nav)`
-  background-color: white;
   height: 200px;
   width: 100vw;
   position: fixed;

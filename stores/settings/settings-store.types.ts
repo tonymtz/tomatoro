@@ -8,6 +8,7 @@ export interface SettingsState {
   showTimer: boolean
   showNotifications: boolean
   playSound: boolean
+  themePreference: | 'light' | 'dark'
 }
 
 export interface SettingsStore extends SettingsState {
@@ -16,6 +17,8 @@ export interface SettingsStore extends SettingsState {
   updateAppSetting(payload: Pick<SettingsStore, 'showTimer' & 'showNotifications' & 'playSound'>): void
 
   setSegment(param: SegmentType): void
+
+  setThemePreference(themePreference: string): void
 
   resetSetting(): void
 }
