@@ -61,14 +61,15 @@ export const LINKS = {
   CONTACT: `/${ PAGES.CONTACT }`,
   NEWS: '/news',
   SUPPORT: 'mailto:hello@tomatoro.com',
-  GITHUB: 'https://github.com/tonymtz/tomatoro',
-  FEEDBACK: 'https://goo.gl/forms/T9BxmGcn38dlZz2w1',
-  STATUS: 'https://statuspage.freshping.io/65694-Tomatoro',
-  TOMATORO: 'https://tomatoro.com',
-  DOLAR: 'https://dolarenbancos.com',
-  CLIPPS: 'https://clipps.io',
-  SONGBOX: 'https://songbox.io',
-  GATOLINERO: 'https://t.me/GatolineroBot',
+  GITHUB: 'https://github.com/tonymtz/tomatoro?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  FEEDBACK: 'https://goo.gl/forms/T9BxmGcn38dlZz2w1?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  STATUS: 'https://statuspage.freshping.io/65694-Tomatoro?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  TOMATORO: 'https://tomatoro.com?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  DOLAR: 'https://dolarenbancos.com?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  CLIPPS: 'https://clipps.io?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  SONGBOX: 'https://songbox.io?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  GATOLINERO: 'https://t.me/GatolineroBot?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
+  MITRABAJO: 'https://eslegalmitrabajo.com?utm_source=tomatoro&utm_medium=web&utm_campaign=footer',
 }
 
 export const CMS_URL = 'https://cms.tomatoro.com/api'
