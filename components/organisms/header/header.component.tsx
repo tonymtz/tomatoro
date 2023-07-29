@@ -6,13 +6,13 @@ import { Close, Flex, Grid, MenuButton, NavLink, Text } from 'theme-ui'
 import { useBoolean } from 'usehooks-ts'
 
 import { LanguageSelector } from '~/components/molecules/language-selector'
-import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
+import { ThemeSelector } from '~/components/molecules/theme-selector'
 import logoTomatoroDark from '~/public/svg/logo-tomatoro-dark.svg'
+import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
+import { useSettingsStore } from '~/stores/settings'
 import { LINKS } from '~/utils/config'
 
 import { Container, Heading, MotionNav } from './header.styles'
-import { ThemeSelector } from '~/components/molecules/theme-selector'
-import { useSettingsStore } from '~/stores/settings'
 
 const menuItems = [
   { key: 'home', href: LINKS.HOME },

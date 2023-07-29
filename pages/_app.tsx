@@ -4,7 +4,7 @@ import Posthog from 'posthog-js'
 import { PostHogProvider } from 'posthog-js/react'
 import { useEffect } from 'react'
 import { ThemeProvider } from 'theme-ui'
-import { useEffectOnce, useLocalStorage } from 'usehooks-ts'
+import { useEffectOnce } from 'usehooks-ts'
 
 import { getTheme, globalStyles } from '~/components/themes'
 import {
@@ -21,7 +21,7 @@ init({
 
 export default function App ({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const [theme] = useSettingsStore(state => [state.themePreference]);
+  const [theme] = useSettingsStore(state => [state.themePreference])
 
   useEffectOnce(() => {
     // Track page views
