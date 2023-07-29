@@ -6,7 +6,6 @@ import { Close, Flex, Grid, MenuButton, NavLink, Text } from 'theme-ui'
 import { useBoolean } from 'usehooks-ts'
 
 import { LanguageSelector } from '~/components/molecules/language-selector'
-import { ThemeSelector } from '~/components/molecules/theme-selector'
 import logoTomatoroDark from '~/public/svg/logo-tomatoro-dark.svg'
 import logoTomatoro from '~/public/svg/logo-tomatoro.svg'
 import { useSettingsStore } from '~/stores/settings'
@@ -87,7 +86,7 @@ export const Header = () => {
           padding: '1.5rem 0',
           borderBottom: '1px solid',
           borderTop: '1px solid',
-          borderColor: 'textLowEmphasis',
+          borderColor: '#eee',
         }}>
           { menuItems.map((item) => (
             <NavLink key={ item.key } as={ Link } href={ item.href } onClick={ () => setFalse() }>
@@ -102,7 +101,7 @@ export const Header = () => {
           <LanguageSelector />
         </Flex>
       </MotionNav>
-      <ThemeSelector />
+      {/*<ThemeSelector />*/}
     </Container>
   )
 }

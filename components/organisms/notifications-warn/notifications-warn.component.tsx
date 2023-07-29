@@ -21,9 +21,7 @@ export const NotificationsWarn = () => {
 
   return (
     <Frame variant="warn">
-      <Text sx={{
-        color: 'primary',
-      }}>
+      <Text>
         { t('notifications.lineOne') }<br/>
         { t('notifications.lineTwo') }
       </Text>
