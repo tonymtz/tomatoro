@@ -2,7 +2,7 @@
 import { WORKER } from '~/utils/config'
 
 let isRunning: boolean = false
-let interval: NodeJS.Timer
+let interval: NodeJS.Timeout
 
 addEventListener('message', (event: MessageEvent<string>) => {
   processMessage(event.data)
