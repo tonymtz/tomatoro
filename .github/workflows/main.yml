@@ -54,7 +54,7 @@ jobs:
       # Notify Telegram Bot
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
-        if: contains(github.ref, "next")
+        if: ${{ github.ref == 'refs/heads/next' }}
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -72,7 +72,7 @@ jobs:
 
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
-        if: contains(github.ref, "master")
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
