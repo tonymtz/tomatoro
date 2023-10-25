@@ -23,7 +23,7 @@
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
     "framer-motion": "10.12.16",
-    "next": "13.4.5",
+    "next": "13.5.0",
     "next-translate": "^2.3.1",
     "next-translate-plugin": "^2.3.0",
     "posthog-js": "1.67.1",
