@@ -51,17 +51,14 @@ If you want to skip it, use `git commit --no-verify`. We recommend you to not do
 What's next? These are the items we're working on.
 This schedule is not final and will change in time:
 
-#### May 1st
+#### May 1st 2023 (New codebase)
 
 - ~~**v3.0** (may 1st!) - Complete rework~~ (🚀 done!)
-
-#### Summer 2023
-
 - ~~**v3.0.144** - Multi-language support (ES, EN)~~ (🚀 done!)
+
+#### Somewhere in 2024
+
 - **v3.0.x** - Dark theme
-
-#### Somewhere in 2023
-
 - **v3.x** - Quick actions from notifications (when supported by the browser)
 - **v3.x** - Better support: knowledge database with guides and solutions for common issues
 - **v3.x** - Better support: new channels for faster support response (replacement of GitHub issues)
